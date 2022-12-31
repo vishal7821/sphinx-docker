@@ -1,0 +1,324 @@
+<nb-card status="primary">
+  <nb-card-header>
+    <h5 style="color: white;">Create/Edit Question Set Creation</h5>
+  </nb-card-header>
+
+  <nb-card-body>
+    <div class="row">
+      <div class="col-sm-8">
+        <br>
+        <div class="row">
+          <!--<div class="col-sm-1"></div>
+          <div class="col-sm-3">
+            <label style="font-size: medium; font-weight: bold; margin-top: 6%; color: blue;">Select Type of Question :</label>
+          </div>-->
+          <div class="col-sm-12">
+            <nb-select style="margin-top: 1%;" fullWidth placeholder="Select Type of Question" 
+            [(selected)]="selectedItem"
+            [(ngModel)]="selectedItem"
+            #selectQuestionType
+            (selectedChange)="triggerQuestionChange()"
+            [style.display]="showQuestionSelectOption ? 'block' : 'none'">
+            <nb-option *ngFor="let item of questionType" [value]="item.id">
+              {{item.text}}
+            </nb-option>
+          </nb-select> 
+          </div>
+        </div>
+   
+
+      <!-- MCQRB Division Starts Here -->
+     
+        <div class="mcqrbclass" [style.display]="isMCQRBQuestionSelected ? 'block' : 'none'">
+          <br>
+          <div class="row">
+            <div class="col-sm-12">
+              <!--<nb-accordion>
+                <nb-accordion-item>
+                  <nb-accordion-item-header style="    background-color: #3366ff;
+                  border-bottom-width: 0;
+                  border-bottom-color: #3366ff;color: white;font-size: 1.3rem; font-family: Open Sans, sans-serif; font-weight: 700;line-height: 2rem;">
+                    <strong style="text-align: center;"> Question Pane </strong>
+                  </nb-accordion-item-header>
+                  <nb-accordion-item-body>
+                    <div class="mcqrb_questionText"></div>
+                    </nb-accordion-item-body>
+                  </nb-accordion-item>
+                  </nb-accordion>-->
+                  <div class="mcqrb_questionText"></div>
+            </div>
+          </div>
+          <br>
+          <!--<nb-accordion>
+            <nb-accordion-item>
+              <nb-accordion-item-header style="background-color: #3366ff;border-bottom-width: 0;
+              border-bottom-color: #3366ff;color: white;font-size: 1.3rem; font-family: Open Sans, sans-serif; font-weight: 700;line-height: 2rem;">
+                <strong style="text-align: center;"> Options Pane</strong>
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <ng-container *ngComponentOutlet="loadRBComponent" class="mcqrb_options_div">
+                </ng-container>
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+              </nb-accordion>-->
+              <ng-container *ngComponentOutlet="loadRBComponent" class="mcqrb_options_div">
+              </ng-container>
+        </div>
+      <!-- MCQRB Division Ends Here -->
+
+      <!-- MCQCB Division Starts Here -->
+        <div class="mcqcbclass" [style.display]="isMCQCBQuestionSelected ? 'block' : 'none'">
+          <br>
+          <div class="row">
+            <div class="col-sm-12">
+              <!--<nb-card status="primary">
+                <nb-card-header>
+                  <h6 style="color: white;">Question and Options Pane</h6>
+                </nb-card-header>
+              <nb-card-body>
+              </nb-card-body>
+             </nb-card>-->
+             <!--<hr style="border: 1px solid;border-bottom-width: 0;">
+             <label style="font-size: medium; font-weight: bold;">Question :</label><br>-->
+             <div class="mcqcb_questionText"></div>
+             <br>
+             <!--<hr style="border: 1px solid;border-bottom-width: 0;">
+             <label style="font-size: medium; font-weight: bold;">Options :</label><br>-->
+             <ng-container *ngComponentOutlet="loadComponent" class="mcqcb_options_div"></ng-container>
+             <!--<hr style="border: 1px solid;border-bottom-width: 0;">-->   
+            </div>
+          </div>
+          <br>
+        </div>
+      <!-- MCQCB Division Ends Here -->
+
+      <!-- TXT Division Starts Here -->
+        <div class="txtclass" [style.display]="isTextQuestionSelected ? 'block' : 'none'">
+          <br><br>
+          <!--<nb-card status="primary">
+            <nb-card-header>
+              <h6 style="color: white;">Question and Options Pane</h6>
+              </nb-card-header>
+            <nb-card-body>         
+              <div class="row">
+                <div class="col-sm-12"><p class="txt_questionText"></p></div>
+              </div> 
+            <br>
+            <div class="row">
+                <div class="col-sm-12"><p class="txt_solutionText"></p></div>
+            </div>
+              <br><br>
+              <div class="row">
+                <div class="offset-sm-4 col-sm-4"><button nbButton size="small" outline  status="primary" (click)="updateTextQuestionDetails()">Submit</button>
+                  <button nbButton class="offset-sm-2" size="small" outline status="primary">Cancel</button>
+                </div>
+              </div>
+              <br><br><br><br><br><br> 
+              <br><br><br><br><br><br>
+            </nb-card-body>
+            </nb-card>-->
+            <div class="row">
+              <div class="col-sm-6">
+                <nb-card accent="primary">
+                  <br>
+                  <h6 style="text-align: center; color: #3366ff;">Question Text</h6>
+                  <br>
+                 <nb-list>
+                   <nb-list-item>
+                    <div class="row">
+                      <div class="col-sm-12"><p class="txt_questionText"></p></div>
+                    </div>
+                   </nb-list-item>
+                 </nb-list>
+              </nb-card>  
+              </div>
+              <div class="col-sm-6">
+              <nb-card accent="primary">
+                <br>
+                   <h6 style="text-align: center; color:#3366ff;">Gold Solution</h6><br>
+                <nb-list>
+                  <nb-list-item style="text-align: center;">
+                   <div class="row">
+                     <div class="col-sm-12"><p class="txt_solutionText"></p></div>
+                   </div> 
+                  </nb-list-item>
+                </nb-list>
+             </nb-card>
+            </div>
+            </div>
+            <br>   
+           
+            <br>
+          <!--<div class="row">
+              <div class="col-sm-12"><p class="txt_solutionText"></p></div>
+          </div>-->
+            <br><br>
+            <div class="row">
+              <div class="offset-sm-4 col-sm-4"><button nbButton size="small" outline  status="primary" (click)="updateTextQuestionDetails()">Submit</button>
+                <button nbButton class="offset-sm-2" size="small" outline status="primary">Cancel</button>
+              </div>
+            </div>
+            
+            
+        </div>
+      </div>
+      <!-- TXT Division Ends Here -->
+
+      <!-- Space to separate Tree and Question Creation Panel -->
+      <div class="col-sm-1">
+      </div>
+      
+      
+      <div class="col-sm-3">
+        <br>
+        <nb-card size="giant" status="primary">
+        <nb-card-header>
+          <h6 style="color: white;"> Question Tree </h6>
+        </nb-card-header>
+        <nb-card-body>
+            <nb-actions size="small" fullWidth>
+              <nb-action icon="plus-circle" pack="ion" title="Add Question" (click)="addChild()"></nb-action>
+              <nb-action icon="edit" title="Edit Question" (click)="openForm()"></nb-action>
+              <nb-action icon="trash-2" title="Delete Question" (click)="deleteQuestion()"></nb-action>
+            </nb-actions> 
+
+          <nb-card *ngIf="isOpenForm1">
+            <nb-card-body>
+              <div class="row">
+                <div class="col-sm-6">
+                  <input type="text" nbInput [(ngModel)]="tempNode.value" fullWidth placeholder="Title">
+                </div>
+                <div class="col-sm-2">
+                  <button nbButton size="small"
+                  outlinr ghost status="success"
+                  (click)="updateQDetails()">
+                  <nb-icon size="large" icon="save-outline"></nb-icon>Save</button>
+                </div>
+                <div class="col-sm-2">
+                  <button nbButton size="small"
+                  outlinr ghost status="danger"
+                  (click)="cancelUpdate()">
+                  <nb-icon size="medium" icon="close-outline"></nb-icon>Cancel</button>
+                </div>
+              </div>
+            </nb-card-body>
+          </nb-card>
+
+
+
+
+          <nb-card *ngIf="isOpenForm2" >
+            <nb-card-body>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="inputTitle" class="label">Title</label>
+                      <input type="text" 
+                      nbInput 
+                      fullWidth 
+                      id="inputTitle" 
+                      placeholder="Title"
+                      [(ngModel)]="tempNode.value"
+                      >
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="inputMarks" class="label">Input Marks</label>
+                      <input type="text" 
+                      nbInput 
+                      fullWidth id="inputMarks" 
+                      placeholder="Marks"
+                      [(ngModel)]="tempNode.marks"
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="inputDiffLevel" class="label">Difficulty Level</label>
+                      <mat-slider min="0" max="10" 
+                      [(ngModel)]="tempNode.difficulty_level"
+                      thumbLabel step="1" value="5" ></mat-slider>
+                    </div>
+                  </div>
+                  <!--<div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="inputIsAutoGraded" class="label">IsAutoGraded</label><br>
+                      <!-- <br><ui-switch [(ngModel)]="toggleNgModel" color="#2196F3" ></ui-switch> -->
+                      <!--<mat-slide-toggle
+                      [(ngModel)]="tempNode.is_autograded"
+                      ></mat-slide-toggle>
+                    </div>
+                  </div>-->
+                 
+                </div>
+                <div class="row" *ngIf = "tempNode.is_autograded">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputQType" class="label">Question Type</label>
+                        <nb-select  [(ngModel)]="selectedNode.type" placeholder="Select Q Type">
+                            <nb-option [value]="1"> True or False</nb-option>
+                            <nb-option [value]="2"> Multiple Choice</nb-option>
+                            <nb-option [value]="3">Other</nb-option>
+                          </nb-select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputSolution" class="label">Solution List (E.g. T,F,T)</label>
+                        <input type="text" 
+                        nbInput 
+                        fullWidth 
+                        id="inputSolution" 
+                        placeholder="Enter solution"
+                        [(ngModel)]="selectedNode.solution_list"
+                        >
+                      </div>
+                    </div>
+                  </div>
+        
+                <div class="form-group row">
+                    <label for="inputTopics" class="label col-sm-3 col-form-label">Topics</label>
+                    <div class="col-sm-9">
+                        <nb-select multiple  [(ngModel)]="selectedNode.topics" placeholder="Multiple Select">
+                          <nb-option *ngFor="let topic of topics" [value]="topic.id">
+                            {{topic.name}}</nb-option>
+                          </nb-select>
+                    </div>
+                  </div>
+        
+               
+                  <div class="form-group row">
+                      <div class="offset-md-2 col-sm-4">
+                          <button nbButton size="small" (click)="updateQDetails()" outline status="success">Save</button>
+                      </div>
+                      <div class="offset-md-1 col-sm-4">
+                          <button nbButton size="small" (click)="cancelUpdate()" outline status="danger">Cancel</button>
+                      </div>
+                    </div>
+            </nb-card-body>
+          </nb-card>
+
+
+
+
+          <div class="row">
+            <div class="col-sm-12">
+              <tree [tree]="tree"  [settings]="settings" 
+                  (nodeRemoved)="onNodeRemoved($event)"
+                  (nodeCreated)="onNodeCreated($event)" 
+                  (nodeSelected)="onNodeSelected($event)" 
+                  #treeComponent>
+              </tree>
+            </div>
+          </div>
+          
+
+        </nb-card-body>
+      </nb-card>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

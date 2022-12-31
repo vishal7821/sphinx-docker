@@ -1,0 +1,197 @@
+
+<nb-card size="giant">
+        <nb-card-header>
+                <h5>Event Submissions</h5>
+              </nb-card-header>
+            
+              <nb-card-body>
+                <nb-card>
+                  <nb-card-body>
+                      <div>
+                          <div class="row">
+                              <div class="col-sm-9">
+                                  <form #demoForm="ngForm">
+                                      <file-upload [(ngModel)]="uploadedFiles" [disabled]="isDisabled" name="files"></file-upload>
+                                  </form>
+                              </div>
+                              <div class="col-sm-3 container">
+                                <div class="center">
+                                    <button [nbSpinner]="isLoading" outline nbSpinnerStatus="info" (click)="uploadSubmissions()" nbButton>Upload Submissions</button>
+                                </div>
+                                  
+                              </div>
+                         
+                            </div>
+                         
+                      </div>
+                      
+                  </nb-card-body>
+                  <nb-card-footer></nb-card-footer>
+                </nb-card>
+
+                <nb-card *ngIf="recUploads.length!=0">
+                  <nb-card-header>
+                    <div class = "row">
+                        <div class="col-6 col-sm-6">
+                            Please verify and map the below predicted roll number of students
+                        </div>
+                        <div class="col-6 col-sm-3">
+                          
+                      </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="center">
+                                <button 
+                                [nbSpinner]="isRecLoading" 
+                                nbSpinnerStatus="info" 
+                                (click)="onMapSubmission()" 
+                                outline
+                                nbButton>Map Submissions</button>
+                            </div>
+                        </div>
+                     
+                    </div>
+                  </nb-card-header>
+                  <nb-card-body>
+                    <nb-list  *ngIf="recUploads">
+                        <nb-list-item>
+                          <div class="row ">
+                  
+                            <div class="col-6 col-sm-1" *ngIf="recUploads.length!=0">
+                              <div style="text-align:center;"><strong>#</strong></div>
+                            </div>
+                            <div class="col-6 col-sm-2" *ngIf="recUploads.length!=0">
+                              <div style="text-align:center;"><strong>Upload ID</strong></div>
+                            </div>
+                            <div class="col-6 col-sm-2" *ngIf="recUploads.length!=0">
+                              <div style="text-align:center;"><strong>Predicted Roll Number</strong></div>
+                            </div>
+                            <div class="col-6 col-sm-2" *ngIf="recUploads.length!=0">
+                                <div style="text-align:center;"><strong>Confidence score</strong></div>
+                              </div>
+                            <div class="col-6 col-sm-4" *ngIf="recUploads.length!=0">
+                              <div style="text-align:center;"><strong>Handwritten Roll Number</strong></div>
+                            </div>
+                          </div>
+                        </nb-list-item>
+                      </nb-list>
+                      <nb-list *ngIf="recUploads.length!=0">
+                        <nb-list-item *ngFor="let upload of recUploads; index as j">
+                            <div class="row ">
+                                <div class="col-6 col-sm-1 ">
+                                    <div style="text-align:center;">{{upload.id}}</div>
+                                  </div>
+                                  <div class="col-6 col-sm-2 ">
+                                    <div style="text-align:center;">{{upload.upload_id}}</div>
+                                  </div>
+                                  <div class="col-6 col-sm-2 ">
+                                      <input type="text" 
+                                      nbInput 
+                                      fullWidth 
+                                      status="primary"
+                                      placeholder="Enter roll no" 
+                                      [(ngModel)]="upload.roll_number">
+                                    
+                                  </div>
+                                  <div class="col-6 col-sm-2 ">
+                                      <div style="text-align:center;">{{upload.confidence}}</div>
+                                  </div>
+                                  <div class="col-6 col-sm-4 ">
+                                      <img src="{{upload.image}}" alt="Not available"  style="padding:1px;border:thin solid black;">
+                                      
+                                  </div>
+                            </div>
+                        
+                        </nb-list-item>
+                        </nb-list>
+                      </nb-card-body>
+                </nb-card>
+               
+                <nb-card *ngIf="recUploads.length==0">
+                    <nb-card-header>
+                            <div class = "row">
+                                <div class="col-6 col-sm-3">
+                                    <h6>Uploaded Submissions</h6>
+                                </div>
+                                <div class="col-6 col-sm-6">
+                                    {{message}}
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <div class="center">
+                                        <button 
+                                        [nbSpinner]="isRecLoading" 
+                                        nbSpinnerStatus="info" 
+                                        (click)="userRecognition()" 
+                                        outline
+                                        nbButton>Recognize Students</button>
+                                    </div>
+                                </div>
+                             
+                            </div>
+                          </nb-card-header>
+                        
+                          <nb-card-body>
+                              <nb-list  *ngIf="uploads">
+                                  <nb-list-item>
+                                    <div class="row ">
+                            
+                                      <div class="col-6 col-sm-1" *ngIf="uploads.length!=0">
+                                        <div style="text-align:center;"><strong>#</strong></div>
+                                      </div>
+                                      <!-- <div class="col-6 col-sm-2" *ngIf="uploads.length!=0">
+                                        <div style="text-align:center;"><strong>Upload ID</strong></div>
+                                      </div> -->
+                                      <div class="col-6 col-sm-3" *ngIf="uploads.length!=0">
+                                        <div style="text-align:center;"><strong>User Roll Number</strong></div>
+                                      </div>
+                                      <div class="col-6 col-sm-6" *ngIf="uploads.length!=0">
+                                        <div style="text-align:center;"><strong>submission details</strong></div>
+                                      </div>
+                                      
+                                      <div class="col-6 col-sm-2" *ngIf="uploads.length!=0">
+                                          <div style="text-align:center;"><strong>Actions</strong></div>
+                                      </div>
+                                    </div>
+                                  </nb-list-item>
+                                </nb-list>
+
+                                <nb-list *ngIf="uploads.length!=0">
+                                    <nb-list-item *ngFor="let upload of uploads; index as i">
+                                        <div class="row ">
+                                            <div class="col-6 col-sm-1 ">
+                                                <div style="text-align:center;">{{upload.id}}</div>
+                                              </div>
+                                              <!-- <div class="col-6 col-sm-2 ">
+                                                <div style="text-align:center;">{{upload.upload_id}}</div>
+                                              </div> -->
+                                              <div class="col-6 col-sm-3 ">
+                                                <div *ngIf="upload.roll_number" style="text-align:center;">{{upload.roll_number}}</div>
+                                                <div *ngIf="!upload.roll_number" style="text-align:center;">-</div>
+                                              </div>
+                                              <div class="col-6 col-sm-6 ">
+                                                  <img src="{{upload.image}}" alt="Not available" style="display: block;" >
+                                                  
+                                              </div>
+                                              <div class="col-6 col-sm-1 ">
+                                                  <div style="text-align:center;">
+                                                      <button nbButton ghost size="tiny" status="primary" (click)="onDownloadSubmission(i)">
+                                                        <nb-icon [icon]="'download-outline'" ></nb-icon>
+                                                      </button>
+                                                    </div>
+                                                </div>
+                                              <div class="col-6 col-sm-1">
+                                                  <div style="text-align:center;">
+                                                    <button nbButton ghost size="tiny" status="danger" (click)="onDelSubmission(i)">
+                                                      <nb-icon [icon]="'trash-outline'" ></nb-icon>
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                        </div>
+                                    
+                                    </nb-list-item>
+                                </nb-list>
+                            
+                        </nb-card-body>
+                </nb-card>
+            </nb-card-body>
+</nb-card>
+

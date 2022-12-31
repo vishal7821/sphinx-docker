@@ -1,0 +1,21 @@
+<table class="table table-bordered table-hover table-condensed">
+  <tr>
+    <td></td>
+    <td>Event Name</td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="event in event_list" class="editable-row">
+    <td>
+        {{$index}}
+    </td>
+    <td>
+        <span  name="name" form="rowform" required><a href="" ng-click = 'selectEvent($index)'>{{ event.name || 'empty' }}  </a></span>
+    </td>
+    <td>
+        <div class="buttons" ng-show="!rowform.$visible">
+        <button class="btn btn-primary  btn-mm" ng-click="selectEvent($index)">All ongoing subevents</button>
+      </div>
+    </td>
+  </tr>
+
+</table>

@@ -1,0 +1,129 @@
+<nb-card status="primary">
+        <nb-card-header>
+                <h5 style="color: white;">Grading Manager</h5>
+        </nb-card-header>
+
+
+        <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" >
+
+                <nb-list>
+                        <nb-list-item>
+                                <div class="row">
+
+                                        <div class="col-6 col-sm-5">
+                                                <div><strong>Question Title</strong></div>
+                                        </div>
+                                        <div class="col-6 col-sm-2">
+                                                <div><strong>Marks</strong></div>
+                                        </div>
+                                        <div class="col-6 col-sm-2">
+                                                <div style="text-align:center;"><strong>Completed/Total</strong></div>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                                <div style="text-align:center;"><strong>Actions</strong></div>
+                                        </div>
+                                </div>
+                        </nb-list-item>
+                </nb-list>
+
+                <nb-list *ngFor="let gd_group of myGradingDuties; index as i" >
+                        <nb-list-item>
+
+                                <div class="row ">
+                                        <!--  *ngIf="event.id!=tempevent.id" -->
+
+                                        <div class="col-6 col-sm-5">
+                                                <div>{{gd_group.question_title}}</div>
+                                        </div>
+                                        <div class="col-6 col-sm-2">
+                                                <div>{{gd_group.question_marks}}</div>
+                                        </div>
+                                        <div class="col-6 col-sm-2">
+                                                <div style="text-align:center;">{{gd_group.completed_cnt}} /
+                                                        {{gd_group.tot_cnt}}</div>
+                                        </div>
+                                        <div class="col-6 col-sm-1" *ngIf = "gd_group.is_autograded">
+                                                        <button 
+                                                        nbButton 
+                                                        ghost 
+                                                        size="tiny" 
+                                                        status="primary" 
+                                                        nbTooltip="Auto Grade" 
+                                                        nbTooltipPlacement="top" 
+                                                        nbTooltipStatus="primary"
+                                                        (click) = "onAutoGrade(i)"
+                                                        >
+                                                        <nb-icon [icon]="'navigation-2-outline'" ></nb-icon>
+                                                        </button>
+                                                </div>
+                                                <div class="col-6 col-sm-1" *ngIf = "!gd_group.is_autograded">
+                                                      
+                                                </div>
+                                        <div class="col-6 col-sm-2">
+                                                        
+                                                <div style="text-align:center;">
+                                                        <button nbButton outline size="small" status="primary" (click)="performGrading(i)">
+                                                                Perform Grading
+                                                        </button>
+                                                </div>
+                                        </div>
+                                </div>
+
+
+
+                                <table class="table">
+                                        <colgroup>
+                                                <col class="c3" />
+                                                <col class="c1" />
+                                                <col class="c2" />
+                                                <col class="c1" />
+                                                <col class="c1" />
+                                        </colgroup>
+                                        <tbody>
+                                                <tr>
+                                                        <th scope="col" style="text-align:center;">
+
+                                                                <!-- <button nbButton size ="tiny" status="primary" (click)="addQuestionSet(1)" >Add Q Set</button> -->
+                                                        </th>
+                                                        <th scope="col" *ngIf="true">#</th>
+                                                        <th scope="col" *ngIf="true">Submission Group</th>
+                                                        <th scope="col" *ngIf="true">isGraded</th>
+                                                        <th scope="col" *ngIf="true" style="text-align:center;">Grades
+                                                        </th>
+                                                </tr>
+                                        </tbody>
+
+
+                                        <tbody *ngFor="let gd of gd_group.grading_duties; index as j">
+
+
+                                                <tr>
+                                                        <td></td>
+                                                        <td>{{gd.id}}</td>
+                                                        <td>
+                                                                        <a href="#" onclick="return false" (click)="performSelectedGrading(i,j)">
+                                                                                        <u> {{gd.group_member_names}}</u>
+                                                                                      </a>
+                                                                </td>
+                                                        <td>
+                                                                <div class="item text-success" *ngIf="gd.is_completed">
+                                                                        <nb-icon [icon]="'checkmark-circle'" >Graded</nb-icon>
+                                                                </div>
+                                                                <div class="item text-danger" *ngIf="!gd.is_completed">
+                                                                        <nb-icon [icon]="'clock-outline'" ></nb-icon>
+                                                                </div>
+                                                                </td>
+                                                        <td  style="text-align:center;">
+                                                                <div *ngIf="gd.aggregate_marks==null">--</div>
+                                                                {{gd.aggregate_marks}}
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                </table>
+
+                        </nb-list-item>
+                </nb-list>
+
+        </nb-card-body>
+</nb-card>
+

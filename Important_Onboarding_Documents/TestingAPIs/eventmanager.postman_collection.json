@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "d6a869f8-8ae6-4f0a-a2c6-3f733ac1a23b",
+		"name": "eventmanager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\":\"assignment5\",\n\"assignment_id\":,\n\"grade_aggregation_method\":\"MAX\",\n\"is_external\":\"0\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8082/course/cs772/events/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"cs772",
+						"events",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allevents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update event",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"assignment21\",\n    \"is_external\": true,\n    \"grade_aggregation_method\": \"MAX\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8082/course/cs772/event/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"cs772",
+						"event",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new subevent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "morning",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2012-04-23T18:25:43.511Z",
+							"type": "text"
+						},
+						{
+							"key": "end_time",
+							"value": "2012-04-25T18:25:43.511Z",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "SUPLOAD",
+							"type": "text"
+						},
+						{
+							"key": "is_blocking",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "display_end_time",
+							"value": "2012-04-25T18:25:43.551Z",
+							"type": "text"
+						},
+						{
+							"key": "allow_late_ending",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "late_end_time",
+							"value": "2012-04-26T18:25:43.511Z",
+							"type": "text"
+						},
+						{
+							"key": "display_late_end_time",
+							"value": "2012-04-26T18:25:46.511Z",
+							"type": "text"
+						},
+						{
+							"key": "event_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "SBM",
+							"value": "OLS",
+							"type": "text"
+						},
+						{
+							"key": "SGS",
+							"value": "IN",
+							"type": "text"
+						},
+						{
+							"key": "SGS_OG_max",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "QSS",
+							"value": "FS",
+							"type": "text"
+						},
+						{
+							"key": "NAD",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "MUS",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "MUT",
+							"value": "PDF",
+							"type": "text"
+						},
+						{
+							"key": "SUP",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "SUS",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "SUT",
+							"value": "PDF,ZIP",
+							"type": "text"
+						},
+						{
+							"key": "DEL",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "COL",
+							"value": "00BBFFF",
+							"type": "text"
+						},
+						{
+							"key": "csv_file",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "gen_subevent_id",
+							"value": "None",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8082/course/cs772/event/1/subevents/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"cs772",
+						"event",
+						"1",
+						"subevents",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

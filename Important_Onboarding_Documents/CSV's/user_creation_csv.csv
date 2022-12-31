@@ -1,0 +1,26 @@
+username,first_name,last_name,email,department,program,role_name,sections
+201,Harshad,Narayane,harshad7264@gmail.com,cse,B-tech,student,A1
+202,Manish,Patel,manish@manish.com,cse,B-tech,student,A1
+203,Abir ,Mukherjee,abir@abir.com,cse,B-tech,student,A1
+204,Manikant,Singh,manikant@mani.com,cse,B-tech,student,A1
+205,Chaitanya ,Pathare,chaitu@chaitu.com,cse,B-tech,student,A1
+206,Rahul ,Pakhare,rahul@rahul.com,cse,B-tech,student,A1
+207,Nilesh ,Kothavade,nilesh@nilesh.com,cse,B-tech,student,A1
+208,Aditya,Kadu,adi@adi.com,cse,B-tech,student,A1
+209,Sharwari,Samdekar,sharu@sharu.com,cse,B-tech,student,A1
+210,Neelu ,Kalani,neelu@neelu.com,cse,B-tech,student,A1
+211,Tarun,Solanki,tarun@tarun.com,cse,B-tech,student,A2
+212,Arjun,Bhavsar,arjun@arjun.com,cse,B-tech,student,A2
+213,Nikita,Lonkar,nikita@nikita.com,cse,B-tech,student,A2
+214,Rohan,Jethure,rohan@rohan.com,cse,B-tech,student,A2
+215,Aakash ,Nand,aakash@aakash.com,cse,B-tech,student,A2
+216,Dhanashree,Solanke,subway@subway.com,cse,B-tech,student,A2
+217,Shubham,Gattani,shubham@gattu.com,cse,B-tech,student,A2
+218,Shubham,Dhope,dhope@dhope.com,cse,B-tech,student,A2
+219,Karan,Bhatiya,dhuwa@dhuwa.com,cse,B-tech,student,A2
+220,Aditya,Joshi,ramya@ramya.com,cse,B-tech,student,A2
+301,Harshad,Narayane,harshadn@cse.iitk.ac.in,cse,B-Tech,grader,A1
+302,Harshad,Narayane,harshadn@iitk.ac.in,cse,B-Tech,grader,A2
+303,Manish,Patel,manish@manishg.com,cse,B-Tech,grader,A1
+304,Manikant,Singh,manikant@manig.com,cse,B-Tech,grader,A1
+305,Abir ,Mukherjee,abir@abirg.com,cse,B-Tech,grader,A2

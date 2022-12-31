@@ -1,0 +1,212 @@
+<!-- <nb-card>
+  <nb-card-header>
+    Course Sections
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table 
+    [settings]="settings" 
+    [source]="source" 
+    (createConfirm)="onCreateConfirm($event)"
+    (editConfirm)="onEditConfirm($event)"
+    (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card> -->
+
+
+<!-- <div class="row">
+  <div class="col-md-12 col-lg-6">
+    <nb-card size="small">
+
+    </nb-card>
+  </div>
+
+  <div class="col-md-12 col-lg-6">
+    <nb-card size="small">
+      <nb-card-header>
+        Course Sections
+      </nb-card-header>
+    
+      <nb-card-body>
+        <ng2-smart-table 
+        [settings]="settings" 
+        [source]="source" 
+        (createConfirm)="onCreateConfirm($event)"
+        (editConfirm)="onEditConfirm($event)"
+        (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  
+</div> -->
+
+
+<!-- <nb-layout [windowMode]="'a'=='b'">
+
+  <nb-layout-column> -->
+
+  
+  <!-- </nb-layout-column>
+
+  <nb-layout-column left> -->
+      <nb-card size="giant">
+    <div class="row">
+      <div class="col-sm-6">
+          <nb-card>
+              <nb-card-header>
+                Course Details
+              </nb-card-header>
+        
+              <nb-card-body>
+    
+                  <form  (ngSubmit)="onUpdateCourse()">
+                      <div class="form-group row">
+                        <label for="inputname" class="label col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                          <input 
+                          type="text" 
+                          nbInput 
+                          fullWidth 
+                          name="name"
+                          id="inputname" 
+                          placeholder="name"
+                          [(ngModel)]="coursedetail.name"
+                          >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label for="inputtitle" class="label col-sm-3 col-form-label">Title</label>
+                          <div class="col-sm-9">
+                            <input 
+                            type="text" 
+                            nbInput 
+                            fullWidth 
+                            name="title"
+                            id="inputtitle" 
+                            placeholder="Title"
+                            [(ngModel)]="coursedetail.title"
+                            >
+                          </div>
+                        </div>
+                      <div class="form-group row">
+                        <label for="inputdescription" class="label col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                          <input 
+                          type="text"
+                          nbInput
+                          fullWidth 
+                          name="description"
+                          id="inputdescription" 
+                          placeholder="Description"
+                          [(ngModel)]="coursedetail.description"
+                          >
+                          
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputsem" class="label col-sm-3 col-form-label">Semester</label>
+                        <div class="col-sm-9">
+                          <input 
+                          type="text" 
+                          nbInput 
+                          fullWidth 
+                          name="semester"
+                          id="inputsem" 
+                          placeholder="semester"
+                          [(ngModel)]="coursedetail.semester"
+                          >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputyear" class="label col-sm-3 col-form-label">Year</label>
+                        <div class="col-sm-9">
+                          <input 
+                          type="number" 
+                          nbInput 
+                          fullWidth 
+                          name="year"
+                          id="inputyear" 
+                          placeholder="year"
+                          [(ngModel)]="coursedetail.year"
+                          >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputdept" class="label col-sm-3 col-form-label">Department</label>
+                        <div class="col-sm-9">
+                          <input type="text" 
+                          nbInput 
+                          fullWidth 
+                          id="inputdept" 
+                          name="department"
+                          placeholder="department"
+                          [(ngModel)]="coursedetail.department"
+                          >
+                        </div>
+                      </div>
+    
+                      <div class="form-group row">
+                        <label for="inputimagedir" class="label col-sm-3 col-form-label">CourseDirectory</label>
+                        <div class="col-sm-9">
+                          <input 
+                          type="text" 
+                          nbInput 
+                          fullWidth 
+                          name="course_dir"
+                          id="inputimagedir" 
+                          placeholder="Course Directory"
+                          [(ngModel)]="coursedetail.course_dir"
+                          >
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 label">IsActive</label>
+                        <div class="col-sm-9">
+                          <nb-radio-group name="is_active" [(ngModel)]="coursedetail.is_active">
+                            <nb-radio  value="true" >Yes</nb-radio>
+                            <nb-radio  value="false">No</nb-radio>
+                            <!-- <nb-radio disabled>Disabled Option</nb-radio> -->
+                          </nb-radio-group>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-9">
+                          <button type="submit" nbButton status="primary">Update</button>
+                        </div>
+                      </div>
+                    </form>
+                
+              </nb-card-body>
+            </nb-card>
+
+      </div>
+      <div class="col-sm-6">
+          <nb-card>
+              <nb-card-header>
+                Course Sections
+              </nb-card-header>
+        
+              <nb-card-body>
+                <ng2-smart-table 
+                  [settings]="settings" 
+                  [source]="source" 
+                  (createConfirm)="onCreateConfirm($event)"
+                  (editConfirm)="onEditConfirm($event)" 
+                  (deleteConfirm)="onDeleteConfirm($event)"
+                >
+                </ng2-smart-table>
+              </nb-card-body>
+            </nb-card>
+        
+
+        </div>
+    </div>
+    </nb-card>
+      
+<!-- 
+  </nb-layout-column>
+
+</nb-layout> -->

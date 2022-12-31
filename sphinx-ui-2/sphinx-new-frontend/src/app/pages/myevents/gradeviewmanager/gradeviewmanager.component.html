@@ -1,0 +1,77 @@
+<nb-card size="giant" status="primary">
+    <nb-card-header>
+        <div class="row">
+            <h5 style="color:white;">&nbsp;GradeSheet Overview </h5>
+            
+        </div>
+    </nb-card-header>
+
+
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item>
+                <div class="row">
+                    <div class="col-6 col-sm-1">
+                        <div><strong>#</strong></div>
+                    </div>
+
+                    <div class="col-6 col-sm-5">
+                        <div><strong>Question Title</strong></div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div><strong>Graded Marks</strong></div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div><strong>Total Marks</strong></div>
+                    </div>
+                </div>
+            </nb-list-item>
+        </nb-list>
+
+        <nb-list *ngIf="my_marks !=null">
+            <nb-list-item *ngFor="let q of my_marks.questions; index as i">
+
+                <div class="row">
+                    <div class="col-6 col-sm-1">
+                        <div>{{q.id}}</div>
+                    </div>
+
+                    <div class="col-6 col-sm-5">
+                        <div>
+                            <a href="#" onclick="return false" (click)="viewMainGrading(i)">
+                                <u> {{q.question_title}}</u>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div><strong>{{q.graded_marks}} </strong></div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div><strong>{{q.question_marks}}</strong></div>
+                    </div>
+                </div>
+
+            </nb-list-item>
+            <nb-list-item>
+
+                <div class="row">
+                    <div class="col-6 col-sm-1">
+                        <div></div>
+                    </div>
+
+                    <div class="col-6 col-sm-5">
+                        <div><h5>Total</h5></div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div><h5>{{my_marks.aggregate_marks}}</h5></div>
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <div><h5> {{my_marks.total_marks}} </h5></div>
+                    </div>
+                </div>
+
+            </nb-list-item>
+        </nb-list>
+
+    </nb-card-body>
+</nb-card>

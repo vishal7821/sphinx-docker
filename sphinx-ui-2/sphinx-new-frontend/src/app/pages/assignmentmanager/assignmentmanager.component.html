@@ -1,0 +1,156 @@
+<!-- <div class="card">
+    <div class="card-body"> -->
+
+        <!-- <nb-layout [windowMode]="false">
+
+            <nb-layout-column > -->
+<nb-card >
+    <nb-card-header>
+        <h4>Assignment Manager</h4>
+      </nb-card-header>
+  <nb-card-body [nbSpinner]="assignLoading" nbSpinnerStatus="primary">
+    
+    <!-- <h4 class="card-title">  -->
+    <!-- <nb-icon *ngFor="let icon of icons.ionicons" [icon]="icon" pack="ion"></nb-icon> -->
+    <!-- Assignments</h4> -->
+    <div class="row ">
+      <button nbButton ghost size="medium" status="primary" (click)="addAssignment()">
+        <nb-icon [icon]="'plus'" pack="ion"></nb-icon>
+        <div>Add Assignment</div>
+      </button>
+    </div>
+    <nb-list  *ngIf="assignments">
+      <nb-list-item>
+        <div class="row ">
+
+          <div class="col-6 col-sm-1" *ngIf="assignments.length!=0">
+            <div style="text-align:center;"><strong>#</strong></div>
+          </div>
+          <div class="col-6 col-sm-4" *ngIf="assignments.length!=0">
+            <div><strong>Name</strong></div>
+          </div>
+          <div class="col-6 col-sm-5" *ngIf="assignments.length!=0">
+            <div><strong>Description</strong></div>
+          </div>
+          <div class="col-6 col-sm-2" *ngIf="assignments.length!=0">
+            <div style="text-align:center;"><strong>Actions</strong></div>
+          </div>
+        </div>
+      </nb-list-item>
+    </nb-list>
+
+    <nb-list *ngIf="assignments">
+      <nb-list-item *ngFor="let assign of assignments; index as i">
+        <div class="row ">
+          <div class="col-6 col-sm-1">
+            <div style="text-align:center;">{{assign.id}}</div>
+          </div>
+          <div class="col-6 col-sm-4">
+            <div>{{assign.name}}</div>
+          </div>
+          <div class="col-6 col-sm-5">
+            <div>{{assign.description}}</div>
+          </div>
+          <div class="col-6 col-sm-2">
+            <div style="text-align:center;">
+              <button nbButton ghost size="tiny" status="primary" (click)="editAssignment(i)">
+                <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+              </button>
+              <button nbButton ghost size="tiny" 
+              status="primary" (click)="deleteAssignment(i)">
+                <nb-icon [icon]="'trash-b'" pack="ion"></nb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <td scope="col">
+                <button nbButton ghost size="small" status="primary" (click)="addQuestionSet(i)">
+                  <nb-icon [icon]="'plus'" pack="ion"></nb-icon>
+                  <div *ngIf="assign.questionSets.length==0">Add Question set</div>
+                </button>
+
+                <!-- <button nbButton size ="tiny" status="primary" (click)="addQuestionSet(1)" >Add Q Set</button> -->
+              </td>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">#</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">Name</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">Total Marks</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">Question file</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">Supplementary file</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">Solution file</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0">Set Rubrics</th>
+              <!--<th scope="col" *ngIf="assign.questionSets.length!=0 && !assign.is_interactive">Total Marks</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0 && !assign.is_interactive">Question file</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0 && !assign.is_interactive">Supplementary file</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0 && !assign.is_interactive">Solution file</th>
+              <th scope="col" *ngIf="assign.questionSets.length!=0 && !assign.is_interactive">Set Rubrics</th>-->
+              <th scope="col"></th>
+            </tr>
+          </tbody>
+          <tbody *ngFor="let qset of assign.questionSets; index as j">
+            <tr>
+              <td></td>
+              <td>{{qset.id}}</td>
+              <td><button class="link" (click)="gotoQuestionSet(i,j)">{{qset.name}}</button></td>
+              <!-- <td>{{qset.name}}</td> -->
+              <td>{{qset.total_marks}}</td>
+              <td>
+                <div *ngIf="qset.question_name==null">--</div>
+                <a href="#" onclick="return false" (click)="getQuestionFile(i,j)">
+                  <u> {{qset.question_name}}</u>
+                </a>
+              </td>
+              <td>
+                  <div *ngIf="qset.supplementary_name==null">--</div>
+                <a href="#" onclick="return false" (click)="getSupplementaryFile(i,j)">
+                  <u> {{qset.supplementary_name}}</u>
+                </a>
+              </td>
+              <td>
+                  <div *ngIf="qset.solution_name==null">--</div>
+                <a href="#" onclick="return false" (click)="getSolutionFile(i,j)">
+                  <u> {{qset.solution_name}}</u>
+                </a>
+              </td>
+
+              <!-- <td>{{qset.supplementary_name}}</td>
+                              <td>{{qset.solution_name}}</td> -->
+              <td>
+                <nb-actions size="medium">
+                  <nb-action icon="settings-2-outline" (click)="setRubrics(i,j)">
+                    <!-- <nb-icon class="action-icon" icon="settings-2-outline"></nb-icon> -->
+                  </nb-action>
+                </nb-actions>
+              </td>
+              <td>
+                <button nbButton ghost size="tiny" status="primary" (click)="editQuestionSet(i,j)">
+                  <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                </button>
+                <button nbButton ghost size="tiny" 
+                status="primary" (click)="deleteQuestionSet(i,j)">
+                  <nb-icon [icon]="'trash-b'" pack="ion"></nb-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </nb-list-item>
+    </nb-list>
+
+
+
+
+
+
+
+
+  </nb-card-body>
+</nb-card>
+<!-- </nb-layout-column>
+</nb-layout> -->
+<!-- </div>
+  </div> -->

@@ -1,0 +1,250 @@
+<nb-card status="primary" size="giant">
+  <nb-card-header>
+    <h5 style="color: white;">My Events</h5>
+  </nb-card-header>
+  <nb-card-body *ngIf="my_events!=undefined">
+    <div class="row" *ngIf="my_events.length==0">
+      Currently there are no ongoing events for you.
+    </div>
+    <nb-accordion>
+
+      <nb-accordion-item *ngFor="let myevent of my_events;let i = index">
+        <nb-accordion-item-header>
+          <div class="col-sm-1">
+            {{myevent.id}}
+          </div>
+          <div class="col-sm-11">
+            {{myevent.name}}
+          </div>
+        </nb-accordion-item-header>
+
+        <nb-accordion-item-body>
+          <nb-list>
+            <nb-list-item>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th scope="col" *ngIf="myevent.questionSets.length!=0">#</th>
+                    <th scope="col" *ngIf="myevent.questionSets.length!=0">Name</th>
+                    <th scope="col" *ngIf="myevent.questionSets.length!=0">Total Marks</th>
+                    <th scope="col" *ngIf="myevent.questionSets.length!=0">Question file</th>
+                    <th scope="col" *ngIf="myevent.questionSets.length!=0">Supplementary file</th>
+                    <th scope="col" *ngIf="myevent.questionSets.length!=0">Solution file</th>
+                  </tr>
+                </tbody>
+                <tbody *ngFor="let qset of myevent.questionSets; index as j">
+                  <tr>
+                    <td>{{qset.id}}</td>
+                    <td>{{qset.name}}</td>
+                    <td>{{qset.total_marks}}</td>
+                    <td>
+                      <div *ngIf="qset.question_name==null">--</div>
+                      <a href="#" onclick="return false" (click)="getQuestionFile(i,j)">
+                        <u> {{qset.question_name}}</u>
+                      </a>
+                    </td>
+                    <td>
+                      <div *ngIf="qset.supplementary_name==null">--</div>
+                      <a href="#" onclick="return false" (click)="getSupplementaryFile(i,j)">
+                        <u> {{qset.supplementary_name}}</u>
+                      </a>
+                    </td>
+                    <td>
+                      <div *ngIf="qset.solution_name==null">--</div>
+                      <a href="#" onclick="return false" (click)="getSolutionFile(i,j)">
+                        <u> {{qset.solution_name}}</u>
+                      </a>
+                    </td>
+
+
+
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </nb-list-item>
+           
+            <nb-list-item *ngIf="myevent.subEventFlags.SUPLOAD || myevent.subEventFlags.SVIEW">
+              <div class="row ">
+                <div class="col-6 col-sm-3">
+                  Event Submission
+                </div>
+                
+                <div class="col-6 col-sm-6" *ngIf="myevent.supload_time">
+                  <div class="row">
+                    <div class="col-6">{{myevent.supload_time.start_time}}</div>
+                    <div class="col-6">
+                      <span class="float-right">{{myevent.supload_time.end_time}}</span>
+                    </div>
+                  </div>
+                  <nb-progress-bar fullwidth [value]="myevent.supload_time.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+                </div>
+
+                <div class="col-6 col-sm-6" *ngIf="!myevent.supload_time && myevent.sview_time">
+                    <div class="row">
+                      <div class="col-6">{{myevent.sview_time.start_time}}</div>
+                      <div class="col-6">
+                        <span class="float-right">{{myevent.sview_time.end_time}}</span>
+                      </div>
+                    </div>
+                    <nb-progress-bar fullwidth [value]="myevent.sview_time.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+                  </div>
+                
+                <div class="col-6 col-sm-1">
+
+                </div>
+                <div class="col-6 col-sm-2" *ngIf="myevent.subEventFlags.SUPLOAD">
+
+                  <button nbButton outline shape="semi-round" size="small"
+                    (click)="gotoSubmissionManager(i)">Submit/Edit</button>
+                </div>
+                <div class="col-6 col-sm-2"
+                *ngIf="!myevent.subEventFlags.SUPLOAD && myevent.subEventFlags.SVIEW"
+                >
+
+                  <button nbButton outline shape="semi-round" size="small"
+                    (click)="gotoSubmissionManager(i)">View Submission</button>
+                </div>
+              </div>
+
+            </nb-list-item>
+          
+            <nb-list-item *ngIf="myevent.subEventFlags.MVIEW">
+              <div class="row ">
+                <div class="col-6 col-sm-3">
+                  View Grades
+                </div>
+               
+                  <div class="col-6 col-sm-6">
+         
+                    <div class="row">
+                      <div class="col-6">{{myevent.mview_time.start_time}}</div>
+                      <div class="col-6"><span class="float-right">{{myevent.mview_time.end_time}}</span></div>
+                    </div>
+                    <nb-progress-bar fullwidth [value]="myevent.mview_time.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+  
+                  </div>
+
+                <div class="col-6 col-sm-1">
+                  
+                </div>
+                <div class="col-6 col-sm-2">
+                  <div class="row">
+                    <button nbButton outline shape="semi-round" size="small" (click)="goToGradeViewManager(i)">View
+                      Graded Submission</button>
+                  </div>
+                </div>
+              </div>
+
+            </nb-list-item>
+            <nb-list-item *ngIf="myevent.subEventFlags.GUPLOAD">
+              <div class="row ">
+                <div class="col-6 col-sm-3">
+                  Event Grading
+                </div>
+                <div class="col-6 col-sm-6">
+                 
+
+                </div>
+                <div class="col-6 offset-md-1 col-sm-2">
+                  <!-- <div class="row">
+                    Graded Copies: <strong>95/100</strong>
+                  </div>
+                  <nb-progress-bar fullwidth [value]="95" size="tiny">95</nb-progress-bar> -->
+                </div>
+              </div>
+              <br>
+              <table class="table " *ngIf="myevent.subEventFlags.GUPLOAD">
+                <tbody>
+                  <tr>
+                    <th scope="col">SubEvent Name</th>
+                    <th scope="col">Timeline</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </tbody>
+                <tbody *ngFor="let subEvent of myevent.subevents; index as m">
+                  <tr *ngIf="subEvent.type == 'GUPLOAD'">
+                    <td>
+                      {{subEvent.name}}
+                    </td>
+
+                    <td>
+                      <div class="row">
+                        <div class="col-6">{{subEvent.time_range[0]}}</div>
+                        <div class="col-6"><span class="float-right">{{subEvent.time_range[1]}}</span></div>
+                      </div>
+                      <nb-progress-bar fullwidth [value]="subEvent.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+                    </td>
+                    <td>
+                      <button nbButton outline shape="semi-round" size="small" (click)="gotoGradingManager(i,m)">View
+                        Grading Duties</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </nb-list-item>
+            <!-- Event regrading  -->
+            <nb-list-item *ngIf="myevent.subEventFlags.RGUPLOAD">
+              <div class="row ">
+                <div class="col-6 col-sm-3">
+                    Event Regrading
+                </div>
+                <!-- <div class="col-6 col-sm-6">
+                        <div class="row">
+                                <div class="col-6">20 Dec 2019 12:00AM</div>
+                                <div class="col-6"><span class="float-right">15 Jan 2020 12:00AM</span></div>
+                            </div>
+                        <nb-progress-bar fullwidth [value]="30" size="tiny">30%</nb-progress-bar>
+                        
+               </div>
+                <div class="col-6 offset-md-1 col-sm-2" >
+                        <div class="row">
+                            Regraded Copies: <strong>8/20</strong>
+                        </div>
+                       <nb-progress-bar fullwidth [value]="40" size="tiny">8</nb-progress-bar>
+                     </div> -->
+           </div>
+           <br>
+              <table class="table" *ngIf="myevent.subEventFlags.RGUPLOAD">
+                <tbody>
+                  <tr>
+                    <th scope="col">SubEvent Name</th>
+                    <th scope="col">Timeline</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </tbody>
+                <tbody *ngFor="let subEvent of myevent.subevents; index as n">
+                  <tr *ngIf="subEvent.type == 'RGUPLOAD'">
+                    <td>
+                      {{subEvent.name}}
+                    </td>
+                    <td>
+                      <div class="row">
+                        <div class="col-6">{{subEvent.time_range[0]}}</div>
+                        <div class="col-6"><span class="float-right">{{subEvent.time_range[1]}}</span></div>
+                      </div>
+                      <nb-progress-bar fullwidth [value]="subEvent.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+                    </td>
+                    <td>
+                      <button nbButton outline shape="semi-round" size="small" (click)="gotoReGradingManager(i,n)">View
+                        ReGrading Duties</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </nb-list-item>
+
+          </nb-list>
+
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+
+    </nb-accordion>
+
+  </nb-card-body>
+
+</nb-card>

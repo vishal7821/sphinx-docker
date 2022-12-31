@@ -1,0 +1,22 @@
+nux Command--------------------------
+dpkg --listfiles memcachedtool -- list files 
+ ssh 172.27.27.134 -l user -p 2222
+scp  172.27.27.134 -l user -p 2222
+fuser -k 8080/tcp
+
+
+-----------------------general Nginx Command------------------------------------
+sudo /usr/local/openresty/nginx/sbin/nginx -c ~/projects/smartgrading-backend/openrestyproject/conf/nginx.conf -s reload
+
+-----------------------------------memcached command----------------------------------
+sudo /etc/init.d/memcached restart
+telnet localhost 11211
+    flush_all
+    quit
+memcached-tool localhost:11211 dump
+ /usr/share/memcached/scripts/memcached-tool localhost:11211 dump
+
+------------------------------------django python--------------------------------
+python manage.py runserver localhost:8082
+
+

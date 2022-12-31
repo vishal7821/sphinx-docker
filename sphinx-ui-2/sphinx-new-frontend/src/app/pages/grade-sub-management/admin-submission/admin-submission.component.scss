@@ -1,0 +1,30 @@
+.container {
+    display: inline-block;
+    float: none;
+  }
+  
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+
+  img {
+    object-fit: contain;
+   max-width: 100%;
+   max-height: 100%;
+   width: auto;
+   height: auto;
+    // display: block;
+    // max-width:500px;
+    // max-height:200px;
+    // width: auto;
+    // height: auto;
+  }
+
+  .ImageBorder {
+    border-width: 1px;
+    border-color: Black;
+}

@@ -1,0 +1,292 @@
+<!-- Uncomment and check group submission and access code implementation
+
+<div  *ngIf="mySubmissionEvent.isNACReq && !this.mySubmissionEvent.isNACVerified">
+  <nb-card size="giant">
+    <nb-card-header>
+      <h5>Event Submission</h5>
+    </nb-card-header>
+    <nb-card-body>
+    <div class="row">
+      <div class="col-md-6">
+        <nb-card>
+          <nb-card-header>
+            PreSubmission Step
+          </nb-card-header>
+          <nb-card-body>
+            <form>
+              <div class="form-group row">
+                <label for="inputNAC" class="label col-sm-3 col-form-label">
+                  Access Code
+                </label>
+                <div class="col-sm-9">                                                        
+                  <input type="text" 
+                         nbInput
+                         fullWidth 
+                         id="inputAccessCode"
+                         placeholder="Enter access code"
+                         [(ngModel)]="mySubmissionEvent.sgrp_form.accessCodeSubmitted"
+                         name="accessCode">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="offset-sm-3 col-sm-9">
+                  <button type="submit" 
+                          nbButton
+                          status="primary"
+                          (click)="verifyNACForm()">
+                          Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<div  *ngIf="!mySubmissionEvent.isSGCreated">
+  <nb-card size="giant">
+    <nb-card-header>
+      <h5>Event Submission</h5>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-md-8">
+          <nb-card>
+            <nb-card-header>
+              Fill below details to Create/Join Submission group
+            </nb-card-header>
+             <nb-card-body>
+              <form>
+                <div class="form-group row">
+                  <label for="inputSBM" class="label col-sm-3 col-form-label">Select a choice</label>
+                    <div class="col-sm-9">
+                      <nb-radio-group name="sgchoice" [(ngModel)]="mySubmissionEvent.sgrp_form.choice">
+                        <nb-radio value="0">
+                          Create
+                        </nb-radio>
+                        <nb-radio value="1">
+                          Join
+                        </nb-radio>
+                      </nb-radio-group>
+                    </div>
+                  </div>
+                <div class="form-group row" *ngIf="mySubmissionEvent.sgrp_form.choice=='1'">
+                  <label for="inputname" class="label col-sm-3 col-form-label">Enter submissionGroup ID</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="sgId" nbInput 
+                             fullWidth id="inputName"
+                             [(ngModel)]="mySubmissionEvent.sgrp_form.sGroupID"
+                             placeholder="Enter submissionGroup ID"
+                      >
+                    </div>
+                </div>
+                <div class="form-group row" *ngIf="mySubmissionEvent.sgrp_form.choice=='0'">
+                  <label for="inputqset" class="label col-sm-3 col-form-label">Select QuestionSet</label>
+                  <div class="col-sm-9">
+                    <nb-select name="qset" placeholder="Select QuestionSet" [(ngModel)]="mySubmissionEvent.sgrp_form.selectedQSet">
+                      <nb-option *ngFor="let qset of mySubmissionEvent.sgrp_form.questionSets" [value]="qset.main_id">
+                        {{qset.name}}
+                      </nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-sm-3 col-sm-9">
+                    <button nbButton (click)="submitCreateJoinForm(i)">
+                      <span *ngIf="mySubmissionEvent.sgrp_form.choice=='0'">Create</span>
+                      <span *ngIf="mySubmissionEvent.sgrp_form.choice=='1'">Join</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </nb-card-body>
+          </nb-card>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+-->
+<nb-card accent="info">
+  <nb-card-header>
+    <span style="float:left;"><h5>{{this.currentEvent.name}}</h5></span>
+    <span style="float:right; margin-top: 2px;"><strong>&nbsp;&nbsp;Welcome, {{username}} !&nbsp;&nbsp;</strong></span>
+    <button class="link" style="float:right;" (click)="showHelpMenu()">
+      <nb-icon size="large" icon="info" [options]="{animation:{type:'pulse'} }" status="info"></nb-icon>
+      <strong> Instructions</strong>
+    </button>
+    <button class="link" style="float:right;" (click)="downloadQuestionPaper()">
+      <nb-icon size="large" icon="book-open" [options]="{animation:{type:'pulse'} }" status="warning"></nb-icon>
+      <strong> Download Question Paper</strong>
+    </button>
+  </nb-card-header>
+</nb-card>
+
+
+<div class="row">
+<div class="col-sm-8">
+      <nb-card status="primary" size="large">
+        <nb-card-header>
+          <span style="float:left;"><strong>Question Title: </strong>{{this.currentQuestion.title}}</span>
+          <span style="float:right;"><strong>Question Number :</strong>&nbsp;{{currentQuestionIndex + 1}} / {{questionsData.length}}</span>
+          <span style="float:right;"><strong>Marks : </strong>&nbsp;{{this.currentQuestion.marks}},&nbsp;</span>
+          <!--<span style="float:right;"><strong>Type:</strong>{{this.questionTypeString}}</span>-->
+        </nb-card-header>
+        <nb-card-body>          
+          <div class="questionText" style="display: none;">
+          </div>
+          <br><br>
+          <div class="questionTextAlt">
+          <!--<div id="questionTextAltId" ></div>-->
+          <span style="float:left;"><strong>Question {{this.currentQuestion.title}})&nbsp;&nbsp;</strong></span>
+          <div id="questionTextAltId" style="font-family: 'Times New Roman', Times, serif;" ></div>
+          <!--<div [innerHTML]="htmlEntity">Hi</div>-->
+          </div> 
+          <hr>
+          <form [style.display]="isMCQCBQuestionSelected ? 'block' : 'none'">
+            <br><br>
+            <div class="form-row" *ngFor="let mcqcbresponseform of mcqcbdataarray; let i = index">
+              
+              <ul style="display: inline-block;">
+                <li style="display: inline-block;"> 
+                  <nb-checkbox status="primary" 
+                    [checked]="mcqcbresponseform.is_Correct"
+                    (change)="getMCQCBResponseData()"
+                    name="is_Correct{{i}}" [(ngModel)]="mcqcbresponseform.is_Correct">
+                  </nb-checkbox>
+    
+          
+                
+                 <li style="display: inline-block;" [innerHTML]=" '(' + mcqcbresponseform.labelText + ')' + '&nbsp;&nbsp;&nbsp;&nbsp;' ">
+                    {{mcqcbresponseform.labelText}}
+                    <input type="text" 
+                      nbInput 
+                      fullWidth 
+                      placeholder="A"
+                      name = "labelText{{i}}"
+                      [(ngModel)] = "mcqcbresponseform.labelText"
+                      hidden
+                    >
+                 </li>
+          
+                 <li style="display: inline-block;" [innerHTML]="mcqcbresponseform.optionText">
+                    {{mcqcbresponseform.optionText}}
+                    <input type="text" 
+                     nbInput 
+                     fullWidth 
+                     placeholder="A"
+                     name = "optionText{{i}}"
+                     [(ngModel)] = "mcqcbresponseform.optionText"
+                     hidden
+                    >
+                  </li>
+              </ul>
+            </div>
+          </form>
+    
+          <form [style.display]="isMCQRBQuestionSelected ? 'block' : 'none'">
+            <br><br>
+            <div class="form-row" *ngFor="let mcqrbresponseform of mcqrbdataarray; let i = index">
+              <ul style="display: inline-block;">
+                <li style="display: inline-block;"> 
+                  <nb-radio-group name="is_Correct{{i}}" (valueChange)="setIsCorrect(i)" [(ngModel)]="mcqrbresponseform.is_Correct">
+                    <nb-radio value="{{i}}" checked="false"></nb-radio> 
+                  </nb-radio-group>      
+                </li>
+    
+                <li style="display: inline-block;" [innerHTML]=" '(' + mcqrbresponseform.labelText + ')' + '&nbsp;&nbsp;&nbsp;&nbsp;' ">
+                  {{mcqrbresponseform.labelText}}
+                  <input type="text" 
+                    nbInput 
+                    fullWidth 
+                    placeholder="A"
+                    name = "labelText{{i}}"
+                    [(ngModel)] = "mcqrbresponseform.labelText"
+                    hidden
+                  >
+                </li>
+    
+                <li style="display: inline-block;" [innerHTML]="mcqrbresponseform.optionText">
+                  {{mcqrbresponseform.optionText}}
+                  <input type="text" 
+                    nbInput 
+                    fullWidth 
+                    name = "optionText{{i}}"    
+                    [(ngModel)] = "mcqrbresponseform.optionText"
+                    hidden
+                  >
+                </li>
+              </ul>
+            </div>
+          </form>
+          
+        
+    
+        <div class="txtclass" [style.display]="isTextQuestionSelected ? 'block' : 'none'">
+          <br><br>
+            Please Provide Your Answer Below.
+            
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <br>
+              <textarea id="TXTAnswerPane" style="resize: none;" rows="5" maxlength="1000" nbInput fullWidth placeholder="Please write your answer here.."></textarea>
+            </div>
+          <br>    
+         </div>
+    
+         <div class="row">
+          <div class="col-md-3"></div>
+          <button nbButton [disabled]="isPrevDisabled" (click)="fetchPreviousQuestion()"  size="small" outline status="primary">Prev</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button nbButton [disabled]="isPrevDisabled" size="small" (click)="submitandFetchPrevQuestion()" outline  status="primary">Submit & Prev</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button nbButton size="small" [disabled]="isNextDisabled" (click)="submitandFetchNextQuestion()" outline  status="primary">Submit & Next</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button nbButton size="small" [disabled]="isNextDisabled" (click)="fetchNextQuestion()" outline  status="primary">Next</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button nbButton size="small" (click)="clearResponse()" outline  status="primary">Clear</button>
+          <br><br>
+        </div>  
+      </nb-card-body>
+      </nb-card>
+</div>
+
+<div class="col-sm-4">
+  
+  <nb-card status = "primary" size="large">
+    <nb-card-header>
+      Question Palette
+    </nb-card-header>
+    <nb-card-body>
+       <nb-accordion multi>
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Go to a question
+           </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <button  nbButton *ngFor="let number of questionsData; index as i" (click)="buttonClicked(i)" class="dynamicButton" [innerHTML]="number.title"></button>     
+            </nb-accordion-item-body>
+            </nb-accordion-item>  
+            <nb-accordion-item>
+              <nb-accordion-item-header>
+                View Question Paper
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <div [innerHTML]= "htmlEntity"></div>
+              </nb-accordion-item-body>
+              </nb-accordion-item>  
+          </nb-accordion>
+      
+
+      
+          
+    </nb-card-body>
+  </nb-card>
+</div>
+
+</div>  
+
+
+
+
+

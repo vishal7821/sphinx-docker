@@ -1,0 +1,74 @@
+<form (ngSubmit)="onSubmit()" class="form-horizontal">
+  <div class="form-group row">
+    <label for="inputname" class="label col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input 
+      type="text" 
+      name="name"
+      nbInput
+      fullWidth id="inputname" 
+      placeholder="Q Set Name"
+      [(ngModel)]="qset.name"
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputtotalmarks" class="label col-sm-3 col-form-label">Total Marks</label>
+    <div class="col-sm-9">
+      <input 
+      type="number" 
+      name="totalmarks"
+      nbInput
+      fullWidth id="totalmarks" 
+      placeholder="Total Marks"
+      [(ngModel)]="qset.total_marks"
+      >
+    </div>
+  </div>
+
+  <div class="form-group row" *ngIf="!is_interactive">
+    <label for="inputquestionfile" class="label col-sm-3 col-form-label">Question file</label>
+    <div class="col-sm-9">
+      <file-upload simple
+      [(ngModel)]="question_file" 
+      [disabled]="isDisabled" 
+      name="questionfiles"
+      >
+      </file-upload>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputsuppfile" class="label col-sm-3 col-form-label">Supplementary file</label>
+    <div class="col-sm-9">
+      <file-upload simple
+      [(ngModel)]="supplementary_file" 
+      [disabled]="isDisabled" 
+      name="suppfiles"
+      >
+      </file-upload>
+    </div>
+  </div>
+  <div class="form-group row" *ngIf="!is_interactive">
+    <label for="inputsolutionfile" class="label col-sm-3 col-form-label">Solution file</label>
+    <div class="col-sm-9">
+      <file-upload simple
+      [(ngModel)]="solution_file" 
+      [disabled]="isDisabled" 
+      name="solutionfiles"
+      >
+      </file-upload>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <div class="offset-sm-3 col-sm-9">
+      <button 
+      type="submit" 
+      nbButton 
+      status="primary"
+      [nbSpinner]="isDisabled" nbSpinnerStatus="info"
+      >Submit</button>
+    </div>
+  </div>
+</form>

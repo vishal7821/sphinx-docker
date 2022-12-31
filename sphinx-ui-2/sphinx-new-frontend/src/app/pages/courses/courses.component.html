@@ -1,0 +1,37 @@
+
+
+<div *ngFor="let obj of RoleCourseMap | keyvalue; index as i">
+    <div>
+        <h6 style="text-transform: uppercase;">{{obj.key}}</h6>
+    </div>
+    <br>
+        
+      <div class="row" >
+         
+          <div class="col-sm-6"  *ngFor="let course of obj.value; index as j">
+              <a (click)="selectCourse(course)">
+                <div class="card mb-3" style="max-width: 540px;">
+                    
+                    <div class="row no-gutters">
+                      <div class="col-md-1" style="background-color:rgb(83, 109, 255)">
+                      </div>
+                      <div class="col-md-1" style="background-color:rgb(83, 109, 255)
+                      ">
+                        </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{course.coursename}}</h5>
+                          <p class="card-text">{{course.coursetitle}}</p>
+                          <p class="card-text"><small class="text-muted"></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  
+                </div>
+              </a>
+            </div>
+         
+      </div>
+
+</div>
+

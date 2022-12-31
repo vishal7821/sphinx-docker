@@ -1,0 +1,246 @@
+
+<nb-card>
+        <nb-card-header >
+                <div class="row" *ngIf = "!isGUPLOAD">
+                                
+                    <strong class="text-danger"> There is no grading event going on, please contact the instructor if you feel this is an error </strong>
+                    
+            </div>
+            <div class="row" *ngIf = "isGUPLOAD">
+                <div class="col-6 col-sm-4 text-left">
+                        <span> <h6>Copy ID: {{currGD.id}}, {{currGDs.question_title}} (Graded {{currGDs.completed_cnt}} / {{currGDs.tot_cnt}})</h6> </span> 
+                        <nb-progress-bar  [value]="progress_val" size="tiny" [displayValue]="true"></nb-progress-bar>
+                 </div>
+                 <div class="col-6 col-sm-2 text-center">
+                        <!-- <a routerLink="/pages/myevents/gradingManager/">View All Grading Duties</a> -->
+                        <a href="#" onclick="return false" (click)="gotoGradingManager()">
+                                <u> View All Grading Duties</u>
+                              </a>
+                </div>
+                <div class="col-6 col-sm-2 text-center">
+                        <button nbButton outline [disabled]="!isGUPLOAD" 
+                        size="small" (click)="onGradeAndPrev()"
+                        nbTooltip="Shortcut: a" 
+                        nbTooltipPlacement="bottom" 
+                        nbTooltipStatus="primary"
+                        >Grade & Prev</button>
+                </div>
+               
+                <div class="col-6 col-sm-1 text-center">
+                        <button nbButton outline [disabled]="!isGUPLOAD" 
+                        size="small" (click)="onPrev()"
+                        nbTooltip="Shortcut: s" 
+                        nbTooltipPlacement="bottom" 
+                        nbTooltipStatus="primary"
+                        >Prev</button>
+                </div>
+                <div class="col-6 col-sm-1 text-center">
+                        <button nbButton outline [disabled]="!isGUPLOAD" 
+                        size="small"(click)="onNext()"
+                        nbTooltip="Shortcut: d" 
+                        nbTooltipPlacement="bottom" 
+                        nbTooltipStatus="primary"
+                         >Next</button>
+                </div>
+                <div class="col-6 col-sm-2 text-center">
+                        <button nbButton outline [disabled]="!isGUPLOAD" 
+                        size="small" (click)="onGradeAndNext()"
+                        nbTooltip="Shortcut: f" 
+                        nbTooltipPlacement="bottom" 
+                        nbTooltipStatus="primary"
+                        >Grade & Next</button>
+                </div>
+            </div>
+
+           
+
+                </nb-card-header>
+     
+        <nb-card-body>
+              
+                <div class=" row">
+                        <!-- <div class="col-md-2">
+                            
+
+                                        <nb-list>
+                                                <nb-list-item>
+                                                        <a href="#" onclick="return false" (click)="getMainSubmFile()">
+                                                                <u> Main Submission File</u>
+                                                              </a>
+                                                </nb-list-item>
+                                                <nb-list-item>
+                                                        <a href="#" onclick="return false" (click)="getSuppSubmFile()">
+                                                                <u> Supp. Submission File</u>
+                                                                </a>
+                                                </nb-list-item>
+                                             </nb-list>
+                        
+                        </div> -->
+                        <div class="col-md-6">
+                               
+                                    <!-- <div class="border border-dark" style="width:80%; height: 80%;"> -->
+                                <div  style="padding:1px;border:thin solid black;" *ngIf = "slides.length !=0">
+                                        <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval">
+                                                <slide *ngFor="let slide of slides; let index=index">
+                                                    <img src="data:image/jpg;base64,{{slide.image}}" alt="Upload Question set file" style="display: block; height: 100%; width: 100%;">
+                                                
+                                                    <div class="carousel-caption">
+                                                    <p>{{slide.text}}</p>
+                                                    </div>
+                                                </slide>
+                                            </carousel>
+                                 </div>  
+                                
+                                
+                        </div>
+                        <div class="col-md-1"></div>
+                    
+                        <div class="col-md-5">
+                                <nb-card size="giant" >
+                                        <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary">
+                                                <nb-list >
+                                                        <!-- <nb-list-item *ngIf = "!isGUPLOAD">
+                                                                <strong class="text-danger"> There is no grading event going on, please contact the instructor if you feel this is an error </strong>
+                                                        </nb-list-item> -->
+                                                    <nb-list-item>
+                                                            <!-- / {{currGDs.question_marks}} -->
+                                                            
+                                                            <div class="row">
+                                                                        <div class="col-6 col-sm-8 ">
+                                                                                <h6> Total Marks : {{currGD.aggregate_marks}} / {{currGDs.question_marks}}</h6>
+                                                                        </div>
+                                                                    
+                                                                        <div class="col-6 col-sm-2 ">
+                                                                                <div style="text-align:center;">
+                                                                                        <button 
+                                                                                        nbButton 
+                                                                                        ghost 
+                                                                                        size="tiny" 
+                                                                                        status="primary" 
+                                                                                        (click)="getMainSubmFile()"
+                                                                                        nbTooltip="Main Submission File" 
+                                                                                        nbTooltipPlacement="top" 
+                                                                                        nbTooltipStatus="primary"
+                                                                                        >
+                                                                                        <nb-icon [icon]="'download-outline'" ></nb-icon>
+                                                                                        </button>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-2 ">
+                                                                                        <div style="text-align:center;">
+                                                                                                        <button 
+                                                                                                        nbButton 
+                                                                                                        ghost 
+                                                                                                        size="tiny" 
+                                                                                                        status="primary" 
+                                                                                                        (click)="getSuppSubmFile()"
+                                                                                                        nbTooltip="Supplementary Submission File" 
+                                                                                                        nbTooltipPlacement="top" 
+                                                                                                        nbTooltipStatus="primary"
+                                                                                                        >
+                                                                                                        <nb-icon [icon]="'download-outline'" ></nb-icon>
+                                                                                                        </button>
+                                                                                        </div>
+                                                                                </div>
+                                                            </div>
+                                                    </nb-list-item>
+                                                    <nb-list-item>
+                                                            <strong> Instructor Message : </strong> Use point adjustment in case suitable rubric is not available
+                                                    </nb-list-item>
+                                                 </nb-list>
+                                           
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Marks</th>
+                                                    <th>Rubric</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let r of currGD.rubrics; index as i">
+                                                    <td>
+                                                        <nb-checkbox  (checkedChange) = "rubricSelected(i)"  [(ngModel)]="r.is_selected" status="primary">{{r.marks}}</nb-checkbox>
+                                                    </td>
+                                                    <td>{{r.text}}</td>
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+
+                                            <nb-card>
+                                                <nb-card-header>
+                                                    Adjustment Section
+                                                </nb-card-header>
+                                                <nb-card-body>
+                                                        <div class="form-group row">
+                                                                <label for="inputptadjust" class="label col-sm-3 col-form-label">Point Adjustment</label>
+                                                                <div class="col-sm-9">
+                                                                  <input 
+                                                                  type="number" 
+                                                                  name="ptadjust"
+                                                                  nbInput
+                                                                  fullWidth id="inputptadjust" 
+                                                                  placeholder="0"
+                                                                  [(ngModel)] = "currGD.marks_adjustment"
+                                                                  (change) = "marksAdjustChange()" 
+                                                                  [disabled]="!isGUPLOAD"
+                                                                  >
+                                                                </div>
+                                                              </div>
+                                                              <div class="form-group row">
+                                                                <!-- <label for="inputcomment" class="label col-sm-3 col-form-label">Comments</label> -->
+                                                                <div class="col-sm-12">
+                                                                  <textarea 
+                                                                  type="text" 
+                                                                  name="comment"
+                                                                  nbInput 
+                                                                  fullWidth id="inputcomment" 
+                                                                  placeholder="submission specific comments"
+                                                                  [(ngModel)] = "currGD.grader_comment"
+                                                                  [disabled]="!isGUPLOAD"
+                                                                  ></textarea>
+                                                                </div>
+                                                              </div>
+                                                </nb-card-body>
+                                            </nb-card>
+                                            
+                                        </nb-card-body>
+                                    
+                                        </nb-card>
+                        </div>
+                      </div>
+        </nb-card-body>
+        <nb-card-footer>
+                <!-- <div class="row">
+                        <div class="col-6 col-sm-4 text-left">
+                                <span> <h6>Copy ID: {{currGD.id}},Graded Copies ({{currGDs.completed_cnt}} out of {{currGDs.tot_cnt}})</h6> </span> 
+                                <nb-progress-bar  [value]="progress_val" size="tiny" [displayValue]="true"></nb-progress-bar>
+                         </div>
+                         <div class="col-6 col-sm-2 text-center">
+                               
+                                <a href="#" onclick="return false" (click)="gotoGradingManager()">
+                                        <u> View All Grading Duties</u>
+                                      </a>
+                        </div>
+                        <div class="col-6 col-sm-2 text-center">
+                                <button nbButton outline [disabled]="!isGUPLOAD" size="medium" (click)="onGradeAndPrev()">Grade & Prev</button>
+                        </div>
+                       
+                        <div class="col-6 col-sm-1 text-center">
+                                <button nbButton outline [disabled]="!isGUPLOAD" size="medium" (click)="onPrev()">Prev</button>
+                        </div>
+                        <div class="col-6 col-sm-1 text-center">
+                                <button nbButton outline [disabled]="!isGUPLOAD" size="medium"(click)="onNext()" >Next</button>
+                        </div>
+                        <div class="col-6 col-sm-2 text-center">
+                                <button nbButton outline [disabled]="!isGUPLOAD" size="medium" (click)="onGradeAndNext()">Grade & Next</button>
+                        </div>
+                    </div> -->
+
+                   
+
+                            
+   
+        </nb-card-footer>
+      </nb-card>
+

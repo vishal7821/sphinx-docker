@@ -1,0 +1,258 @@
+<nb-card>
+    <nb-card-header >
+        <div class="row" *ngIf = "!isGUPLOAD">                        
+            <strong class="text-danger"> There is no grading event going on, please contact the instructor if you feel this is an error </strong>                
+        </div>
+        <div class="row" *ngIf = "isGUPLOAD">
+            <div class="col-6 col-sm-4 text-left">
+                   <span> <h6>Copy ID: {{currGD.id}}, {{currGDs.question_title}} (Graded {{currGDs.completed_cnt}} / {{currGDs.tot_cnt}})</h6> </span> 
+                    <nb-progress-bar  [value]="progress_val" size="tiny" [displayValue]="true"></nb-progress-bar>
+             </div>
+             <div class="col-6 col-sm-2 text-center">
+                    <a href="#" onclick="return false" (click)="gotoGradingManager()">
+                            <u> View All Grading Duties</u>
+                          </a>
+            </div>
+            <div class="col-6 col-sm-2 text-center">
+                    <button nbButton outline [disabled]="!isGUPLOAD" 
+                    size="small" (click)="onGradeAndPrev()"
+                    nbTooltip="Shortcut: a" 
+                    nbTooltipPlacement="bottom" 
+                    nbTooltipStatus="primary"
+                    >Grade & Prev</button>
+            </div>
+           
+            <div class="col-6 col-sm-1 text-center">
+                    <button nbButton outline [disabled]="!isGUPLOAD" 
+                    size="small" (click)="onPrev()"
+                    nbTooltip="Shortcut: s" 
+                    nbTooltipPlacement="bottom" 
+                    nbTooltipStatus="primary"
+                    >Prev</button>
+            </div>
+
+            <div class="col-6 col-sm-1 text-center">
+                    <button nbButton outline [disabled]="!isGUPLOAD" 
+                    size="small"(click)="onNext()"
+                    nbTooltip="Shortcut: d" 
+                    nbTooltipPlacement="bottom" 
+                    nbTooltipStatus="primary"
+                     >Next</button>
+            </div>
+
+            <div class="col-6 col-sm-2 text-center">
+                    <button nbButton outline [disabled]="!isGUPLOAD" 
+                    size="small" (click)="onGradeAndNext()"
+                    nbTooltip="Shortcut: f" 
+                    nbTooltipPlacement="bottom" 
+                    nbTooltipStatus="primary"
+                    >Grade & Next</button>
+            </div>
+        </div>
+    </nb-card-header>
+
+    <nb-card-body>
+       <br>
+        <div class="row">
+        <div class="col-md-6">
+            <nb-card status="primary">
+                  <nb-card-header>
+                     <strong>Question </strong>
+                   </nb-card-header>
+                   <nb-card-body>          
+                     <div [innerHTML]= "currGD.quetionText" style="font-family: 'Times New Roman', Times, serif;  text-shadow: 0.2px 0.4px;" ></div>
+                  </nb-card-body>
+            </nb-card>
+
+            <br><br>
+            <div class="row">
+               <div class="col-sm-12">
+                 <nb-card status="primary">  
+                   <nb-card-header>
+                     <strong>Response Panel</strong></nb-card-header>
+                 <nb-card-body>
+                  <div *ngIf="currGD.questionType == 'MCQCB'"> 
+                     <table class="table table-hover">
+                        <thead>
+                          <tr style="
+                                     border-bottom-width: 0;
+                                     border-bottom-color: #3366ff;
+                                     font-family: Open Sans, sans-serif;
+                                     font-size: 0.9375rem;
+                                    font-weight: 600;
+                                    line-height: 1.5rem;">
+                             <th style="text-align: center;">Label</th>
+                             <th style="text-align: center;">Option</th>
+                             <th style="text-align: center;">Student's Response</th>     
+                             <th style="text-align: center;">Gold Solution</th>
+                          </tr>
+                        </thead>
+                        <tbody>   
+                           <tr *ngFor="let r of currGD.options;">
+                              <td style="text-align: center;" [innerHTML] = "r.labelText"></td>
+                              <td style="text-align: center;" [innerHTML]="r.optionText"></td>
+                              <td style="text-align: center;"  *ngIf="r.response == 'true'">
+                                 <nb-checkbox status="primary" [checked]="true"></nb-checkbox>
+                              </td>
+                              <td *ngIf="r.response != 'true'"></td>  
+                              <td style="text-align: center;" *ngIf="r.is_Correct == true">  
+                                 <nb-checkbox status="success" [checked]="true"></nb-checkbox>
+                              </td>
+                              <td *ngIf="r.is_Correct != true"></td>
+                              
+                             </tr>
+                        </tbody>
+                     </table>  
+                     </div> 
+
+
+
+                     <div *ngIf="currGD.questionType == 'MCQRB'"> 
+                        <table class="table table-hover">
+                           <thead>
+                             <tr>
+                                <th style="text-align: center;">Label </th>
+                                <th style="text-align: center;" >Option </th>
+                                <th style="text-align: center;">Student's Response</th>     
+                                <th style="text-align: center;">Gold Solution</th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                                <tr *ngFor="let r of currGD.options; index as i">
+                                   <td style="text-align: center;" [innerHTML] = "r.labelText"></td>
+                                   <td style="text-align: center;" [innerHTML] = "r.optionText"></td>
+                                   <td style="text-align: center;" *ngIf="r.response == 'true'">
+                                       <nb-checkbox status="primary" [checked]="true" ></nb-checkbox>
+                                    </td>
+                                    <td *ngIf="r.response != 'true'"></td>  
+                                   <td style="text-align: center;" *ngIf="r.is_Correct == true" style="text-align: center;">  
+                                       <nb-checkbox status="success" [checked]="true"></nb-checkbox>
+                                    </td>
+                                    <td *ngIf="r.is_Correct != true"></td>
+                                 </tr>
+                           </tbody>
+                        </table>  
+                        </div>
+
+                        <div *ngIf="currGD.questionType == 'TXT'" >
+                           <br>   
+                           <nb-card accent="primary">
+                                 <br>
+                                 <h6 style="text-align: center; color: #3366ff;">Student's Response</h6>
+                                 <br>
+                              <nb-list>
+                                <nb-list-item [innerHTML]="currGD.responseText"></nb-list-item>
+                              </nb-list>
+                           </nb-card>
+                           <nb-card accent="success">
+                              <br>
+                                 <h6 style="text-align: center; color: #00d68f;">Gold Solution</h6><br>
+                              <nb-list>
+                                <nb-list-item [innerHTML]="currGD.solutionText"></nb-list-item>
+                              </nb-list>
+                           </nb-card>  
+                        </div>
+                 </nb-card-body>
+                  </nb-card>
+               </div>
+            </div> 
+           </div>
+           <div class="col-md-1"></div>
+           <div class="col-md-5">
+                <nb-card size="giant" status="primary">
+                   <nb-card-header><strong>Marks and Rubric Panel</strong></nb-card-header>
+                   <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary">
+                        <nb-list>
+                                <nb-list-item>
+                                   <div class="row">
+                                      <div class="col-6 col-sm-8">
+                                        <h6> Total Marks : {{currGD.aggregate_marks}} / {{currGDs.question_marks}}</h6>
+                                      </div>
+                                      <div class="col-6 col-sm-2">
+                                        <div style="text-align:center;">
+                                           <button nbButton ghost size="tiny" status="primary"
+                                           (click)="getMainSubmFile()"
+                                           nbTooltip="Main Submission File" 
+                                           nbTooltipPlacement="top" 
+                                           nbTooltipStatus="primary">  
+                                           <nb-icon [icon]="'download-outline'" ></nb-icon>
+                                           </button>   
+                                        </div>
+                                      </div>
+                                      <div class="col-6 col-sm-2">
+                                        <div style="text-align:center;">
+                                           <button nbButton ghost size="tiny" status="primary"
+                                           (click)="getSuppSubmFile()"
+                                           nbTooltip="Supplementary Submission File" 
+                                           nbTooltipPlacement="top" 
+                                           nbTooltipStatus="primary">  
+                                           <nb-icon [icon]="'download-outline'" ></nb-icon>
+                                           </button>   
+                                        </div>
+                                      </div>  
+                                   </div>     
+                                </nb-list-item>        
+                                <nb-list-item>
+                                    <strong> Instructor Message : </strong> Use point adjustment in case suitable rubric is not available
+                                </nb-list-item>
+                        </nb-list>
+                        <table class="table table-hover">
+                           <thead>
+                             <tr>
+                                <th>Marks</th>
+                                <th>Rubric</th>     
+                             </tr>
+                           </thead>
+                           <tbody>
+                                <tr *ngFor="let r of currGD.rubrics; index as i">
+                                   <td>   <nb-checkbox (checkedChange) = "rubricSelected(i)"
+                                                        [(ngModel)]="r.is_selected"
+                                                        status="primary">{{r.marks}}
+                                          </nb-checkbox>
+                                   </td>
+                                   <td>{{r.text}}</td>     
+                                </tr>
+                           </tbody>
+                        </table>   
+                         <nb-card>
+                                <nb-card-header>
+                                   <strong>Adjustment Section</strong>
+                                 </nb-card-header>
+                                <nb-card-body>
+                                        <div class="form-group row">
+                                           <label for="inputptadjust" class="label col-sm-3 col-form-label">Point Adjustment</label>
+                                           <div class="col-sm-9">
+                                                <input 
+                                                        type="number" 
+                                                        name="ptadjust"
+                                                        nbInput
+                                                        fullWidth id="inputptadjust" 
+                                                        placeholder="0"
+                                                        [(ngModel)] = "currGD.marks_adjustment"
+                                                        (change) = "marksAdjustChange()" 
+                                                        [disabled]="!isGUPLOAD"
+                                                >
+                                           </div>
+                                        </div>
+                                        <div class="form-group row">
+                                                <label for="inputptadjust" class="label col-sm-3 col-form-label">Point Adjustment</label>
+                                                <div class="col-sm-12">
+                                                        <textarea 
+                                                        type="text" 
+                                                        name="comment"
+                                                        nbInput 
+                                                        fullWidth id="inputcomment" 
+                                                        placeholder="submission specific comments"
+                                                        [(ngModel)] = "currGD.grader_comment"
+                                                        [disabled]="!isGUPLOAD"
+                                                        ></textarea>
+                                                </div>
+                                             </div>
+                                </nb-card-body>
+                         </nb-card>                                    
+                   </nb-card-body>
+                </nb-card>      
+           </div>
+        </div>       
+    </nb-card-body>
+</nb-card>

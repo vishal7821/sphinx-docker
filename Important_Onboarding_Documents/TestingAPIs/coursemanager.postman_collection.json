@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "54012628-7131-420b-aefd-0e78a33130ff",
+		"name": "coursemanager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "role list",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\t\"id\":7,\n        \"name\": \"instructor\",\n        \"action_list\": \"asdf\"\n    }"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/course/1/roles/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"course",
+						"1",
+						"roles",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "role edit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "role delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "topic list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "topic edit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "topic delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enrollment list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create enrollment using csv",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"10\",\n    \"user\": {\n        \"username\": \"1411107\",\n        \"first_name\": \"Neeraj\",\n        \"last_name\": \"Kumar\",\n        \"email\": \"neerajku@iitk.ac.in\",\n        \"department\": null,\n        \"program\": null\n    },\n    \"role\": {\n        \"id\": 1,\n        \"name\": \"TA\",\n        \"action_list\": \"\"\n    },\n    \"sections\": [\n        {\n            \"id\": 2,\n            \"name\": \"sec_1\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8082/course/cs771/enrollment/10/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"cs771",
+						"enrollment",
+						"10",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "section",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"sec_1\"}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8082/course/cs771/section/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"cs771",
+						"section",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

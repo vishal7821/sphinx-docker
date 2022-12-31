@@ -1,0 +1,193 @@
+<ba-sidebar></ba-sidebar>
+<page-top></page-top>
+<back-top></back-top>
+ <div class="al-main" >
+  <div class="al-content">
+    <uib-tabset active="$tabSetStatus.activeTab">
+      <uib-tab heading="General">
+        <div ba-panel ba-panel-class="profile-page">
+          <div class="panel-content">
+            <h3 class="with-line">General Information</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group row clearfix">
+                  <label for="firstName" class="col-sm-3 control-label">First Name</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="firstName" placeholder="" ng-model="name.firstName">
+                  </div>
+                </div>
+                <div class="form-group row clearfix">
+                  <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="lastName" placeholder="" ng-model="name.lastName">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+
+                <div class="form-group row clearfix">
+                  <label for="rollno" class="col-sm-3 control-label">Roll Number</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control" id="rollno" placeholder="" ng-model="name.rollno">
+                  </div>
+                </div>
+
+                <div class="form-group row clearfix">
+                  <label for="username" class="col-sm-3 control-label">username</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control" id="username" placeholder="" ng-model="name.username">
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row clearfix">
+                  <label for="department" class="col-sm-3 control-label">Department</label>
+
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="department" placeholder="" ng-model="name.department">
+                  </div>
+                </div>
+              
+                <div class="form-group row clearfix">
+                  <label class="col-sm-3 control-label">Program</label>
+
+                  <div class="col-sm-9">
+                    
+                    <select class="form-control" selectpicker ng-model="name.selectedProgram">
+                      <option ng-repeat="x in programs" value="{{x.name}}">{{x.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+
+                <div class="form-group row clearfix">
+                  <label for="inputFirstName" class="col-sm-3 control-label">Email</label>
+
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="inputFirstName" placeholder="" ng-model="name.email" >
+                      
+                      <span class="error" ng-show="input.$error.email">
+                      Not valid email!</span>
+                    </div>
+               </div>
+
+              </div>
+
+              <h3 class="with-line">Send Email Notifications</h3>
+              <div class="notification row clearfix">
+                <div class="col-sm-6">
+                  <div class="form-group row clearfix">
+                    <label class="col-xs-8">When I receive a message</label>
+
+                    <div class="col-xs-4">
+                      <switch color="primary" ng-model="switches[0]"></switch>
+                    </div>
+                  </div>
+                  <div class="form-group row clearfix">
+                    <label class="col-xs-8">When Someone sends me an invitation</label>
+
+                    <div class="col-xs-4">
+                      <switch color="primary" ng-model="switches[1]"></switch>
+                    </div>
+                  </div>
+                  <div class="form-group row clearfix">
+                    <label class="col-xs-8">When profile information changes</label>
+
+                    <div class="col-xs-4">
+                      <switch color="primary" ng-model="switches[2]"></switch>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group row clearfix">
+                    <label class="col-xs-8">When anyone logs into your account from a new device or browser</label>
+
+                    <div class="col-xs-4">
+                      <switch color="primary" ng-model="switches[3]"></switch>
+                    </div>
+                  </div>
+                  <div class="form-group row clearfix">
+                    <label class="col-xs-8">Weekly Reports</label>
+
+                    <div class="col-xs-4">
+                      <switch color="primary" ng-model="switches[4]"></switch>
+                    </div>
+                  </div>
+                  <div class="form-group row clearfix">
+                    <label class="col-xs-8">Daily Reports</label>
+
+                    <div class="col-xs-4">
+                      <switch color="primary" ng-model="switches[5]"></switch>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary btn-with-icon save-profile" ng-click="update()">
+                <i class="ion-android-checkmark-circle"></i>Update Profile
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </uib-tab>
+      <uib-tab heading="Password Change">
+        <div ba-panel ba-panel-class="profile-page">
+          <div class="panel-content">
+            <h3 class="with-line">Create a strong password and dont use it for other sites</h3>
+              <div class="row">
+
+                 <div class="col-md-8">
+                     
+                    <div class="form-group row clearfix">
+                       <label for="currentPassword" class="col-sm-3 control-label">Current Password</label>
+                       <div class="col-sm-9">
+                          <input type="password" class="form-control" id="currentPassword" placeholder="Enter your current password" ng-model="name.currentPassword">
+                       </div>
+                    </div>
+                    <div class="form-group row clearfix">
+                       <label for="newPassword" class="col-sm-3 control-label">New Password</label>
+                       <div class="col-sm-9">
+                          <input type="password" class="form-control" id="newPassword" placeholder="Enter new password" ng-model="name.newPassword">
+                       </div>
+                       
+                    </div>
+                    <div class="form-group row clearfix">
+                       <label for="confirmedPassword" class="col-sm-3 control-label">Confirmed new password</label>
+                       <div class="col-sm-9">
+                          <input type="password" class="form-control" id="confirmedPassword" placeholder="Enter new password again" ng-model="name.confirmedPassword">
+                       </div>
+                    </div>
+                 </div>
+
+              </div>
+              <button type="button" class="btn btn-primary btn-with-icon save-profile" ng-click="updatePassword()">
+                <i class="ion-android-checkmark-circle"></i>Update Password
+              </button>
+          </div>
+        </div>
+      </uib-tab>
+     
+    </uib-tabset>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

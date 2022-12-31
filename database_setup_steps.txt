@@ -1,0 +1,32 @@
+python manage.py makemigrations coursemanager
+
+create migrations in this order:
+1. Authentication
+2. coursemanager
+3. assignmentmanager
+4. eventmanager
+
+Resolve CircularDependencyError
+--------------------------------------------
+delete the migrations that is in the circular dependency
+comment the fields on model that leads to circular dependency e.g subevent in Enrollment
+do migtations
+uncomment the field
+and again do dependency
+
+
+create sql queries
+-----------------------------------------------
+first run this command for all the 0001 migrations , then go to 0002 migrations etc
+python manage.py sqlmigrate coursemanager 0001 >> sqlscripts/coursemanager.sql
+
+change the foreign key references between databases in the migrations from 
+        i.e FOREIGN KEY (`user_id`) REFERENCES `databasename`.`users` (`id`);
+        
+        
+run this sql queries in sql container:
+
+
+insert into users(`username`,`email`,`password`,`is_active`,`is_enabled`,`is_logged_in`) values('17111055','neerajkumar9923@gmail.com','pbkdf2_sha256$120000$Eh75yWGVQcvU$cBonU1yT2oAJytV+LnvoRl+X9gNremJhAmROi4G+pC0=','1','1','1');
+
+

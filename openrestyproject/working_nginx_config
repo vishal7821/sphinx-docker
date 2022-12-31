@@ -1,0 +1,129 @@
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    server {
+        listen       8080;
+        server_name  localhost;
+        default_type text/html;
+
+	    set $session_name 		            sessionid;
+	    set $session_storage                memcache;
+        set $session_memcache_prefix        sessions;
+        #set $session_memcache_socket        /var/run/memcached/memcached.sock;
+        set $session_memcache_host          127.0.0.1;
+        set $session_memcache_port          11211;
+        set $session_memcache_uselocking    on;
+        #set $session_memcache_spinlockwait  10000;
+        set $session_memcache_maxlockwait   30;
+        set $session_memcache_pool_timeout  45;
+        set $session_memcache_pool_size     10;
+        set $session_cipher                 none;
+        
+        location /app{
+	        access_by_lua_block {
+               local session = require "resty.session".open()
+               if not session.present then
+                   session:start()
+                   session:save()
+               end
+            }
+            
+	        index index.html;
+	        root /home/neeraj/projects/smartgrading-frontend/;
+	    }
+	        
+	    location /loginApp {
+	        internal;
+	        proxy_pass http://127.0.0.1:8081/login/;
+	    }
+	    
+	    location /test{
+	        access_by_lua_block {
+	            ngx.req.read_body()
+	            ngx.say(ngx.var.request_body)
+	            }
+	    }
+
+	    location /login{
+	        access_by_lua_block {
+	           local cjson = require("cjson")
+               local session = require "resty.session".open()
+               if not session.present then
+                   --ngx.say("session not present")
+                   ngx.req.read_body()
+                   local res = ngx.location.capture("/loginApp",{method = ngx.HTTP_POST, body = ngx.var.request_body})
+                   if res.status == 200 then 
+                        session:start()
+                        --ngx.say("session started")
+                        --ngx.say(ngx.encode_base64(session.id, true))
+                        session.data.login_bit = 1
+                        session:save()
+                        ngx.say("login bit set,successful login ")
+                        return ngx.exit(200)
+                   else
+                        ngx.status = 401
+                        ngx.say("unauthorized access, status code not 200")
+                        return ngx.exit(401)
+                   end
+               else 
+                    if session.data.login_bit == nil then
+                       ngx.req.read_body()
+                       local res = ngx.location.capture("/loginApp",{method = ngx.HTTP_POST, body = ngx.var.request_body})
+                       if res.status == 200 then 
+                                session.data.login_bit = 1
+                                session:save()
+                                ngx.say("successfull login login bit set")
+                       else
+                            ngx.status = 401
+                            ngx.say("unauthorized access,status code not 200")
+                            return ngx.exit(401)
+                       end
+                    end
+               end
+               ngx.say("login")
+            }
+	    }
+	    
+        
+        location /randApp {
+            access_by_lua_block {
+                local session = require "resty.session".open()
+                if not session.present then
+                   session:start()
+                   session:save()
+                   ngx.status = 401
+                   ngx.say("session not present")
+                   return ngx.exit(401)
+                else
+                    if session.data.login_bit == nil then
+                        ngx.status = 401
+                        ngx.say(session.data.login_bit)
+                        ngx.say("login bit not set ")
+                        return ngx.exit(401)
+                    end
+                end
+           }
+            proxy_pass http://localhost:8082/randApp/randomNo/;
+        }
+        
+        location /logout {
+         access_by_lua_block {
+                local session = require "resty.session".open()
+                if not session.present then
+                    ngx.status = 301
+                    ngx.say("successful logout")
+                    return ngx.exit(301)
+                else
+                    ngx.status = 300
+                    session:destroy()
+                    ngx.say("logout successfull")
+                    return ngx.exit(300)
+                end
+           }
+        }
+    }
+}

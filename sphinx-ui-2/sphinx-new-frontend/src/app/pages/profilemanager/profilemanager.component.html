@@ -1,0 +1,136 @@
+<!-- <p>profilemanager works!</p> -->
+<nb-card size="giant">
+  <nb-card-header>
+    <h5>
+      Profile Manager
+    </h5>
+  </nb-card-header>
+  <nb-card-body>
+    <nb-tabset >
+      <nb-tab tabTitle="User Info">
+
+        <form *ngIf="user_data != null">
+          <div class="form-group row">
+
+            <label for="inputusername1" class="label col-sm-3 col-form-label">Username</label>
+            <div class="col-sm-4">
+              <strong> {{user_data.username}}</strong>
+              <!-- <input type="text" name="inputusername" nbInput
+                    fullWidth id="inputusername"
+                    [(ngModel)]="user_data.username"
+                    > -->
+            </div>
+          </div>
+
+          <div class="form-group row">
+
+            <label for="inputfirstName1" class="label col-sm-3 col-form-label">First Name</label>
+            <div class="col-sm-4">
+              <input type="text" name="inputfirstName" status="primary" nbInput fullWidth id="inputfirstName"
+                [(ngModel)]="user_data.firstname">
+            </div>
+          </div>
+
+          <div class="form-group row">
+
+            <label for="inputlastName1" class="label col-sm-3 col-form-label">Last Name</label>
+            <div class="col-sm-4">
+              <input type="text" name="inputlastName" status="primary" nbInput fullWidth id="inputlastName"
+                [(ngModel)]="user_data.lastname">
+            </div>
+          </div>
+
+          <div class="form-group row">
+
+            <label for="inputemail12" class="label col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-4">
+              <input type="email" name="inputemail2" status="primary" nbInput fullWidth id="inputemail2" [(ngModel)]="user_data.email">
+            </div>
+          </div>
+
+          <div class="form-group row">
+
+            <label for="inputdept" class="label col-sm-3 col-form-label">Department</label>
+            <div class="col-sm-4">
+              <input type="text" name="inputedept" status="primary" nbInput fullWidth id="inputdept" [(ngModel)]="user_data.department">
+            </div>
+          </div>
+
+          <div class="form-group row">
+
+            <label for="inputemail" class="label col-sm-3 col-form-label">Program</label>
+            <div class="col-sm-4">
+              <input type="text" name="inputemail" status="primary" nbInput fullWidth id="inputemail" [(ngModel)]="user_data.program">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-4">
+
+              <button nbButton (click)="onUpdate()">
+                Update
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </nb-tab>
+      <nb-tab tabTitle="Authentication Info">
+
+        <nb-card>
+          <nb-card-header>
+            <div class="row">
+             <strong>Change Password</strong>
+            </div>
+          </nb-card-header>
+          <nb-card-body>
+
+            <form *ngIf="user_data != null">
+       
+
+              <div class="form-group row">
+    
+                <label for="inputpassword1" class="label col-sm-3 col-form-label">Current Password</label>
+                <div class="col-sm-4">
+                  <input type="password" name="inputpassword1" status="primary" nbInput fullWidth id="inputpassword1"
+                    [(ngModel)]="current_password">
+                </div>
+              </div>
+    
+              <div class="form-group row">
+    
+                <label for="inputpassword2" class="label col-sm-3 col-form-label">New Password</label>
+                <div class="col-sm-4">
+                  <input type="password" name="inputpassword2" status="primary" nbInput fullWidth id="inputpassword2"
+                    [(ngModel)]="new_password">
+                </div>
+              </div>
+    
+              <div class="form-group row">
+    
+                <label for="inputpassword3" class="label col-sm-3 col-form-label">Re-type New Password</label>
+                <div class="col-sm-4">
+                  <input type="password" name="inputpassword3" status="primary" nbInput fullWidth id="inputpassword3"
+                    [(ngModel)]="retype_password">
+                </div>
+              </div>
+    
+              <div class="form-group row">
+                <div class="offset-sm-3 col-sm-4">
+    
+                  <button nbButton (click)="onUpdatePassword()">
+                    Update
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </nb-card-body>
+        </nb-card>
+        
+
+      </nb-tab>
+    </nb-tabset>
+
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,54 @@
+<form>
+    <div class="form-row" *ngFor="let mcqcbquestionform of dataarray; let i = index">
+
+      <div class="form-group col-md-9">
+        <editor 
+        [init]="{
+          base_url: '/tinymce/', 
+          height: 10,
+          body_class : 'mcqcboptionseditor',
+          menubar: 'true',
+          plugins: [
+    
+          'eqneditor image lists advlist'
+          ],
+          toolbar: [
+          'eqneditor | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'
+          ],
+          branding : false,
+          statusbar: false,
+          initialValue: 'Option Text'
+        }"
+        [(ngModel)] = "mcqcbquestionform.optionText"
+        name = "optionText{{i}}"
+      ></editor>
+      </div>
+
+      
+        <div class="form-group col-md-3">
+          <input type="text" 
+            style="text-align: center;"
+            nbInput 
+            fullWidth 
+            placeholder="Enter Option's Label"
+            name = "labelText{{i}}"
+            [(ngModel)] = "mcqcbquestionform.labelText">
+            <br><br>
+            <div class="row">
+              <div class="col-sm-8">
+                <nb-checkbox status="primary" style="margin-left: 4%;" name="is_Correct{{i}}" [(ngModel)]="mcqcbquestionform.is_Correct">Is Correct ?</nb-checkbox>
+              </div>
+              <div class="col-sm-4">
+                <button nbButton (click)="removeOption(i)" size="small" outline status="danger">-</button>
+              </div>
+            </div>
+        </div>
+    
+  
+    
+  
+    
+    </div>
+    <button nbButton (click)="addOption()"  size="small" outline status="primary">+</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button nbButton size="small" (click)="onsubmit()" outline  status="primary">submit</button>
+</form>

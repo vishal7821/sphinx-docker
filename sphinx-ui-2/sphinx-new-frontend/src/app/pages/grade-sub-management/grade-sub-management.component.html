@@ -1,0 +1,109 @@
+<nb-card size="giant">
+    <nb-card-header>
+        <h5>GradeSheet and Submission Management</h5>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row" *ngIf="all_events.length==0">
+            Currently there are no ongoing events present at this moment, Thank you
+        </div>
+        <nb-accordion>
+
+            <nb-accordion-item *ngFor="let myevent of all_events;let i = index">
+                <nb-accordion-item-header>
+                    <div class="col-sm-1">
+                        {{myevent.id}}
+                    </div>
+                    <div class="col-sm-11">
+                        {{myevent.name}}
+                    </div>
+                </nb-accordion-item-header>
+
+                <nb-accordion-item-body>
+                    <nb-list>
+
+                        <nb-list-item *ngIf="myevent.subEventFlags.SUPLOAD">
+                            <div *ngFor="let subEvent of myevent.subevents; let j=index">
+                                <div class="row" *ngIf="subEvent.type == 'SUPLOAD'">
+
+                                                <div class="col-6 col-sm-3">
+                                                  Event Submission
+                                                </div>
+                                                <div class="col-6 col-sm-6">
+                                         
+                                                  <div class="row">
+                                                    <div class="col-6">{{myevent.supload_time.start_time}}</div>
+                                                    <div class="col-6"><span class="float-right">{{myevent.supload_time.end_time}}</span></div>
+                                                  </div>
+                                                  <nb-progress-bar fullwidth [value]="myevent.supload_time.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+                                
+                                                </div>
+                                                <div class="col-6 col-sm-1">
+                                
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                
+                                                  <button nbButton outline shape="semi-round" size="small"
+                                                    (click)="gotoSubmissionManager(i,j)">Submission Manager</button>
+                                                </div>
+                                             
+                                
+
+                                </div>
+                            </div>
+                            
+                           
+                      
+                        </nb-list-item>
+
+                        <nb-list-item *ngIf="myevent.subEventFlags.GUPLOAD">
+                            <div class="row ">
+                                <div class="col-6 col-sm-10">
+                                    Grader Assignment
+                                </div>
+                                <br><br>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col">SubEvent Name</th>
+                                            <th scope="col">Timeline</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngFor="let subEvent of myevent.subevents; index as l">
+                                        <tr *ngIf="subEvent.type == 'GUPLOAD'">
+                                            <td>
+                                                {{subEvent.name}}
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-6">{{subEvent.time_range[0]}}</div>
+                                                    <div class="col-6"><span
+                                                            class="float-right">{{subEvent.time_range[1]}}</span></div>
+                                                </div>
+                                                <nb-progress-bar fullwidth [value]="subEvent.time" size="tiny"
+                                                    [displayValue]="true"></nb-progress-bar>
+                                            </td>
+                                            <td>
+                                                <button nbButton outline shape="semi-round" size="small"
+                                                    (click)="onGraderAssignment(i,l)">Assign Graders</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </nb-list-item>
+
+
+                    </nb-list>
+
+                </nb-accordion-item-body>
+            </nb-accordion-item>
+
+
+
+        </nb-accordion>
+
+    </nb-card-body>
+
+</nb-card>

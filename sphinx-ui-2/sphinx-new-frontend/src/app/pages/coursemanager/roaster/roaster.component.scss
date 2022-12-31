@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .c1 {
+    width: 5%;
+  }
+  .c2 {
+    width: 8%;
+  }
+  .c3 {
+    width: 23%;
+  }
+  .c4 {
+    width: 15%;
+    text-align: center;
+  }
+  .container {
+    display: inline-block;
+    float: none;
+  }
+  
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }

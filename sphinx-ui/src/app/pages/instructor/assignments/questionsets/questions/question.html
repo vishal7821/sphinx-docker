@@ -1,0 +1,67 @@
+
+<ba-sidebar></ba-sidebar>
+<page-top></page-top>
+<back-top></back-top>
+
+ <div class="al-main" >
+    <div class="al-content">
+	    <div class="widgets">
+		  <div class="row" >
+
+		  	<div class="col-md-6 overflow-auto" id="QImages">
+			  		<div ng-repeat='image in question_images'>
+			        	<img ng-src="{{'data:image/png;base64,'+image}}"/>
+			      	</div>
+
+			      
+		    </div>
+
+
+		    <div class="row" >
+			  <div class="col-md-6">
+			    <div ba-panel ba-panel-title="Questions" ba-panel-class="with-scroll tree-panel">
+			      <div class="row">
+			        <div class="col-sm-4">
+			          <div class="control-side text-center">
+			            <div>
+			              <button class="btn btn-primary" data-toggle="modal" ng-click="open('app/pages/instructor/assignments/questionsets/questions/questionModel.html', 'md')">Add</button>
+			              <!-- <button class="btn btn-primary" ng-click="addNewNode()">Add</button> -->
+			            </div>
+			            <div>
+			              <button class="btn btn-primary" ng-click="collapse()">Collapse All</button>
+			            </div>
+			            <div>
+			              <button class="btn btn-primary" ng-click="expand()">Expand All</button>
+			            </div>
+			            <div>
+			              <button class="btn btn-primary" ng-click="refresh()">Refresh</button>
+			            </div>
+			            <!-- <div>
+			              <button class="btn btn-primary" ng-click="open('app/pages/instructor/assignments/questionsets/questions/questionDeleteAlert.html', 'md')">Delete</button>
+			            </div> -->
+			            <div>
+			              <button class="btn btn-primary" ng-click="openEditQModel('app/pages/instructor/assignments/questionsets/questions/EditQuestionModel.html', 'md')">Edit</button>
+			            </div>
+			            <div>
+			            	<button type="button" class="btn btn-danger" data-toggle="modal" ng-click="open('app/pages/instructor/assignments/questionsets/questions/questionDeleteAlert.html', 'md')" >
+          						Delete
+       					 </button>
+			            </div>
+			            
+			          </div>
+			        </div>
+			        <div class="col-sm-8">
+			          <div js-tree="basicConfig" ng-model="treeData" should-apply="applyModelChanges()" id="basicTree" tree-events="ready:readyCB">
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			</div>
+
+		  </div>
+		</div>
+	</div>
+</div>

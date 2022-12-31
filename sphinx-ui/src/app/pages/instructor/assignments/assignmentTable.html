@@ -1,0 +1,41 @@
+<div class="add-row-editable-table">
+  <button class="btn btn-primary" ng-click="addAssignment()">Add Assignment</button>
+</div>
+<table class="table table-bordered table-hover table-condensed">
+  <tr>
+    <td></td>
+    <td>Assignment Name</td>
+    <td>Description</td>
+    <td>Actions</td>
+  </tr>
+  <tr ng-repeat="assign in assignments" class="editable-row">
+    <td>
+        {{$index}}
+    </td>
+    <td>
+        <span editable-text="assign.name" e-name="name" e-form="rowform" e-required>
+          <a href="" ng-click = 'selectassignment($index)'>{{ assign.name || 'empty' }}  </a>
+    </td>
+    <td>
+        <span editable-text="assign.comments" e-name="comments" e-form="rowform" e-required>
+          {{ assign.comments || 'empty'}}
+        </span>
+    </td>
+    <td>
+      <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+            shown="inserted == assign">
+        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs" ng-click="updateAssignment($index)">
+          Save
+        </button>
+        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+          Cancel
+        </button>
+      </form>
+      <div class="buttons" ng-show="!rowform.$visible">
+        <button class="btn btn-primary editable-table-button btn-xs" ng-click="rowform.$show()">Edit</button>
+        <button class="btn btn-danger editable-table-button btn-xs" ng-click="removeAssignment($index)">Delete</button>
+      </div>
+    </td>
+  </tr>
+
+</table>

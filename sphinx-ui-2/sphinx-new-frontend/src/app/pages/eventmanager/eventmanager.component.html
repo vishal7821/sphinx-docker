@@ -1,0 +1,920 @@
+
+        <!-- subevent edit layout -->
+        <nb-card class="col-md-12 col-lg-12 col-xxxl-12" *ngIf="isOpenSubeventEditForm">
+            <nb-card-body>
+                <nb-card-header>
+                    <h5>Edit Subevent</h5>
+          
+                  </nb-card-header>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputFirstName" class="label">Subevent Name</label>
+                        <input type="text"
+                        [(ngModel)]="tempSubEvent.name"
+                        nbInput
+                        fullWidth
+                        id="inputSubeventName"
+                        placeholder="Subevent Name">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputSubeventType"  class="label">Type</label>
+                        
+                        <input type="text" 
+                        disabled 
+                        nbInput 
+                        fullWidth 
+                        [(ngModel)]="tempSubEvent.type"
+                        id="inputSubeventType" 
+                        placeholder="Select Subevent Type">
+                          <!-- <nb-option *ngFor="let type of subevent_types" [value]="type.value">
+                            {{type.text}}</nb-option>
+                        </nb-select> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputDateRange2" class="label">Start Time - End time Range</label>
+                        <input nbInput fullWidth id="inputDateRange2" [(ngModel)]="tempSubEvent.time_range" [selectMode]="'range'"
+                          [owlDateTimeTrigger]="dtPicker11" [owlDateTime]="dtPicker11">
+                        <owl-date-time #dtPicker11></owl-date-time>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputdisplayEndDate2" class="label">Display end time</label>
+                        <input nbInput fullWidth id="inputdisplayEndDate2" [(ngModel)]="tempSubEvent.display_end_time"
+                          [owlDateTimeTrigger]="dtPicker12" [owlDateTime]="dtPicker12">
+                        <owl-date-time #dtPicker12></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputAllowLateSubmission" class="label">Allow late Submission</label><br>
+                        <mat-slide-toggle [(ngModel)]="tempSubEvent.allow_late_ending"></mat-slide-toggle>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputIsBlocking" class="label">Is Blocking</label><br>
+                        <mat-slide-toggle [(ngModel)]="tempSubEvent.is_blocking"></mat-slide-toggle>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputLateEndDate2" class="label">Late end time</label>
+                        <input nbInput fullWidth id="inputLateEndDate2" [(ngModel)]="tempSubEvent.late_end_time"
+                        [owlDateTimeTrigger]="dtPicker13" [owlDateTime]="dtPicker13">
+                      <owl-date-time #dtPicker13></owl-date-time>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputdisplayLateEndDate2" class="label">Display late end time</label>
+                        <input nbInput fullWidth id="inputdisplayLateEndDate2" [(ngModel)]="tempSubEvent.display_late_end_time"
+                        [owlDateTimeTrigger]="dtPicker14" [owlDateTime]="dtPicker14">
+                      <owl-date-time #dtPicker14></owl-date-time>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="row">
+                    <div class="offset-sm-4 col-sm-2">
+                        <button status="danger" outline (click)="cancelEditSubeventForm()" nbButton>Cancel</button>
+                    </div>
+                    <div class=" col-sm-6">
+                      <button nbButton status="primary" (click)="submitEditSubeventForm()"  >Save</button>
+                    </div>
+                  </div>
+      
+      
+            </nb-card-body>
+          </nb-card>
+  
+  
+  
+  
+      <nb-card class="col-md-12 col-lg-12 col-xxxl-12" *ngIf="isOpenSubeventCreateForm">
+  
+        <nb-card-body>
+          <nb-card-header>
+            <h5>Create Subevent</h5>
+  
+          </nb-card-header>
+          <nb-stepper orientation="horizontal">
+            <nb-step [label]="labelOne">
+              <ng-template #labelOne>First step</ng-template>
+              <!-- <h3>Step content #1</h3> -->
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputFirstName" class="label">Subevent Name</label>
+                    <input type="text"
+                     nbInput 
+                     fullWidth 
+                     id="inputSubeventName" 
+                     [(ngModel)]="tempSubEvent.name"
+                     placeholder="Subevent Name"
+                     >
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputSubeventType" class="label">Type</label>
+                    <nb-select 
+                    fullWidth 
+                    [(ngModel)]="tempSubEvent.type"
+                    placeholder="Select Subevent Type">
+                      <nb-option *ngFor="let type of subevent_types" [value]="type.value">
+                        {{type.text}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputDateRange" class="label">Start Time - End time Range</label>
+                    <input nbInput fullWidth id="inputDateRange" [(ngModel)]="tempSubEvent.time_range" [selectMode]="'range'"
+                      [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1">
+                    <owl-date-time #dtPicker1></owl-date-time>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputdisplayEndDate" class="label">Display end time</label>
+                    <input nbInput fullWidth id="inputdisplayEndDate" [(ngModel)]="tempSubEvent.display_end_time"
+                      [owlDateTimeTrigger]="dtPicker2" [owlDateTime]="dtPicker2">
+                    <owl-date-time #dtPicker2></owl-date-time>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputAllowLateSubmission" class="label">Allow late Submission</label><br>
+                    <mat-slide-toggle [(ngModel)]="tempSubEvent.allow_late_ending"></mat-slide-toggle>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputIsBlocking" class="label">Is Blocking</label><br>
+                    <mat-slide-toggle [(ngModel)]="tempSubEvent.is_blocking"></mat-slide-toggle>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row" *ngIf="tempSubEvent.allow_late_ending">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputLateEndDate" class="label">Late end time</label>
+                    <input nbInput fullWidth id="inputdisplayEndDate" [(ngModel)]="tempSubEvent.late_end_time"
+                      [owlDateTimeTrigger]="dtPicker3" [owlDateTime]="dtPicker3">
+                    <owl-date-time #dtPicker3></owl-date-time>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputdisplayLateEndDate" class="label">Display late end time</label>
+                    <input nbInput fullWidth id="inputdisplayLateEndDate" [(ngModel)]="tempSubEvent.display_late_end_time"
+                      [owlDateTimeTrigger]="dtPicker4" [owlDateTime]="dtPicker4">
+                    <owl-date-time #dtPicker4></owl-date-time>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="offset-sm-4 col-sm-8">
+                    <button status="danger" outline (click)="cancelAddSubeventForm()" nbButton>Cancel</button>
+                    <button nbButton status="primary" disabled outline  nbStepperPrevious>prev</button>
+                  <button nbButton status="primary" outline nbStepperNext [disabled]="tempSubEvent.name==''||tempSubEvent.type==null" >next</button>
+                </div>
+              </div>
+  
+            </nb-step>
+            <!-- SUPLOAD Specific Form -->
+            <nb-step [label]="labelTwo" *ngIf="tempSubEvent.type=='SUPLOAD'">
+              <ng-template #labelTwo>Second step</ng-template>
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputSBM" class="label">Submission Mode</label>
+                    <nb-select fullWidth placeholder="Select Submission Mode" [(ngModel)]="tempSubEvent.sbm">
+                      <nb-option *ngFor="let sbm of submission_modes" [value]="sbm.value">
+                        {{sbm.text}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputQSS" class="label">Question Set Scheme</label>
+                    <nb-select fullWidth placeholder="Select Question Set Scheme" [(ngModel)]="tempSubEvent.qss">
+                      <nb-option *ngFor="let qss of question_set_scheme" [value]="qss.value">
+                        {{qss.text}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputSGS" class="label">Submission Group Scheme</label>
+                    <nb-select fullWidth placeholder="Select Submission Group Scheme" [(ngModel)]="tempSubEvent.sgs">
+                      <nb-option *ngFor="let sgs of submission_group_scheme" [value]="sgs.value">
+                        {{sgs.text}}</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputDEL" class="label">Participant CSV File</label>
+                    <file-upload nbInput simple [(ngModel)]="supload_file" [disabled]="isDisabled" name="suploadfile">
+                    </file-upload>
+                  </div>
+                </div>
+  
+              </div>
+  
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputMUS" class="label">Main Upload File Size (in MB)</label>
+                    <input type="number" nbInput fullWidth id="inputMUS" placeholder="Upload File Size" [(ngModel)]="tempSubEvent.mus">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputMUT" class="label">Main Upload File Types (e.g. pdf,docx,tex)</label>
+                    <input type="text" nbInput fullWidth id="inputMUT" placeholder="Upload File Types" [(ngModel)]="tempSubEvent.mut">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputSUP" class="label">Is Supplementary Allowed</label><br>
+                    <mat-slide-toggle [(ngModel)]="tempSubEvent.sup"></mat-slide-toggle>
+                  </div>
+                </div>
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputNAC" class="label">Is Submission Access Code needed</label><br>
+                    <mat-slide-toggle [disabled]="tempSubEvent.sgs!=='FG' && tempSubEvent.sgs!=='IN'" [(ngModel)]="tempSubEvent.nac"></mat-slide-toggle>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row" *ngIf = "tempSubEvent.sup">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputSUS" class="label">Supplementary Upload File Size (in MB)</label>
+                    <input type="number" nbInput [(ngModel)]="tempSubEvent.sus" fullWidth id="inputSUS" placeholder="Upload File Size">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputSUT" class="label">Supplementary Upload File Types (e.g. pdf,docx,tex)</label>
+                    <input type="text" nbInput fullWidth id="inputSUT" placeholder="Upload File Types" [(ngModel)]="tempSubEvent.sut">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputDEL" class="label">Delay Parameter(mean and std deviation i.e 0,1)</label>
+                    <input type="text" nbInput fullWidth id="inputDEL" placeholder="Delay Parameter" [(ngModel)]="tempSubEvent.del">
+                  </div>
+                </div>
+  
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputCOL" class="label">Select Background Color (for online exams)</label>
+                    <input nbInput fullWidth [cpPosition]="'left'" [value]="tempSubEvent.col" [style.background]="tempSubEvent.col"
+                      [cpOutputFormat]="'rgba'" [(colorPicker)]="tempSubEvent.col" />
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row" *ngIf="tempSubEvent.sgs=='OG'">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputOGMax" class="label">Group Size Limit(for Open Group scheme)</label>
+                    <input type="number" nbInput fullWidth id="inputOGMax" placeholder="Group Size" [(ngModel)]="tempSubEvent.sgs_og_max">
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="offset-sm-4 col-sm-8">
+                    <button status="danger" outline (click)="cancelAddSubeventForm()" nbButton>Cancel</button>
+                    <button nbButton status="primary" outline  nbStepperPrevious>prev</button>
+                    <button
+                     nbButton 
+                     [nbSpinner]="subeventLoading" nbSpinnerStatus="primary"
+                     (click)="submitAddSubeventForm()" 
+                     [disabled]="tempSubEvent.sbm==null" 
+                     nbStepperNext>submit</button>
+                </div>
+              </div>
+            </nb-step>
+            
+            <!-- QVIEW,AVIEW specific form -->
+            <nb-step label="Second step" *ngIf="tempSubEvent.type=='QVIEW' || tempSubEvent.type=='AVIEW'">
+  
+                <div class="row">
+                    <!-- <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputSBM" class="label">Participant Specified using</label>
+                        <nb-radio-group [(ngModel)]="tempSubEvent.participants_spec">
+                            <nb-radio
+                              value="0">
+                              Participant CSV File
+                            </nb-radio>
+                            <nb-radio
+                              value="1">
+                              Participants from multiple existing subevents
+                            </nb-radio>
+                          </nb-radio-group>
+                      </div>
+                    </div> -->
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <label for="inputplistSubevents" class="label">Participants from multiple existing subevents (Select from any one group only)</label>
+                          <nb-select fullWidth multiple placeholder="Select subevents for inheriting participants" [(ngModel)]="tempSubEvent.plist_subevents">
+                            <nb-option-group title="SUPLOAD Group">    
+                            <nb-option *ngFor="let se of list_supload" [value]="se.value">
+                                    {{se.text}}</nb-option>
+                              </nb-option-group>
+                              <nb-option-group title="GUPLOAD Group">    
+                                  <nb-option *ngFor="let se of list_gupload" [value]="se.value">
+                                          {{se.text}}</nb-option>
+                              </nb-option-group>
+                              <nb-option-group title="RGUPLOAD Group">    
+                                  <nb-option *ngFor="let se of list_rgupload" [value]="se.value">
+                                          {{se.text}}</nb-option>
+                              </nb-option-group>
+                                    
+                          </nb-select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                          <label for="inputgensubevent" class="label">Generating Subevent (Select from any one group only)</label>
+                          <nb-select multiple fullWidth placeholder="Select Generating Subevent"  [(ngModel)]="tempSubEvent.plist_subevents">
+                              <nb-option-group title="SUPLOAD Group">    
+                                  <nb-option *ngFor="let se of list_supload" [value]="se.value">
+                                          {{se.text}}</nb-option>
+                                    </nb-option-group>
+                                    <nb-option-group title="GUPLOAD Group">    
+                                        <nb-option *ngFor="let se of list_gupload" [value]="se.value">
+                                                {{se.text}}</nb-option>
+                                    </nb-option-group>
+                                    <nb-option-group title="RGUPLOAD Group">    
+                                        <nb-option *ngFor="let se of list_rgupload" [value]="se.value">
+                                                {{se.text}}</nb-option>
+                                    </nb-option-group>
+                            </nb-select>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="inputplistSubevents" class="label">Participants from multiple existing subevents</label>
+                              <nb-select [disabled]="participant_spec" fullWidth multiple placeholder="Select Submission Group Scheme" [(ngModel)]="tempSubEvent.plist_subevents">
+                                  <nb-option *ngFor="let sgs of submission_group_scheme" [value]="sgs.value">
+                                    {{sgs.text}}</nb-option>
+                                </nb-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                              <label for="inputDEL" class="label">Participant CSV File</label>
+                              <file-upload nbInput simple [(ngModel)]="qa_view_file" name="qviewfile">
+                              </file-upload>
+                            </div>
+                          </div>
+                  </div> -->
+        
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <button status="danger" outline (click)="toggleSubEventCreateForm()" nbButton>Cancel</button>
+                        <button nbButton status="primary" outline  nbStepperPrevious>prev</button>
+                        <button nbButton 
+                        [nbSpinner]="subeventLoading" nbSpinnerStatus="primary"
+                        [disabled]="tempSubEvent.plist_subevents.length==0" 
+                        (click)="submitAddSubeventForm()" 
+                        nbStepperNext>submit</button>
+                    </div>
+                  </div>
+              </nb-step>
+               <!-- SVIEW,MVIEW,RMVIEW,GVIEW,RGVIEW specific form -->
+            <nb-step label="Second step"  
+            *ngIf="tempSubEvent.type=='SVIEW' 
+            || tempSubEvent.type=='MVIEW' 
+            || tempSubEvent.type=='RMVIEW'
+            || tempSubEvent.type=='GVIEW'
+            || tempSubEvent.type=='RGVIEW'">
+  
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputSBM" class="label">Participant Specified using</label>
+                        <nb-radio-group [(ngModel)]="tempSubEvent.participants_spec">
+                            <nb-radio
+                              value="0">
+                              Participant CSV File
+                            </nb-radio>
+                            <nb-radio
+                              value="1">
+                              Participants from multiple existing subevents
+                            </nb-radio>
+                          </nb-radio-group>
+                      </div>
+                    </div>
+                 
+                      <div class="col-sm-6" *ngIf="tempSubEvent.participants_spec=='1'">
+                          <div class="form-group">
+                              <label for="inputplistSubevents" class="label">Participants from multiple existing subevents</label>
+                              <nb-select [disabled]="participant_spec" fullWidth multiple placeholder="Select subevents for inheriting participants" [(ngModel)]="tempSubEvent.plist_subevents">
+                                  <nb-option *ngFor="let sgs of plist_all_subevents" [value]="sgs.value">
+                                    {{sgs.text}}</nb-option>
+                                </nb-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6" *ngIf="tempSubEvent.participants_spec=='0'">
+                            <div class="form-group">
+                              <label for="inputDEL" class="label">Participant CSV File</label>
+                              <file-upload nbInput simple [(ngModel)]="smrmgrg_view_file" name="sviewfile">
+                              </file-upload>
+                            </div>
+                          </div>
+                  </div>
+        
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <button status="danger" outline (click)="cancelAddSubeventForm()" nbButton>Cancel</button>
+                        <button nbButton status="primary" outline  nbStepperPrevious>prev</button>
+                        <button nbButton
+                        [nbSpinner]="subeventLoading" nbSpinnerStatus="primary"
+                         (click)="submitAddSubeventForm()" nbStepperNext>submit</button>
+                    </div>
+                  </div>
+              </nb-step>
+                <!-- GUPLOAD specific form -->
+            <nb-step label="Second step" *ngIf="tempSubEvent.type=='GUPLOAD'">
+  
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputSBM" class="label">Participant Specified using</label>
+                        <nb-radio-group [(ngModel)]="tempSubEvent.participants_spec">
+                            <nb-radio
+                              value="0">
+                              Participant CSV File
+                            </nb-radio>
+                            <nb-radio
+                              value="1">
+                              Participants from multiple existing subevents
+                            </nb-radio>
+                          </nb-radio-group>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputgensubevent" class="label">Generating Subevent</label>
+                            <nb-select  fullWidth multiple placeholder="Select Generating Subevent" [(ngModel)]="tempSubEvent.gen_subevent">
+                                <nb-option *ngFor="let gs of list_supload" [value]="gs.value">
+                                  {{gs.text}}</nb-option>
+                              </nb-select>
+                        </div>
+                      </div>
+                  </div>
+  
+                  <div class="row">
+                      <div class="col-sm-6" *ngIf = "tempSubEvent.participants_spec=='1'">
+                          <div class="form-group">
+                              <label for="inputplistSubevents" class="label">Participants from multiple existing subevents</label>
+                              <nb-select  fullWidth multiple placeholder="Select subevents for inheriting participants" [(ngModel)]="tempSubEvent.plist_subevents">
+                                  <nb-option *ngFor="let pl of plist_all_subevents" [value]="pl.value">
+                                    {{pl.text}}</nb-option>
+                                </nb-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6" *ngIf = "tempSubEvent.participants_spec=='0'">
+                            <div class="form-group">
+                              <label for="inputDEL" class="label">Participant CSV File</label>
+                              <file-upload nbInput simple [(ngModel)]="gupload_file" name="sviewfile">
+                              </file-upload>
+                            </div>
+                          </div>
+                  </div>
+  
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="inputgds" class="label">Grading Duty Scheme</label>
+                              <nb-select  fullWidth placeholder="Select Grading Duty Scheme" [(ngModel)]="tempSubEvent.gds">
+                                  <nb-option *ngFor="let gds of grading_duty_schemes" [value]="gds.value">
+                                    {{gds.text}}</nb-option>
+                                </nb-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                              <label for="inputDEL" class="label">Repeatation Factor(in case of multiple graders)</label>
+                              <input type="number" 
+                              nbInput 
+                              fullWidth 
+                              id="inputGDSRep" 
+                              placeholder="Repeatation Factor" 
+                              [disabled] = "!(tempSubEvent.gds=='MQR$rep' || tempSubEvent.gds=='RQR$rep' || tempSubEvent.gds=='RSR$rep')"
+                              [(ngModel)]="tempSubEvent.gds_rep">
+                            </div>
+                          </div>
+                  </div>
+        
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <button status="danger" outline (click)="cancelAddSubeventForm()" nbButton>Cancel</button>
+                        <button nbButton status="primary" outline  nbStepperPrevious>prev</button>
+                        <button 
+                        nbButton
+                        [nbSpinner]="subeventLoading" nbSpinnerStatus="primary"
+                         (click)="submitAddSubeventForm()" nbStepperNext>submit</button>
+                    </div>
+                  </div>
+              </nb-step>
+  
+                <!-- RGREQ specific form -->
+            <nb-step label="Second step" *ngIf="tempSubEvent.type=='RGREQ'">
+  
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="inputSBM" class="label">Participant Specified using</label>
+                        <nb-radio-group [(ngModel)]="tempSubEvent.participants_spec">
+                            <nb-radio
+                              value="0">
+                              Participant CSV File
+                            </nb-radio>
+                            <nb-radio
+                              value="1">
+                              Participants from multiple existing subevents
+                            </nb-radio>
+                          </nb-radio-group>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6" *ngIf="tempSubEvent.participants_spec=='1'">
+                        <div class="form-group">
+                            <label for="inputplistSubevents" class="label">Participants from multiple existing subevents</label>
+                            <nb-select fullWidth multiple placeholder="Select subevents for inheriting participants" [(ngModel)]="tempSubEvent.plist_subevents">
+                                <nb-option *ngFor="let sgs of list_supload" [value]="sgs.value">
+                                  {{sgs.text}}</nb-option>
+                              </nb-select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6" *ngIf="tempSubEvent.participants_spec=='0'">
+                          <div class="form-group">
+                            <label for="inputDEL" class="label">Participant CSV File</label>
+                            <file-upload nbInput simple [(ngModel)]="rgreq_file" name="rgreqfile">
+                            </file-upload>
+                          </div>
+                        </div>
+                  
+                  </div>
+  
+              
+  
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                              <label for="inputparent" class="label">Parent Subevent</label>
+                              <nb-select  fullWidth placeholder="Select Parent Subevent" [(ngModel)]="tempSubEvent.parent_subevent">
+                                  <nb-option *ngFor="let gds of list_gupload" [value]="gds.value">
+                                    {{gds.text}}</nb-option>
+                                </nb-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputgensubevent" class="label">Corresponding RGUPLOAD Subevent(Create RGUPLOAD if not present)</label>
+                                <nb-select  fullWidth placeholder="Select Generating Subevent" [(ngModel)]="tempSubEvent.gen_subevent[0]">
+                                    <nb-option *ngFor="let qss of list_rgupload" [value]="qss.value">
+                                      {{qss.text}}</nb-option>
+                                  </nb-select>
+                            </div>
+                          </div>
+                        
+                  </div>
+        
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <button status="danger" outline (click)="cancelAddSubeventForm()" nbButton>Cancel</button>
+                        <button nbButton status="primary" outline  nbStepperPrevious>prev</button>
+                        <button nbButton
+                        [nbSpinner]="subeventLoading" nbSpinnerStatus="primary"
+                         (click)="submitAddSubeventForm()" nbStepperNext>submit</button>
+                    </div>
+                  </div>
+              </nb-step>
+              <!-- RGUPLOAD Specific form -->
+            <nb-step [label]="labelFour" *ngIf="tempSubEvent.type=='RGUPLOAD'">
+              <ng-template #labelFour>Second step</ng-template>
+              <div class="row">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <label for="inputrds" class="label">Regrading Duty Scheme</label>
+                          <nb-select (selectedChange)="onSelectRDS()" fullWidth placeholder="Select Regrading Duty Scheme" [(ngModel)]="tempSubEvent.rds">
+                              <nb-option  *ngFor="let rds of regrading_duty_schemes" [value]="rds.value">
+                                {{rds.text}}</nb-option>
+                            </nb-select>
+                      </div>
+                    </div>
+                    
+                </div>
+  
+                <div class="row" *ngIf="tempSubEvent.rds=='RAN' || tempSubEvent.rds=='QRN'">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="inputSBM" class="label">Participant Specified using</label>
+                          <nb-radio-group [(ngModel)]="tempSubEvent.participants_spec">
+                              <nb-radio
+                                value="0">
+                                Participant CSV File
+                              </nb-radio>
+                              <nb-radio [disabled]="tempSubEvent.rds=='QRN'"
+                                value="1">
+                                Participants from multiple existing subevents
+                              </nb-radio>
+                            </nb-radio-group>
+                        </div>
+                      </div>
+                    <div class="col-sm-6" *ngIf="tempSubEvent.participants_spec=='1'">
+                        <div class="form-group">
+                            <label for="inputplistSubevents" class="label">Participants from multiple existing subevents</label>
+                            <nb-select multiple fullWidth multiple placeholder="Select subevents for inheriting participants" [(ngModel)]="tempSubEvent.plist_subevents">
+                                <nb-option *ngFor="let sgs of list_gupload" [value]="sgs.value">
+                                  {{sgs.text}}</nb-option>
+                              </nb-select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6" *ngIf="tempSubEvent.participants_spec=='0'">
+                          <div class="form-group">
+                            <label for="inputDEL" class="label">Participant CSV File</label>
+                            <file-upload nbInput simple [(ngModel)]="rgupload_file" name="rguploadfile">
+                            </file-upload>
+                          </div>
+                        </div>
+                </div>
+  
+              
+      
+              <div class="row">
+                  <div class="offset-sm-4 col-sm-8">
+                    <button status="danger" outline (click)="cancelAddSubeventForm()" nbButton>Cancel</button>
+                    <button nbButton status="primary" outline  nbStepperPrevious>prev</button>
+                    <button nbButton 
+                    [nbSpinner]="subeventLoading" nbSpinnerStatus="primary"
+                    (click)="submitAddSubeventForm()" nbStepperNext>submit</button>
+                  </div>
+                </div>
+             
+            </nb-step>
+          </nb-stepper>
+        </nb-card-body>
+      </nb-card>
+  
+
+  
+
+
+<nb-card *ngIf="!isOpenSubeventCreateForm && !isOpenSubeventEditForm">
+  <nb-card-header>
+    <h4>Event Manager</h4>
+  </nb-card-header>
+
+
+  <nb-card-body>
+
+    <!-- <h4 class="card-title">  -->
+    <!-- <nb-icon *ngFor="let icon of icons.ionicons" [icon]="icon" pack="ion"></nb-icon> -->
+    <!-- Assignments</h4> -->
+    <div class="row ">
+      <button nbButton ghost size="medium" status="primary" (click)="toggleEventCreateForm()">
+        <nb-icon [icon]="'plus'" pack="ion"></nb-icon>
+        <div>Add Event</div>
+      </button>
+    </div>
+
+    <nb-card *ngIf="isOpenCreateForm">
+      <nb-card-header>Fill below details to add new Event</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <input type="text" nbInput [(ngModel)]="tempevent.name" fullWidth id="inputName"
+              placeholder="Enter Event Name">
+          </div>
+
+          <div class="offset-md-0.5 col-sm-1">
+            <label for="inputIsExternal" class="label">IsExternal</label><br>
+            <!-- <br><ui-switch [(ngModel)]="toggleNgModel" color="#2196F3" ></ui-switch> -->
+            <mat-slide-toggle [(ngModel)]="tempevent.is_external"></mat-slide-toggle>
+          </div>
+
+          <div class="col-sm-2">
+            <nb-select placeholder="Select Assignment" [(ngModel)]="tempevent.assignment_id">
+              <nb-option *ngFor="let assign of assignments" [value]="assign.main_id">
+                {{assign.name}}</nb-option>
+            </nb-select>
+          </div>
+          <div class="offset-md-0.5 col-sm-1">
+            <nb-select placeholder="Select Aggregation method" [(ngModel)]="tempevent.grade_aggregation_method">
+              <nb-option value="MIN">MIN</nb-option>
+              <nb-option value="MAX">MAX</nb-option>
+              <nb-option value="AVG">AVG</nb-option>
+              <nb-option value="MED">MED</nb-option>
+            </nb-select>
+          </div>
+          <div class="offset-md-2 col-sm-1">
+            <button nbButton size="small" outline ghost status="success" (click)="addEvent()">
+              <nb-icon size="large" icon="save-outline"></nb-icon>Save
+            </button>
+          </div>
+          <div class="col-sm-1">
+            <button nbButton size="small" ghost outline status="danger" (click)="toggleEventCreateForm()">
+              <nb-icon icon="close-outline" size="medium"></nb-icon>Cancel
+            </button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+    <nb-list *ngIf="events">
+      <nb-list-item>
+        <div class="row">
+
+          <div class="col-6 col-sm-2" *ngIf="events.length!=0">
+            <div style="text-align:center;"><strong>#</strong></div>
+          </div>
+          <div class="col-6 col-sm-3" *ngIf="events.length!=0">
+            <div><strong>Name</strong></div>
+          </div>
+          <div class="col-6 col-sm-2" *ngIf="events.length!=0">
+            <div><strong>Is_external</strong></div>
+          </div>
+          <div class="col-6 col-sm-3" *ngIf="events.length!=0">
+            <div style="text-align:center;"><strong>Grade Aggregation</strong></div>
+          </div>
+          <div class="col-6 col-sm-2" *ngIf="events.length!=0">
+            <div style="text-align:center;"><strong>Actions</strong></div>
+          </div>
+        </div>
+      </nb-list-item>
+    </nb-list>
+
+    <nb-list *ngIf="events">
+      <nb-list-item *ngFor="let event of events; index as i">
+
+        <div class="row " *ngIf="event.id!=tempevent.id">
+          <!--  *ngIf="event.id!=tempevent.id" -->
+          <div class="col-6 col-sm-2">
+            <div style="text-align:center;">{{event.id}}</div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div>{{event.name}}</div>
+          </div>
+          <div class="col-6 col-sm-2">
+            <div>{{event.is_external}}</div>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div style="text-align:center;">{{event.grade_aggregation_method}}</div>
+          </div>
+          <div class="col-6 col-sm-2">
+            <div style="text-align:center;">
+              <button nbButton ghost size="tiny" status="primary" (click)="onEditEvent(i)">
+                <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+              </button>
+              <button nbButton ghost size="tiny" status="primary" (click)="onDeleteEvent(i)">
+                <nb-icon [icon]="'trash-b'" pack="ion"></nb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- event edit form -->
+        <div class="row" *ngIf="isOpenEditForm && event.id==tempevent.id">
+          <div class="col-6 col-sm-2">
+            <div style="text-align:center;">{{tempevent.id}}</div>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" nbInput [(ngModel)]="tempevent.name" fullWidth id="inputName"
+              placeholder="Enter Event Name">
+          </div>
+
+          <div class="offset-md-0.5 col-sm-1">
+            <label for="inputIsExternal" class="label">IsExternal</label><br>
+            <!-- <br><ui-switch [(ngModel)]="toggleNgModel" color="#2196F3" ></ui-switch> -->
+            <mat-slide-toggle [(ngModel)]="tempevent.is_external"></mat-slide-toggle>
+          </div>
+
+          <div class="col-sm-2">
+            <nb-select placeholder="Select Assignment" [(ngModel)]="tempevent.assignment_id">
+              <nb-option *ngFor="let assign of assignments" [value]="assign.main_id">
+                {{assign.name}}</nb-option>
+            </nb-select>
+          </div>
+          <div class="offset-md-0.5 col-sm-1.5">
+            <nb-select placeholder="Select Aggregation method" [(ngModel)]="tempevent.grade_aggregation_method">
+              <nb-option value="MIN">MIN</nb-option>
+              <nb-option value="MAX">MAX</nb-option>
+              <nb-option value="AVG">AVG</nb-option>
+              <nb-option value="MED">MED</nb-option>
+            </nb-select>
+          </div>
+          <div class="offset-md-1 col-sm-0.5">
+            <button nbButton size="small" outline ghost status="success" (click)="submitEditEvent()">
+              <nb-icon size="large" icon="save-outline"></nb-icon>
+            </button>
+          </div>
+          <div class="col-sm-0.5">
+            <button nbButton size="small" ghost outline status="danger" (click)="toggleEventEditForm()">
+              <nb-icon icon="close-outline" size="medium"></nb-icon>
+            </button>
+          </div>
+        </div>
+
+        <table class="table">
+          <colgroup>
+            <col class="c1" />
+            <col class="c1" />
+            <col class="c2" />
+            <col class="c1" />
+            <col class="c3" />
+            <col class="c4" />
+          </colgroup>
+          <tbody>
+            <tr>
+              <th scope="col" style="text-align:center;">
+                <button nbButton ghost size="small" status="primary" (click)="openAddSubeventForm(i)">
+                  <nb-icon [icon]="'plus'" pack="ion"></nb-icon>
+                  <div *ngIf="event.subevents.length==0">Add Subevent</div>
+                </button>
+
+                <!-- <button nbButton size ="tiny" status="primary" (click)="addQuestionSet(1)" >Add Q Set</button> -->
+              </th>
+              <th scope="col" *ngIf="event.subevents.length!=0">#</th>
+              <th scope="col" *ngIf="event.subevents.length!=0">Name</th>
+              <th scope="col" *ngIf="event.subevents.length!=0">Type</th>
+              <th scope="col" *ngIf="event.subevents.length!=0" style="text-align:center;">Time</th>
+              <th scope="col"></th>
+            </tr>
+          </tbody>
+
+         
+          <tbody *ngFor="let subevent of event.subevents; index as j">
+
+            <tr>
+              <td></td>
+              <td>{{subevent.id}}</td>
+              <td>{{subevent.name}}</td>
+              <!-- <td>{{qset.name}}</td> -->
+              <td>{{subevent.type}}</td>
+              <td>
+                <nb-progress-bar [value]="subevent.time" size="tiny" [displayValue]="true"></nb-progress-bar>
+              </td>
+              <!-- {{subevent.start_time}} -->
+
+              <td style="text-align:center;">
+                <button nbButton ghost size="tiny" status="primary" (click)="openEditSubeventForm(i,j)">
+                  <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                </button>
+                <button nbButton ghost size="tiny" status="primary" (click)="onDeleteSubEvent(i,j)">
+                  <nb-icon [icon]="'trash-b'" pack="ion"></nb-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </nb-list-item>
+    </nb-list>
+
+  </nb-card-body>
+</nb-card>

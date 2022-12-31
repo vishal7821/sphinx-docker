@@ -1,0 +1,89 @@
+<nb-card size="giant" status="primary">
+    <nb-card-header>
+        <div class="row">
+            <div class="col-6 col-sm-8">
+                <h5 style="color: white;">Regrading Manager</h5>
+            </div>
+            <div class="col-6 col-sm-4">
+                <div><strong>Completed regrading requests: </strong> {{completed_cnt}} / {{tot_cnt}}</div>
+            </div>
+        </div>
+        
+    </nb-card-header>
+
+
+    <nb-card-body>
+
+        <nb-list>
+            <nb-list-item>
+                <div class="row">
+                    <div class="col-6 col-sm-1">
+                        <div><strong>#</strong></div>
+                    </div>
+
+                    <div class="col-6 col-sm-3">
+                        <div><strong>Submission Group</strong></div>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <div><strong>is Regraded</strong></div>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <div style="text-align:center;"><strong>Grades</strong></div>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <div style="text-align:center;"><strong>Question Set</strong></div>
+                    </div>
+
+                    <div class="col-6 col-sm-2">
+                        <div style="text-align:center;"><strong>Question</strong></div>
+                    </div>
+                    <!-- <div class="col-6 col-sm-3">
+                                        <div style="text-align:center;"><strong>Completed/Total</strong></div>
+                                </div> -->
+                </div>
+            </nb-list-item>
+        </nb-list>
+
+        <nb-list *ngFor="let gd of regrading_duties; index as i">
+            <nb-list-item>
+
+                <div class="row ">
+                    <!--  *ngIf="event.id!=tempevent.id" -->
+
+                    <div class="col-6 col-sm-1">
+                        <div>{{gd.id}}</div>
+                    </div>
+
+                    <div class="col-6 col-sm-3">
+                        <div>
+                            <a href="#" onclick="return false" (click)="performSelectedReGrading(i)">
+                                <u> Submission Group ID {{gd.submission_group_id}}</u>
+                              </a>
+                            </div>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <!-- <div>{{gd.is_completed}}</div> -->
+                        <div class="item text-success" *ngIf="gd.is_completed">
+                            <nb-icon [icon]="'checkmark-circle'" >Graded</nb-icon>
+                    </div>
+                    <div class="item text-danger" *ngIf="!gd.is_completed">
+                            <nb-icon [icon]="'clock-outline'" ></nb-icon>
+                    </div>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <div style="text-align:center;">{{gd.aggregate_marks}}/{{gd.question_marks}}</div>
+                    </div>
+                    <div class="col-6 col-sm-2">
+                        <div style="text-align:center;">{{gd.qset_name}}</div>
+                    </div>
+
+                    <div class="col-6 col-sm-2">
+                        <div style="text-align:center;">{{gd.question_title}}</div>
+                    </div>
+                </div>
+
+            </nb-list-item>
+        </nb-list>
+
+    </nb-card-body>
+</nb-card>

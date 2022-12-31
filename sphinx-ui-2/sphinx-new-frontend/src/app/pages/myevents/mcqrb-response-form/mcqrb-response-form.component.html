@@ -1,0 +1,63 @@
+
+<form>
+  <div class="form-row" *ngFor="let mcqrbresponseform of dataarray; let i = index">
+    
+    <ul style="display: inline-block;">
+      <li style="display: inline-block;"> 
+        <nb-radio-group name="is_Correct{{i}}" (valueChange)="setIsCorrect(i)" [(ngModel)]="mcqrbresponseform.is_Correct">
+          <nb-radio value="{{i}}" checked="false"></nb-radio> 
+        </nb-radio-group>      
+       </li>
+      
+       <li style="display: inline-block;" [innerHTML]=" '(' + mcqrbresponseform.labelText + ')' + '&nbsp;&nbsp;&nbsp;&nbsp;' ">
+          {{mcqrbresponseform.labelText}}
+          <input type="text" 
+            nbInput 
+            fullWidth 
+            placeholder="A"
+            name = "labelText{{i}}"
+            [(ngModel)] = "mcqrbresponseform.labelText"
+            hidden
+          >
+       </li>
+
+       <li style="display: inline-block;" [innerHTML]="mcqrbresponseform.optionText">
+          {{mcqrbresponseform.optionText}}
+          <input type="text" 
+            nbInput 
+            fullWidth 
+            name = "optionText{{i}}"    
+            [(ngModel)] = "mcqrbresponseform.optionText"
+            hidden
+          >
+        </li>
+    </ul>
+  </div>
+</form>
+
+<!--<form>
+  <div class="form-row" *ngFor="let mcqrbresponseform of dataarray; let i = index">
+    <div class="form-group col-md-2">
+    </div> 
+    <div class="form-group col-md-2">
+      <nb-radio-group name="is_Correct{{i}}" (valueChange)="setIsCorrect(i)" [(ngModel)]="mcqrbresponseform.is_Correct">
+        <nb-radio value="{{i}}" checked="false"></nb-radio> 
+      </nb-radio-group>      
+     </div>
+     <div class="form-group col-md-8">
+        <label style ="margin-top: 3%;">
+          {{mcqrbresponseform.optionText}}
+        </label>
+        <input type="text" 
+            nbInput 
+            fullWidth 
+            name = "optionText{{i}}"    
+            [(ngModel)] = "mcqrbresponseform.optionText"
+            hidden
+        >
+    </div>
+  </div>
+</form>-->
+
+
+    

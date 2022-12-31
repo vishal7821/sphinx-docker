@@ -1,0 +1,306 @@
+
+
+<!-- 
+ <nb-layout>
+  <nb-layout-header >
+    <h5>Create/Edit Rubrics</h5>
+  </nb-layout-header>
+
+  <nb-layout-column >
+      <nb-card *ngIf = "!q_file_present">
+          <nb-card-body>
+              <h6>Question set file is not uploaded.</h6>
+              <br>
+              <a [routerLink]="['/pages/assignment']">
+                Go to Assignment page
+              </a>
+              </nb-card-body>
+      </nb-card>
+    <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval" *ngIf = "q_file_present">
+      <slide *ngFor="let slide of slides; let index=index">
+        <img src="data:image/jpg;base64,{{slide.image}}" alt="Upload Question set file" style="display: block; height: 100%; width: 100%;">
+     
+        <div class="carousel-caption">
+          <p>{{slide.text}}</p>
+        </div>
+      </slide>
+    </carousel>
+
+
+  </nb-layout-column>
+  <nb-layout-column >
+      <nb-card *ngIf = "!q_present">
+          <nb-card-body>
+              <h6>Please add questions to Question Set</h6>
+              <br>
+              <a [routerLink]="['/pages/assignment/question']" >
+                Go to question page
+              </a>
+              </nb-card-body>
+      </nb-card>
+      <nb-card *ngIf = "q_present">
+        <nb-card-header>
+            <div class="form-group row">
+            <div class="col-sm-2">
+              <button nbButton 
+                size="large" 
+                ghost 
+                status="primary"
+                (click) = "prevQuestion()"
+                ><nb-icon size="large" icon="arrow-back" ></nb-icon>
+              </button>
+            </div>
+            <div class="col-sm-8"></div>
+            <div class="col-sm-2">
+             <button 
+              nbButton 
+              size="large" 
+              ghost 
+              status="primary"
+              (click) = "nextQuestion()"
+              ><nb-icon size="large" icon="arrow-forward"></nb-icon>
+             </button>
+            </div>
+          </div>
+        </nb-card-header>
+          <nb-card-body>
+              <h6>Question Details</h6>
+              <nb-list>
+                  <nb-list-item >
+                      <div class="form-group row">
+                          <div class="col-sm-5">
+                              <strong>Title : </strong> {{current_q.title}}
+                          </div>
+                          <div class="col-sm-3">
+                              <strong>Marks : </strong> {{current_q.marks}}
+                          </div>
+                          <div class="col-sm-4">
+                              <strong>Difficulty level : </strong> {{current_q.difficulty_level}}
+                          </div>
+                        </div>
+               
+                  </nb-list-item>
+                  
+                </nb-list>
+
+             <nb-card >
+                <nb-card-header>
+                    <h6>Rubrics</h6>
+                  </nb-card-header>
+              <nb-card-body>
+                  <ng2-smart-table 
+                  [settings]="settings" 
+                  [source]="source" 
+                  (createConfirm)="onCreateConfirm($event)"
+                  (editConfirm)="onEditConfirm($event)" 
+                  (deleteConfirm)="onDeleteConfirm($event)">
+                    </ng2-smart-table>
+              </nb-card-body>
+             
+            </nb-card>
+
+             
+         
+
+          
+          </nb-card-body>
+        </nb-card>
+
+  </nb-layout-column>
+</nb-layout>  -->
+
+
+
+
+
+
+  <nb-card>
+          <nb-card-header>
+            <h5>Create/Edit Rubrics</h5>
+
+          </nb-card-header>
+
+          <nb-card-body>
+
+                  <div class=" row" >
+
+                          <!-- <div class="col-md-1"></div> -->
+                          <div class="col-md-6">
+                                  
+                            
+                            <nb-card *ngIf = "!q_file_present && !selectedAssignment.is_interactive">
+                              <nb-card-body>
+                                  <h6>Question set file is not uploaded.</h6>
+                                  <br>
+                                  <a [routerLink]="['/pages/assignment']">
+                                    Go to Assignment page
+                                  </a>
+                                  </nb-card-body>
+                          </nb-card>
+                              <!-- <div style="width:70%; height: 70%;">
+                                          <div class="border border-dark" *ngIf = "q_file_present">
+                                            <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval" >
+                                              <slide *ngFor="let slide of slides; let index=index">
+                                                <img src="data:image/jpg;base64,{{slide.image}}" alt="Upload Question set file" style="display: block; height: 100%; width: 100%;">
+                                             
+                                                <div class="carousel-caption">
+                                                  <p>{{slide.text}}</p>
+                                                </div>
+                                              </slide>
+                                            </carousel>
+                                          </div>
+                                  </div> -->
+                                  <div class="border border-dark" *ngIf = "q_file_present">
+                                    <owl-carousel
+                                    [options]="mySlideOptions"
+                                    [items]="mySlideImages"
+                                    [carouselClasses]="['owl-theme', 'sliding']">
+                                    <div class="item" *ngFor="let image of mySlideImages;let i = index">
+                                       <div>
+                                           <img src="data:image/jpg;base64,{{image}}" alt="Upload Question set file" style="display: block;" >
+                                         </div>
+                                    </div>
+                                   </owl-carousel>
+                                </div>
+
+
+                                 <div *ngIf="current_q && selectedAssignment.is_interactive"> 
+                                   
+                                  <nb-card status="primary">
+                                    <nb-card-header>
+                                      Question
+                                    </nb-card-header>
+                                    <nb-card-body>
+                                      <div [innerHTML]="current_q.quetionText"></div>
+                                      <div *ngIf="current_q.questionType != 'TXT'"> 
+                                        <br>
+                                       <table class="table table-hover">
+                                          <thead>
+                                            <tr>
+                                               <th style="text-align: center;"> Label</th>
+                                               <th style="text-align: center;"> Option</th>
+                                               <th style="text-align: center;"> Gold Solution</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                               <tr *ngFor="let r of optionsObject; index as i">
+                                                  <td style="text-align: center;" [innerHTML]="r.labelText"></td>
+                                                  <td style="text-align: center;" [innerHTML]="r.optionText"></td>
+                                                  <td style="text-align: center;" *ngIf="r.is_Correct == true">  
+                                                    <nb-checkbox status="success" [checked]="true"></nb-checkbox>
+                                                </td>
+                                                <td *ngIf="r.is_Correct != true"></td>
+                                               </tr>
+                                          </tbody>
+                                       </table>  
+                                       </div>
+                                       <div *ngIf="current_q.questionType == 'TXT'" >
+                                         <br>
+                                        <nb-card accent="success">
+                                           <br>
+                                              <span style="text-align: center; color: #00d68f;">Gold Solution</span><br>
+                                           <nb-list>
+                                             <nb-list-item [innerHTML]="current_q.solutionText"></nb-list-item>
+                                           </nb-list>
+                                        </nb-card> 
+                                            
+                                       </div>
+                                          
+                                    </nb-card-body>
+                                  </nb-card>          
+                              </div>
+                          </div>
+                          <!-- <div class="col-md-1"></div> -->
+
+                          <div class="col-md-6">
+                            <nb-card *ngIf = "!q_present && !selectedAssignment.is_interactive">
+                              <nb-card-body>
+                                  <h6>Please add questions to Question Set</h6>
+                                  <br>
+                                  <a [routerLink]="['/pages/assignment/question']" >
+                                    Go to question page
+                                  </a>
+                                  </nb-card-body>
+                            </nb-card>
+                            <nb-card *ngIf = "!q_present && selectedAssignment.is_interactive">
+                              <nb-card-body *ngIf="selectedAssignment.is_interactive">
+                                  <h6>Please add questions to Question Set</h6>
+                                  <br>
+                                  <a [routerLink]="['/pages/course/assignment/interactive-question-set']" >
+                                    Go to question page
+                                  </a>
+                                </nb-card-body>
+                            </nb-card>
+                          <nb-card size="giant" *ngIf = "q_present">
+                            <nb-card-header>
+                                <div class="form-group row">
+                                <div class="col-sm-2">
+                                  <button nbButton 
+                                    size="large" 
+                                    ghost 
+                                    status="primary"
+                                    (click) = "prevQuestion()"
+                                    ><nb-icon size="large" icon="arrow-back" ></nb-icon>
+                                  </button>
+                                </div>
+                                <div class="col-sm-8"></div>
+                                <div class="col-sm-2">
+                                 <button 
+                                  nbButton 
+                                  size="large" 
+                                  ghost 
+                                  status="primary"
+                                  (click) = "nextQuestion()"
+                                  ><nb-icon size="large" icon="arrow-forward"></nb-icon>
+                                 </button>
+                                </div>
+                              </div>
+                            </nb-card-header>
+                              <nb-card-body>
+                                  <h6>Question Details</h6>
+                                  <nb-list>
+                                      <nb-list-item >
+                                          <div class="form-group row">
+                                              <div class="col-sm-5">
+                                                  <strong>Title : </strong> {{current_q.title}}
+                                              </div>
+                                              <div class="col-sm-3">
+                                                  <strong>Marks : </strong> {{current_q.marks}}
+                                              </div>
+                                              <div class="col-sm-4">
+                                                  <strong>Difficulty level : </strong> {{current_q.difficulty_level}}
+                                              </div>
+                                            </div>
+                                   
+                                      </nb-list-item>
+                                      
+                                    </nb-list>
+                    
+                                 <nb-card >
+                                    <nb-card-header>
+                                        <h6>Rubrics</h6>
+                                      </nb-card-header>
+                                  <nb-card-body>
+                                      <ng2-smart-table 
+                                      [settings]="settings" 
+                                      [source]="source" 
+                                      (createConfirm)="onCreateConfirm($event)"
+                                      (editConfirm)="onEditConfirm($event)" 
+                                      (deleteConfirm)="onDeleteConfirm($event)">
+                                        </ng2-smart-table>
+                                  </nb-card-body>
+                                 
+                                </nb-card>
+                    
+                                 
+                             
+                    
+                              
+                              </nb-card-body>
+                            </nb-card>
+                    
+                          </div>
+                  </div>
+          </nb-card-body>
+  </nb-card>
+

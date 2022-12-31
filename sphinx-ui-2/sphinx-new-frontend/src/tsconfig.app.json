@@ -1,0 +1,33 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "paths": {
+      "@angular/*": [
+        "../node_modules/@angular/*"
+      ],
+      "@nebular/*": [
+        "../node_modules/@nebular/*"
+      ]
+    },
+    "types": ["mathjax"],
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "../node_modules/@nebular/**/*.spec.ts",
+    "./src/app/@core/core.module.ts",
+    "../src/app/@core/**/*.ts",
+    "../src/app/@theme/**/*.ts",
+    "./src/app/app.component.ts",
+    "../src/app/pages/coursemanager/roaster/roaster-form/roaster-form.component.ts",
+    "../src/app/Shared/loading-spinner/loading-spinner.component.ts",
+    "../src/app/pages/dashboard/dashboard.component.ts"
+  ],
+  "include": [
+    "../src/*.ts",
+    "../src/**/*.ts",
+    "../node_modules/@nebular/**/*.ts"
+  ]
+}

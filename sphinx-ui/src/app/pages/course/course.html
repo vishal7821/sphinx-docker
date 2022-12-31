@@ -1,0 +1,100 @@
+<aside class="al-sidebar" ng-swipe-right="$baSidebarService.setMenuCollapsed(false)" ng-swipe-left="$baSidebarService.setMenuCollapsed(true)"
+       ng-mouseleave="hoverElemTop=selectElemTop">
+   <ul class="al-sidebar-list" slimscroll="{height: '{{menuHeight}}px'}" slimscroll-watch="menuHeight" >
+  	<li>
+	  <div style="margin:10px"><h5 class="al-title" style="color:white;">Courses List</h5>
+	  <p>Welcome to sphinx. This page will list all the courses you are part of as Student, TA or Instructor</p>
+	  </div>
+  </li>
+  <div class="sidebar-hover-elem" ng-style="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}"
+       ng-class="{'show-hover-elem': showHoverElem }"></div>
+</aside>
+
+<page-top></page-top>
+<back-top></back-top>
+
+ <div class="al-main">
+    <div class="al-content">
+	    <content-top></content-top>
+	    <h5 class="al-title">Instructor Courses</h5>
+		<div class="row" >
+			 <a href="" ng-click="select_course(course.id,'instructor')" ng-repeat='course in courses_as_instructor'> 
+				 <div class="col-lg-6 col-md-12 col-sm-12">
+				     <div ba-panel
+				     ba-panel-class="tabs-panel xsmall-panel with-scroll">
+					  <uib-tabset class="tabs-left">
+					    <uib-tab heading="Course">
+					      <p class="text-center">
+					        {{course.name}}
+					      </p>
+					      <!-- <p>
+					        course description
+					        </p> -->
+					    </uib-tab>
+					    <!-- <uib-tab heading="Details">
+					      <p>
+					        detail 1
+					      </p>
+					      <p>
+					        detail 2
+					      </p>
+					    </uib-tab> -->
+					  </uib-tabset>
+					</div>
+				</div>
+			</a>
+		</div>
+		<h5 class="al-title">Grader Courses</h5>
+			<div class="row" >
+				 <a href="/#login" ng-repeat='course in courses_as_grader'> 
+				 	<div class="col-lg-6 col-md-12 col-sm-12">
+					     <div ba-panel
+					     ba-panel-class="tabs-panel xsmall-panel with-scroll">
+						  <uib-tabset class="tabs-left">
+						    <uib-tab heading="Course">
+						      <p class="text-center">
+					        	{{course.name}}
+					      	  </p>
+						    </uib-tab>
+						  </uib-tabset>
+						</div>
+					</div>
+				</a>
+			</div>
+		<h5 class="al-title">Student Courses</h5>
+			<div class="row">
+			 <a href="" ng-click="select_course(course.id,'student')"  ng-repeat='course in courses_as_student'> 
+			 	<div class="col-lg-6 col-md-12 col-sm-12">
+					     <div ba-panel
+					     ba-panel-class="tabs-panel xsmall-panel with-scroll">
+						  <uib-tabset class="tabs-left">
+						    <uib-tab heading="Course">
+						      <p class="text-center">
+					        	{{course.name}}
+					      	  </p>
+						    </uib-tab>
+						  </uib-tabset>
+						</div>
+					</div>
+				</a>
+			</div>
+		<h5 class="al-title">Tutor Courses</h5>
+			<div class="row">
+			 <a href="/#login"  ng-repeat='course in courses_as_tutor'> 
+			 	<div class="col-lg-6 col-md-12 col-sm-12">
+					     <div ba-panel
+					     ba-panel-class="tabs-panel xsmall-panel with-scroll">
+						  <uib-tabset class="tabs-left">
+						    <uib-tab heading="Course">
+						      <p class="text-center">
+					        	{{course.name}}
+					      	  </p>
+						    </uib-tab>
+						  </uib-tabset>
+						</div>
+					</div>
+				</a>
+			</div>
+
+	</div>
+</div>

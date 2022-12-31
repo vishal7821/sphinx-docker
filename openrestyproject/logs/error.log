@@ -1,0 +1,628 @@
+2019/01/23 18:56:36 [emerg] 16257#16257: unknown directive "rker_processes" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:2
+2019/01/23 18:57:06 [emerg] 16268#16268: unknown directive "rker_processes" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:2
+2019/01/23 18:57:23 [emerg] 16274#16274: unknown directive "rker_processes" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:2
+2019/01/23 19:06:50 [emerg] 16959#16959: unknown directive "rker_processes" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:2
+2019/01/23 19:13:32 [emerg] 17172#17172: unknown directive "rker_processes" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:2
+2019/01/23 19:33:31 [error] 17411#17411: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):2: module 'resty.session' not found:
+	no field package.preload['resty.session']
+	no file '/usr/local/openresty/site/lualib/resty/session.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/session/init.ljbc'
+	no file '/usr/local/openresty/lualib/resty/session.ljbc'
+	no file '/usr/local/openresty/lualib/resty/session/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/session.lua'
+	no file '/usr/local/openresty/site/lualib/resty/session/init.lua'
+	no file '/usr/local/openresty/lualib/resty/session.lua'
+	no file '/usr/local/openresty/lualib/resty/session/init.lua'
+	no file './resty/session.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1.0-beta3/resty/session.lua'
+	no file '/usr/local/share/lua/5.1/resty/session.lua'
+	no file '/usr/local/share/lua/5.1/resty/session/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/session.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/session/init.lua'
+	no file '/usr/local/openresty/site/lualib/resty/session.so'
+	no file '/usr/local/openresty/lualib/resty/session.so'
+	no file './resty/session.so'
+	no file '/usr/local/lib/lua/5.1/resty/session.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty/session.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file '/usr/local/openresty/site/lualib/resty.so'
+	no file '/usr/local/openresty/lualib/resty.so'
+	no file './resty.so'
+	no file '/usr/local/lib/lua/5.1/resty.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	content_by_lua(nginx.conf:24):2: in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 19:34:33 [error] 17411#17411: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):2: module 'resty.session' not found:
+	no field package.preload['resty.session']
+	no file '/usr/local/openresty/site/lualib/resty/session.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/session/init.ljbc'
+	no file '/usr/local/openresty/lualib/resty/session.ljbc'
+	no file '/usr/local/openresty/lualib/resty/session/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/session.lua'
+	no file '/usr/local/openresty/site/lualib/resty/session/init.lua'
+	no file '/usr/local/openresty/lualib/resty/session.lua'
+	no file '/usr/local/openresty/lualib/resty/session/init.lua'
+	no file './resty/session.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1.0-beta3/resty/session.lua'
+	no file '/usr/local/share/lua/5.1/resty/session.lua'
+	no file '/usr/local/share/lua/5.1/resty/session/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/session.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/session/init.lua'
+	no file '/usr/local/openresty/site/lualib/resty/session.so'
+	no file '/usr/local/openresty/lualib/resty/session.so'
+	no file './resty/session.so'
+	no file '/usr/local/lib/lua/5.1/resty/session.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty/session.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file '/usr/local/openresty/site/lualib/resty.so'
+	no file '/usr/local/openresty/lualib/resty.so'
+	no file './resty.so'
+	no file '/usr/local/lib/lua/5.1/resty.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+coroutine 0:
+	[C]: in function 'require'
+	content_by_lua(nginx.conf:24):2: in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:00:45 [emerg] 18348#18348: "set" directive is not allowed here in /home/neeraj/projects/openrestyproject/conf/nginx.conf:54
+2019/01/23 20:15:47 [crit] 18645#18645: *1 connect() to unix:///var/run/memcached/memcached.sock failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:15:47 [error] 18645#18645: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:24): in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:17:23 [crit] 18645#18645: *3 connect() to unix:///var/run/memcached/memcached.sock failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:17:23 [error] 18645#18645: *3 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:24): in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:17:40 [crit] 18645#18645: *5 connect() to unix:///var/run/memcached/memcached.sock failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:17:40 [error] 18645#18645: *5 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:24): in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:20:56 [error] 18751#18751: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:24): in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:24:07 [error] 18751#18751: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:24):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:24): in function <content_by_lua(nginx.conf:24):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 20:30:12 [error] 18751#18751: *3 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:40): in function <content_by_lua(nginx.conf:40):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 20:32:38 [error] 18987#18987: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:36):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:36): in function <content_by_lua(nginx.conf:36):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:49:13 [error] 19268#19268: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:36):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:36): in function <content_by_lua(nginx.conf:36):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:51:06 [emerg] 19301#19301: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 20:51:06 [emerg] 19301#19301: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 20:51:06 [emerg] 19301#19301: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 20:51:06 [emerg] 19301#19301: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 20:51:06 [emerg] 19301#19301: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 20:51:06 [emerg] 19301#19301: still could not bind()
+2019/01/23 20:51:39 [error] 19310#19310: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:36):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:36): in function <content_by_lua(nginx.conf:36):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:52:32 [error] 19310#19310: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:36):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:36): in function <content_by_lua(nginx.conf:36):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 20:59:36 [error] 19467#19467: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:00:21 [error] 19467#19467: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:13 [emerg] 19528#19528: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 21:03:13 [emerg] 19528#19528: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 21:03:13 [emerg] 19528#19528: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 21:03:13 [emerg] 19528#19528: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 21:03:13 [emerg] 19528#19528: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 21:03:13 [emerg] 19528#19528: still could not bind()
+2019/01/23 21:03:32 [error] 19537#19537: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *3 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *4 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *5 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *6 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *7 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *8 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *9 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:32 [error] 19537#19537: *10 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080"
+2019/01/23 21:03:51 [error] 19537#19537: *11 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *12 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *13 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *14 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *15 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *16 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *17 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *18 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *19 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:03:51 [error] 19537#19537: *20 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):5: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 21:51:55 [error] 20456#20456: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:37):4: attempt to index field 'data' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:37): in function <content_by_lua(nginx.conf:37):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:01:24 [emerg] 20647#20647: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:24 [emerg] 20647#20647: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:24 [emerg] 20647#20647: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:24 [emerg] 20647#20647: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:24 [emerg] 20647#20647: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:24 [emerg] 20647#20647: still could not bind()
+2019/01/23 22:01:41 [emerg] 20655#20655: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:41 [emerg] 20655#20655: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:41 [emerg] 20655#20655: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:41 [emerg] 20655#20655: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:41 [emerg] 20655#20655: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2019/01/23 22:01:41 [emerg] 20655#20655: still could not bind()
+2019/01/23 22:05:30 [error] 20753#20753: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:53):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:53): in function <content_by_lua(nginx.conf:53):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 22:05:35 [error] 20753#20753: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:53):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:53): in function <content_by_lua(nginx.conf:53):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 22:07:50 [error] 20753#20753: *3 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:53):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:53): in function <content_by_lua(nginx.conf:53):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 22:30:01 [error] 21441#21441: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:52):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:52): in function <content_by_lua(nginx.conf:52):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 22:30:09 [error] 21441#21441: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:36):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:36): in function <content_by_lua(nginx.conf:36):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:30:50 [error] 21441#21441: *3 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:36):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:36): in function <content_by_lua(nginx.conf:36):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *2 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *3 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *4 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *5 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *6 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *7 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *8 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *9 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:37:39 [error] 21680#21680: *10 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: expecting one argument
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1>, client: 127.0.0.1, server: localhost, request: "GET /start HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2019/01/23 22:41:24 [error] 21843#21843: *1 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:57):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:57): in function <content_by_lua(nginx.conf:57):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 22:42:31 [notice] 21880#21880: signal process started
+2019/01/23 22:43:56 [notice] 21900#21900: signal process started
+2019/01/23 22:44:48 [notice] 21925#21925: signal process started
+2019/01/23 22:44:57 [error] 21926#21926: *4 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:51):4: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:51): in function <content_by_lua(nginx.conf:51):1>, client: 127.0.0.1, server: localhost, request: "GET /test HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/start"
+2019/01/23 22:46:01 [error] 21926#21926: *5 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:51):4: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:51): in function <content_by_lua(nginx.conf:51):1>, client: 127.0.0.1, server: localhost, request: "GET /test HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/start"
+2019/01/23 22:46:18 [error] 21926#21926: *6 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:51):4: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:51): in function <content_by_lua(nginx.conf:51):1>, client: 127.0.0.1, server: localhost, request: "GET /test HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/start"
+2019/01/23 22:46:48 [notice] 21972#21972: signal process started
+2019/01/23 22:47:55 [notice] 22003#22003: signal process started
+2019/01/23 23:10:51 [notice] 22729#22729: signal process started
+2019/01/23 23:11:50 [error] 22730#22730: *10 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:59):3: attempt to index local 'session' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:59): in function <content_by_lua(nginx.conf:59):1>, client: 127.0.0.1, server: localhost, request: "GET /destroy HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/test"
+2019/01/23 23:13:45 [notice] 22792#22792: signal process started
+2019/01/23 23:30:02 [notice] 23121#23121: signal process started
+2019/01/24 19:30:27 [notice] 12289#12289: signal process started
+2019/01/24 19:30:35 [error] 12292#12292: *63 "/home/neeraj/projects/openrestyproject/html/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2019/01/24 19:30:35 [error] 12292#12292: *63 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/24 19:34:54 [notice] 12468#12468: signal process started
+2019/01/24 19:35:58 [notice] 12520#12520: signal process started
+2019/01/24 19:43:18 [notice] 12799#12799: signal process started
+2019/01/24 19:45:05 [notice] 12822#12822: signal process started
+2019/01/24 19:45:09 [error] 12823#12823: *76 failed to load inlined Lua code: content_by_lua(nginx.conf:36):4: unfinished string near '")', client: 127.0.0.1, server: localhost, request: "GET /randApp HTTP/1.1", host: "localhost:8080"
+2019/01/24 19:46:17 [notice] 12846#12846: signal process started
+2019/01/24 19:46:21 [error] 12847#12847: *77 failed to load inlined Lua code: content_by_lua(nginx.conf:36):4: ')' expected (to close '(' at line 3) near 'Anonymous', client: 127.0.0.1, server: localhost, request: "GET /randApp HTTP/1.1", host: "localhost:8080"
+2019/01/24 19:47:00 [notice] 12862#12862: signal process started
+2019/01/24 19:47:04 [error] 12863#12863: *78 failed to load inlined Lua code: content_by_lua(nginx.conf:36):4: ')' expected (to close '(' at line 3) near 'Anonymous', client: 127.0.0.1, server: localhost, request: "GET /randApp HTTP/1.1", host: "localhost:8080"
+2019/01/24 19:47:05 [error] 12863#12863: *79 failed to load inlined Lua code: content_by_lua(nginx.conf:36):4: ')' expected (to close '(' at line 3) near 'Anonymous', client: 127.0.0.1, server: localhost, request: "GET /randApp HTTP/1.1", host: "localhost:8080"
+2019/01/24 19:48:33 [notice] 12880#12880: signal process started
+2019/01/24 19:49:30 [notice] 12905#12905: signal process started
+2019/01/24 19:56:25 [notice] 13017#13017: signal process started
+2019/01/24 20:06:03 [notice] 13264#13264: signal process started
+2019/01/24 20:16:22 [emerg] 13630#13630: unknown directive "session.data.login_bit" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:30
+2019/01/24 20:17:50 [notice] 13646#13646: signal process started
+2019/01/25 12:37:19 [emerg] 15767#15767: unexpected "}" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:27
+2019/01/25 12:38:16 [notice] 15819#15819: signal process started
+2019/01/25 12:38:24 [error] 15820#15820: *103 "/home/neeraj/projects/openrestyproject/~/projects/smartgrading-frontend/app/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+2019/01/25 12:38:26 [error] 15820#15820: *103 open() "/home/neeraj/projects/openrestyproject/~/projects/smartgrading-frontend/app/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/25 12:38:43 [error] 15820#15820: *103 open() "/home/neeraj/projects/openrestyproject/~/projects/smartgrading-frontend/app/index.html" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /index.html HTTP/1.1", host: "localhost:8080"
+2019/01/25 12:40:08 [notice] 15959#15959: signal process started
+2019/01/25 12:46:50 [notice] 16184#16184: signal process started
+2019/01/25 12:49:07 [notice] 16260#16260: signal process started
+2019/01/25 12:53:41 [notice] 16391#16391: signal process started
+2019/01/25 13:01:06 [notice] 16518#16518: signal process started
+2019/01/25 13:01:18 [error] 16519#16519: *142 open() "/home/neeraj/projects/smartgrading-frontend/app/static" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /static HTTP/1.1", host: "localhost:8080"
+2019/01/25 13:01:23 [error] 16519#16519: *142 "/home/neeraj/projects/smartgrading-frontend/app/static/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /static/ HTTP/1.1", host: "localhost:8080"
+2019/01/25 13:03:13 [notice] 16553#16553: signal process started
+2019/01/25 14:18:34 [error] 16554#16554: *154 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/25 14:19:23 [notice] 18157#18157: signal process started
+2019/01/25 16:06:13 [emerg] 19824#19824: unknown directive "loation" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:29
+2019/01/25 16:07:07 [notice] 19838#19838: signal process started
+2019/01/25 16:07:12 [error] 19839#19839: *165 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/25 16:14:35 [notice] 20144#20144: signal process started
+2019/01/25 16:14:46 [error] 20145#20145: *180 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: attempt to call field 'say' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:15:06 [error] 20145#20145: *183 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: attempt to call field 'say' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:16:35 [notice] 20178#20178: signal process started
+2019/01/25 16:16:52 [error] 20179#20179: *186 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: attempt to call field 'say' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:38): in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:18:10 [notice] 20259#20259: signal process started
+2019/01/25 16:21:50 [notice] 20326#20326: signal process started
+2019/01/25 16:22:05 [error] 20327#20327: *196 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:22:25 [error] 20327#20327: *197 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:24:04 [error] 20327#20327: *202 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:25:44 [error] 20327#20327: *205 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 16:27:53 [error] 20327#20327: *208 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:14:34 [error] 20327#20327: *211 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:17:20 [error] 20327#20327: *214 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:20:12 [error] 20327#20327: *217 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:20:48 [error] 20327#20327: *220 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:22:00 [error] 20327#20327: *223 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:38):4: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:38):4: in function <content_by_lua(nginx.conf:38):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:28:11 [notice] 21848#21848: signal process started
+2019/01/25 17:28:36 [error] 21849#21849: *226 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/25 17:28:43 [error] 21849#21849: *226 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):3: attempt to index global 'gx' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:40): in function <content_by_lua(nginx.conf:40):1>, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:29:11 [error] 21849#21849: *227 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):3: attempt to index global 'gx' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:40): in function <content_by_lua(nginx.conf:40):1>, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:30:55 [error] 21849#21849: *234 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):3: attempt to index global 'gx' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:40): in function <content_by_lua(nginx.conf:40):1>, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:31:26 [error] 21849#21849: *236 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):3: attempt to index global 'gx' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:40): in function <content_by_lua(nginx.conf:40):1>, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:34:37 [notice] 21954#21954: signal process started
+2019/01/25 17:34:41 [error] 21955#21955: *238 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):6: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:40):6: in function <content_by_lua(nginx.conf:40):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:35:43 [error] 21955#21955: *241 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):6: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:40):6: in function <content_by_lua(nginx.conf:40):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:39:58 [notice] 22490#22490: signal process started
+2019/01/25 17:40:05 [error] 22491#22491: *244 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:40):6: bad argument #1 to 'print' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'print'
+	content_by_lua(nginx.conf:40):6: in function <content_by_lua(nginx.conf:40):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:42:22 [notice] 22539#22539: signal process started
+2019/01/25 17:42:27 [error] 22540#22540: *247 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:42):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:42):7: in function <content_by_lua(nginx.conf:42):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:42:57 [error] 22540#22540: *250 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:42):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:42):7: in function <content_by_lua(nginx.conf:42):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:43:27 [error] 22540#22540: *253 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:42):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:42):7: in function <content_by_lua(nginx.conf:42):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:46:30 [notice] 22651#22651: signal process started
+2019/01/25 17:46:36 [error] 22652#22652: *255 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:42):8: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:42):8: in function <content_by_lua(nginx.conf:42):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/25 17:48:33 [notice] 22680#22680: signal process started
+2019/01/25 17:51:24 [notice] 22765#22765: signal process started
+2019/01/25 17:53:22 [notice] 22820#22820: signal process started
+2019/01/25 20:47:43 [error] 22821#22821: *285 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/25 20:50:28 [error] 22821#22821: *296 open() "/home/neeraj/projects/openrestyproject/html/check" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "POST /check HTTP/1.1", host: "localhost:8080"
+2019/01/26 15:14:00 [notice] 27737#27737: signal process started
+2019/01/26 15:14:06 [error] 27738#27738: *306 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/26 15:18:36 [error] 27738#27738: *312 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 15:18:36 [error] 27738#27738: *312 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:42):7: Expected value but found T_END at character 1
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:42):7: in function <content_by_lua(nginx.conf:42):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 15:29:18 [notice] 29139#29139: signal process started
+2019/01/26 17:11:15 [notice] 31659#31659: signal process started
+2019/01/26 17:17:54 [notice] 32312#32312: signal process started
+2019/01/26 17:17:58 [error] 32313#32313: *380 failed to load inlined Lua code: content_by_lua(nginx.conf:43):7: unexpected symbol near '#', client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 17:20:35 [notice] 32358#32358: signal process started
+2019/01/26 18:26:43 [error] 32359#32359: *397 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 18:27:20 [error] 32359#32359: *402 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 18:27:27 [error] 32359#32359: *402 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/26 18:27:51 [error] 32359#32359: *405 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 18:27:57 [error] 32359#32359: *407 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 18:28:35 [error] 32359#32359: *402 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 18:31:46 [error] 32359#32359: *417 connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 18:58:42 [notice] 2034#2034: signal process started
+2019/01/26 19:00:34 [notice] 2119#2119: signal process started
+2019/01/26 19:01:55 [error] 2120#2120: *433 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: attempt to call global 'log' (a nil value)
+stack traceback:
+coroutine 0:
+	content_by_lua(nginx.conf:41): in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:04:34 [notice] 2306#2306: signal process started
+2019/01/26 19:04:40 [error] 2307#2307: *443 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: bad argument #1 to 'log' (number expected, got nil)
+stack traceback:
+coroutine 0:
+	[C]: in function 'log'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:04:55 [error] 2307#2307: *446 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):6: bad argument #1 to 'log' (number expected, got nil)
+stack traceback:
+coroutine 0:
+	[C]: in function 'log'
+	content_by_lua(nginx.conf:41):6: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:07:15 [notice] 2379#2379: signal process started
+2019/01/26 19:07:21 [error] 2380#2380: *449 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:09:34 [notice] 2519#2519: signal process started
+2019/01/26 19:09:47 [error] 2520#2520: *452 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:15:05 [error] 2520#2520: *455 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:15:36 [error] 2520#2520: *458 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:21:38 [notice] 2774#2774: signal process started
+2019/01/26 19:21:43 [error] 2775#2775: *461 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'decode' (string expected, got table)
+stack traceback:
+coroutine 0:
+	[C]: in function 'decode'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:22:50 [notice] 2791#2791: signal process started
+2019/01/26 19:26:00 [notice] 2858#2858: signal process started
+2019/01/26 19:26:47 [notice] 2872#2872: signal process started
+2019/01/26 19:26:52 [error] 2873#2873: *470 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'say' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'say'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:30:53 [error] 2873#2873: *473 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/26 19:33:25 [notice] 3293#3293: signal process started
+2019/01/26 19:33:49 [error] 3294#3294: *478 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:41):7: bad argument #1 to 'print' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'print'
+	content_by_lua(nginx.conf:41):7: in function <content_by_lua(nginx.conf:41):1> while sending to client, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 19:36:47 [notice] 3385#3385: signal process started
+2019/01/26 19:43:40 [notice] 3732#3732: signal process started
+2019/01/26 19:46:28 [notice] 3866#3866: signal process started
+2019/01/26 19:53:15 [notice] 4037#4037: signal process started
+2019/01/26 19:57:57 [notice] 4189#4189: signal process started
+2019/01/26 22:10:38 [error] 4190#4190: *513 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 22:10:48 [error] 4190#4190: *518 upstream prematurely closed connection while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", subrequest: "/loginApp", upstream: "http://127.0.0.1:8081/login/", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/26 22:32:42 [emerg] 8904#8904: invalid number of arguments in "set" directive in /home/neeraj/projects/openrestyproject/conf/nginx.conf:14
+2019/01/26 22:33:14 [notice] 8915#8915: signal process started
+2019/01/26 23:11:14 [notice] 10053#10053: signal process started
+2019/01/26 23:11:27 [error] 10054#10054: *608 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/27 00:01:57 [notice] 12962#12962: signal process started
+2019/01/27 00:10:11 [notice] 13247#13247: signal process started
+2019/01/27 00:17:18 [notice] 13387#13387: signal process started
+2019/01/27 00:23:14 [emerg] 13507#13507: unexpected "S" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:39
+2019/01/27 00:24:32 [notice] 13522#13522: signal process started
+2019/01/27 00:54:38 [emerg] 14259#14259: unexpected "S" in /home/neeraj/projects/openrestyproject/conf/nginx.conf:40
+2019/01/27 00:56:13 [notice] 14293#14293: signal process started
+2019/01/27 00:58:25 [notice] 14375#14375: signal process started
+2019/01/27 01:01:44 [notice] 14492#14492: signal process started
+2019/01/27 01:06:03 [emerg] 14578#14578: unexpected "." in /home/neeraj/projects/openrestyproject/conf/nginx.conf:40
+2019/01/27 01:06:48 [emerg] 14583#14583: unexpected "." in /home/neeraj/projects/openrestyproject/conf/nginx.conf:40
+2019/01/27 01:08:11 [notice] 14596#14596: signal process started
+2019/01/27 01:08:18 [error] 14597#14597: *753 failed to load inlined Lua code: content_by_lua(nginx.conf:44):6: '}' expected near 'session', client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/27 01:08:48 [error] 14597#14597: *754 failed to load inlined Lua code: content_by_lua(nginx.conf:44):6: '}' expected near 'session', client: 127.0.0.1, server: localhost, request: "POST /login HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/app/"
+2019/01/27 14:03:22 [notice] 18236#18236: signal process started
+2019/01/27 14:03:36 [error] 18237#18237: *755 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/27 14:12:57 [notice] 18468#18468: signal process started
+2019/01/27 14:13:07 [error] 18469#18469: *764 lua entry thread aborted: runtime error: content_by_lua(nginx.conf:42):7: bad argument #1 to 'print' (non-array table found)
+stack traceback:
+coroutine 0:
+	[C]: in function 'print'
+	content_by_lua(nginx.conf:42):7: in function <content_by_lua(nginx.conf:42):1> while sending to client, client: 127.0.0.1, server: localhost, request: "GET /index HTTP/1.1", host: "localhost:8080"
+2019/01/27 14:14:29 [notice] 18493#18493: signal process started
+2019/01/27 14:15:04 [notice] 18508#18508: signal process started
+2019/01/27 14:16:54 [notice] 18540#18540: signal process started
+2019/01/27 14:34:29 [notice] 19480#19480: signal process started
+2019/01/27 14:35:41 [notice] 19507#19507: signal process started
+2019/01/27 14:37:15 [error] 19508#19508: *785 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/27 14:38:08 [notice] 19595#19595: signal process started
+2019/01/27 14:40:58 [notice] 19732#19732: signal process started
+2019/01/27 14:53:11 [notice] 19890#19890: signal process started
+2019/01/27 14:53:28 [error] 19891#19891: *799 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/27 15:21:45 [notice] 20385#20385: signal process started
+2019/01/27 15:21:53 [error] 20386#20386: *803 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/27 15:28:10 [notice] 20474#20474: signal process started
+2019/01/27 15:55:13 [notice] 20896#20896: signal process started
+2019/01/27 16:08:57 [notice] 21077#21077: signal process started
+2019/01/27 16:09:45 [notice] 21191#21191: signal process started
+2019/01/27 21:38:54 [notice] 23791#23791: signal process started
+2019/01/27 21:39:06 [error] 23792#23792: *832 open() "/home/neeraj/projects/openrestyproject/html/favicon.ico" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080"
+2019/01/27 21:46:30 [notice] 23966#23966: signal process started

@@ -1,0 +1,337 @@
+<ba-sidebar></ba-sidebar>
+<page-top></page-top>
+<back-top></back-top>
+
+
+ <div class="al-main">
+    <div class="al-content">
+        <content-top></content-top>
+            <div class="widgets">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ba-panel ba-panel-title="Subevent Creation" ba-panel-class="with-scroll">
+                            <ba-wizard>
+                                <ba-wizard-step title="Subevent Basic Info" form="subevent_creation">
+                                    <form name="subevent_creation_form" novalidate>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" class="form-control" id="subevent_name" name="subevent.name" placeholder="Name" ng-model="subevent.name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="type">Type</label>
+                                                      <ui-select ng-model="subevent.type"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               ng-disabled="false"
+                                                               append-to-body="false"
+                                                               search-enabled="false">
+                                                      <ui-select-match placeholder="Select Subevent Type">
+                                                        <span> {{subevent.type.text}}</span>
+                                                      </ui-select-match>
+                                                      <ui-select-choices repeat="type in types">
+                                                        <span ng-bind-html="type.text"></span>
+                                                      </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="name">Start Time</label>
+                                                    <input id="subevent.start_time" type="datetime-local"  class="form-control" name="start_time" 
+                                                    ng-model = 'subevent.start_time' value="2017-06-01T08:30" required autofocus>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="end_time">End Time</label>
+                                                    <input id="subevent.end_time" type="datetime-local"  class="form-control" name="end_time"  ng-model ='subevent.end_time' autofocus>
+                                                </div>
+                                                <div class="form-group has-feedback">
+                                                    <label for="display_end_time">Display Late End Time</label>
+                                                    <input id="display_end_time" type="datetime-local"  class="form-control" name="display_end_time" ng-model='subevent.display_end_time'  >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="allow_late_ending">Is Late Ending Allowed?</label>
+                                                      <ui-select ng-model="subevent.allow_late_ending"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               ng-disabled="false"
+                                                               append-to-body="false"
+                                                               search-enabled="false">
+                                                      <ui-select-match placeholder="Allow Late Ending">
+                                                        <span> {{subevent.allow_late_ending.text}}</span>
+                                                      </ui-select-match>
+                                                      <ui-select-choices repeat="allow_late_ending in allow_late_ending_values">
+                                                        <span ng-bind-html="allow_late_ending.text"></span>
+                                                      </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                                <div ng-show = 'subevent.allow_late_ending.value'>
+                                                    <div class="form-group">
+                                                        <label for="late_end_time">Late End Time</label>
+                                                        <input id="late_end_time" type="datetime-local"  class="form-control" name="late_end_time">
+                                                    </div>
+                                                    <div class="form-group has-feedback">
+                                                        <label for="display_late_end_time">Display Late End Time</label>
+                                                        <input id="display_late_end_time" type="datetime-local"  class="form-control" name="display_late_end_time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <nav>
+                                        <ul class="pager ba-wizard-pager">
+                                            <li class="previous"><button  ng-disabled="$baWizardController.isFirstTab()" ng-click="$baWizardController.previousTab()" type="button" class=" btn btn-primary"><span aria-hidden="true">&larr;</span> previous</button></li>
+                                            <li class="next"> <button ng-disabled="$baWizardController.isLastTab()" ng-click="$baWizardController.nextTab()" type="button" class="btn btn-primary">next <span aria-hidden="true">&rarr;</span></button></li>
+                                        </ul>
+                                    </nav>
+                                </ba-wizard-step>
+
+
+
+                               <!--  type specific info -->
+                                <ba-wizard-step title="Subevent type specific Info" form="subevent_creation">
+                                    <div ng-show="subevent.type.value == 'SUPLOAD'">
+                                        <form name="subevent_creation_form" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="type">Subevent Type</label>
+                                                        <input type="text" class="form-control" id="subevent_name" name="name" ng-model="subevent.type.text" readonly>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="submission_mode">Submission Mode</label>
+                                                          <ui-select ng-model="subevent.SBM"
+                                                                   class="btn-group bootstrap-select form-control"
+                                                                   ng-disabled="false"
+                                                                   append-to-body="false"
+                                                                   search-enabled="false">
+                                                          <ui-select-match placeholder="submission mode">
+                                                            <span> {{subevent.SBM.text}}</span>
+                                                          </ui-select-match>
+                                                          <ui-select-choices repeat="SBM in sbms">
+                                                            <span ng-bind-html="SBM.text"></span>
+                                                          </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                   
+                                                    <div class="form-group">
+                                                        <label for="submission_group_scheme">Submission Group Scheme</label>
+                                                          <ui-select ng-model="subevent.SGS"
+                                                                   class="btn-group bootstrap-select form-control"
+                                                                   ng-disabled="false"
+                                                                   append-to-body="false"
+                                                                   search-enabled="false">
+                                                          <ui-select-match placeholder="submission group scheme">
+                                                            <span> {{subevent.SGS.text}}</span>
+                                                          </ui-select-match>
+                                                          <ui-select-choices repeat="SGS in sgss">
+                                                            <span ng-bind-html="SGS.text"></span>
+                                                          </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="question_set_scheme">Question Set Scheme</label>
+                                                          <ui-select ng-model="subevent.QSS"
+                                                                   class="btn-group bootstrap-select form-control"
+                                                                   ng-disabled="false"
+                                                                   append-to-body="false"
+                                                                   search-enabled="false">
+                                                          <ui-select-match placeholder="question set scheme">
+                                                            <span> {{subevent.QSS.text}}</span>
+                                                          </ui-select-match>
+                                                          <ui-select-choices repeat="QSS in qsss">
+                                                            <span ng-bind-html="QSS.text"></span>
+                                                          </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="allow_late_ending">Need Access Code?</label>
+                                                          <ui-select ng-model="subevent.NAC"
+                                                                   class="btn-group bootstrap-select form-control"
+                                                                   ng-disabled="false"
+                                                                   append-to-body="false"
+                                                                   search-enabled="false">
+                                                          <ui-select-match placeholder="Allow Late Ending">
+                                                            <span> {{subevent.NAC.text}}</span>
+                                                          </ui-select-match>
+                                                          <ui-select-choices repeat="NAC in nacs">
+                                                            <span ng-bind-html="NAC.text"></span>
+                                                          </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="allow_suppplementary">Allow supplementary?</label>
+                                                          <ui-select ng-model="subevent.SUP"
+                                                                   class="btn-group bootstrap-select form-control"
+                                                                   ng-disabled="false"
+                                                                   append-to-body="false"
+                                                                   search-enabled="false">
+                                                          <ui-select-match placeholder="Allow SUPplementary?">
+                                                            <span> {{subevent.SUP.text}}</span>
+                                                          </ui-select-match>
+                                                          <ui-select-choices repeat="SUP in nacs">
+                                                            <span ng-bind-html="SUP.text"></span>
+                                                          </ui-select-choices>
+                                                        </ui-select>        
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="main_upload_file_size">Main upload File Size</label>
+                                                        <input type="number" class="form-control" id="subevent_name" name="MUS" ng-model="subevent.MUS">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="MUT">Main upload File Type</label>
+                                                        <input type="text" class="form-control" id="MUT" name="name" ng-model="subevent.MUT" ng-list>
+                                                    </div>
+                                                    <div ng-show="subevent.SUP.value">
+                                                        <div class="form-group">
+                                                            <label for="SUS">Supplementart File Upload Size</label>
+                                                            <input type="number" class="form-control" id="subevent_name" name="name" ng-model="subevent.SUS">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="SUT">Supplementart File Type</label>
+                                                            <input type="text" class="form-control" id="SUT" name="SUT" ng-model="subevent.SUT" ng-list>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="del">Delay Parameter(mean and std deviation i.e 0,1)</label>
+                                                        <input type="text" class="form-control" id="DEL" name="DEL" ng-model="subevent.DEL" ng-list>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="COL">Color</label>
+                                                        <input type="text" class="form-control" id="COL" name="COL" ng-model="subevent.COL">
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label for="CSV_FILE">CSV File</label>
+                                                        <input type = "file" file-model = "subevent.CSV_FILE"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div ng-show="subevent.type.value == 'GUPLOAD'">
+                                        <form name="subevent_creation_form" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="type">Subevent Type</label>
+                                                        <input type="text" class="form-control" id="subevent_name" name="name" ng-model="subevent.type.text" readonly>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="submission_mode">Grading Duty Scheme</label>
+                                                          <ui-select ng-model="subevent.GDS"
+                                                                   class="btn-group bootstrap-select form-control"
+                                                                   ng-disabled="false"
+                                                                   append-to-body="false"
+                                                                   search-enabled="false">
+                                                          <ui-select-match placeholder="grading duty scheme">
+                                                            <span> {{subevent.GDS.text}}</span>
+                                                          </ui-select-match>
+                                                          <ui-select-choices repeat="GDS in gdss">
+                                                            <span ng-bind-html="GDS.text"></span>
+                                                          </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                   
+                                                    <div ng-If="subevent.GDS.value ==='MQR$rep' || subevent.GDS.value ==='RQR$rep' || subevent.GDS.value ==='RSR$rep'">                                                     
+                                                       <div class="form-group">
+                                                          <label for="main_upload_file_size">Repeatation Factor</label>
+                                                          <input type="number" class="form-control" id="subevent_name" name="REP" ng-model="subevent.REP">
+                                                      </div>
+                                                    </div> 
+
+                                                    <div class="form-group">
+                                                    <label for="name">Related submission event</label>
+                                                    <input type="text" class="form-control" id="subevent_name" name="subevent.name" placeholder="Related submission event" ng-model="subevent.gen_subevent" required>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                   
+                                                   <div ng-If=" subevent.GDS.value ==='RSS' || subevent.GDS.value ==='RQR$rep' || subevent.GDS.value ==='RQS' || subevent.GDS.value ==='RSR$rep'">  
+                                                     <div class="form-group">
+                                                          <label for="CSV_FILE">Graders List(.csv file)</label>
+                                                          <input type = "file" file-model = "subevent.GLIST"/>
+                                                      </div>
+                                                  </div>
+                                                  <div ng-If=" subevent.GDS.value ==='MQS' || subevent.GDS.value ==='MQR$rep'">
+                                                    <div class="form-group">
+                                                        <label for="CSV_FILE">Grading duty assignment file(.csv file)</label>
+                                                        <input type = "file" file-model = "subevent.CSV_FILE"/>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div ng-show="subevent.type.value == 'RGREQ'">
+                                        <form name="subevent_creation_form" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"
+                                                        <label for="name">Subevent Type</label>
+                                                        <input type="text" class="form-control" id="subevent_name" name="name" ng-model="subevent.type.text" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div ng-show="subevent.type.value == 'RGUPLOAD'">
+                                        <form name="subevent_creation_form" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"
+                                                        <label for="name">Subevent Type</label>
+                                                        <input type="text" class="form-control" id="subevent_name" name="name" ng-model="type" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div ng-show="subevent.type.value == 'QVIEW'">
+                                        <form name="subevent_creation_form" novalidate>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"
+                                                        <label for="name">Subevent Type</label>
+                                                        <input type="text" class="form-control" id="subevent_name" name="name" ng-model="type.text" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <nav>
+                                        <ul class="pager ba-wizard-pager">
+                                            <li class="previous"><button  ng-disabled="$baWizardController.isFirstTab()" ng-click="$baWizardController.previousTab();" type="button" class=" btn btn-primary"><span aria-hidden="true">&larr;</span> previous</button></li>
+                                            <li class="next"> <button ng-disabled="$baWizardController.isLastTab()" ng-click="$baWizardController.nextTab();createSubevent()" type="button" class="btn btn-primary">next <span aria-hidden="true">&rarr;</span></button></li>
+                                        </ul>
+                                    </nav>
+                                </ba-wizard-step>
+                                <ba-wizard-step title="Finish">
+                                    <form class="form-horizontal" name="vm.finishForm" novalidate>
+                                        Process Completed!
+                                    </form>
+                                    <nav>
+                                        <ul class="pager ba-wizard-pager">
+                                            <li class="previous"><button  ng-disabled="$baWizardController.isFirstTab()" ng-click="$baWizardController.previousTab()" type="button" class=" btn btn-primary"><span aria-hidden="true">&larr;</span> previous</button></li>
+                                            <li class="next"> <button ng-disabled="$baWizardController.isLastTab()" ng-click="$baWizardController.nextTab()" type="button" class="btn btn-primary">next <span aria-hidden="true">&rarr;</span></button></li>
+                                        </ul>
+                                    </nav>
+                                </ba-wizard-step>
+                            </ba-wizard>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

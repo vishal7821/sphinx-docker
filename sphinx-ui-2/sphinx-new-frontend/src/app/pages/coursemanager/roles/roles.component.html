@@ -1,0 +1,222 @@
+<nb-card>
+  <nb-card-header>
+    <h5>Role Manager</h5>
+  </nb-card-header>
+
+  <nb-card-body>
+    <nb-card>
+      <nb-card-header>
+        Add New Role
+      </nb-card-header>
+    
+      <nb-card-body>
+
+    
+            <div class="row">
+              <div class="col-sm-4">
+                <input type="text" nbInput [(ngModel)]="new_role.name" fullWidth id="inputName"
+                  placeholder="Enter Role Name">
+              </div>
+    
+              
+    
+              <div class="col-sm-4">
+                <nb-select fullWidth multiple placeholder="Select Single/Multiple MetaRole" [(ngModel)]="new_role.actions">
+                  <nb-option *ngFor="let mrole of role_actions" [value]="mrole.id">
+                    {{mrole.text}}</nb-option>
+                </nb-select>
+              </div>
+            
+              <div class="offset-md-2 col-sm-2">
+                <button nbButton size="medium" outline  (click)="addRole()">
+                  <nb-icon size="large" icon="save-outline"></nb-icon>Create
+                </button>
+              </div>
+            </div>
+          
+       
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card *ngIf = "isEditForm">
+      <nb-card-header>
+        Edit Role
+      </nb-card-header>
+    
+      <nb-card-body >
+
+    
+            <div class="row">
+              <div class="col-sm-3">
+                <input type="text" nbInput [(ngModel)]="edit_role.name" fullWidth id="inputName"
+                  placeholder="Enter Role Name">
+              </div>
+    
+              
+    
+              <div class="col-sm-4">
+                <nb-select fullWidth multiple placeholder="Select Single/Multiple MetaRole" [(ngModel)]="edit_role.actions">
+                  <nb-option *ngFor="let mrole of role_actions" [value]="mrole.id">
+                    {{mrole.text}}</nb-option>
+                </nb-select>
+              </div>
+            
+              <div class="offset-md-1 col-sm-2">
+                <button nbButton size="small" outline  status="success" (click)="onEditSubmit()">
+                  <nb-icon size="large" icon="save-outline"></nb-icon>Save
+                </button>
+              </div>
+              <div class="col-sm-1">
+                <button nbButton size="small"  outline status="danger" (click)="toggleEditForm()">
+                  <nb-icon icon="close-outline" size="medium"></nb-icon>Cancel
+                </button>
+              </div>
+            </div>
+          
+       
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>
+        Roles
+      </nb-card-header>
+    
+      <nb-card-body>
+        <nb-list >
+          <nb-list-item>
+            <div class="row ">
+    
+              <div class="col-6 col-sm-1" >
+                <div style="text-align:center;"><strong>#</strong></div>
+              </div>
+              <div class="col-6 col-sm-4" >
+                <div><strong>Name</strong></div>
+              </div>
+              <div class="col-6 col-sm-5">
+                <div><strong>Action MetaRoles</strong></div>
+              </div>
+              <div class="col-6 col-sm-2">
+                <div style="text-align:center;"><strong>Actions</strong></div>
+              </div>
+            </div>
+          </nb-list-item>
+        </nb-list>
+    
+        <nb-list *ngIf="course_roles">
+          <nb-list-item *ngFor="let role of course_roles; index as i">
+            <div class="row ">
+              <div class="col-6 col-sm-1">
+                <div style="text-align:center;">{{role.id}}</div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div>{{role.name}}</div>
+              </div>
+              <div class="col-6 col-sm-6">
+                <span *ngFor="let mrole of role.str_actions; index as j"> {{mrole}}<span *ngIf="role.str_actions.length-1 != j">,</span> </span>
+              </div>
+              <div class="col-6 col-sm-2">
+                <div style="text-align:center;">
+                  <button nbButton ghost size="tiny" status="primary" (click)="onEditRole(i)">
+                    <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                  </button>
+                  <button nbButton ghost size="tiny" status="primary" (click)="onDeleteRole(i)">
+                    <nb-icon [icon]="'trash-b'" pack="ion"></nb-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </nb-list-item>
+        </nb-list>
+    
+    
+       
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>
+        Meta Roles Info
+      </nb-card-header>
+    
+      <nb-card-body>
+        <div class="lists row">
+          <div class = "col-md-2 col-lg-2 col-xxxl-2">
+            <nb-card class="list-card">
+              <nb-card-header>Auditor</nb-card-header>
+              <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let action of auditor_actions">
+                    {{ action }}
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+            </nb-card>
+          </div>
+          <div class = "col-md-2 col-lg-2 col-xxxl-2">
+            <nb-card class="list-card">
+              <nb-card-header>Student</nb-card-header>
+              <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let action of student_actions">
+                    {{ action }}
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+            </nb-card>
+          </div>
+          <div class = "col-md-2 col-lg-2 col-xxxl-2">
+            <nb-card class="list-card">
+              <nb-card-header>Grader</nb-card-header>
+              <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let action of grader_actions">
+                    {{ action }}
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+            </nb-card>
+          </div>
+          <div class = "col-md-2 col-lg-2 col-xxxl-2">
+            <nb-card class="list-card">
+              <nb-card-header>Tutor</nb-card-header>
+              <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let action of tutor_actions">
+                    {{ action }}
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+            </nb-card>
+          </div>
+          <div class = "col-md-2 col-lg-2 col-xxxl-2">
+            <nb-card class="list-card">
+              <nb-card-header>Course Admin</nb-card-header>
+              <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let action of cadmin_actions">
+                    {{ action }}
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+            </nb-card>
+          </div>
+          <div class = "col-md-2 col-lg-2 col-xxxl-2">
+            <nb-card class="list-card">
+              <nb-card-header>Instructor</nb-card-header>
+              <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let action of instructor_actions">
+                    {{ action }}
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

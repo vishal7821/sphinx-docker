@@ -1,0 +1,293 @@
+<div class=" row">
+    <!-- style="width:70%; height: 70%;" -->
+ 
+    <div class="col-md-6" *ngIf="!is_interactive">
+        <div>
+        
+            <div  style="padding:1px;border:thin solid black;" *ngIf = "slides.length !=0">
+                <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval">
+                        <slide *ngFor="let slide of slides; let index=index">
+                            <img src="data:image/jpg;base64,{{slide.image}}" alt="Upload Question set file" style="display: block; height: 100%; width: 100%;">
+                        
+                            <div class="carousel-caption">
+                            <p>{{slide.text}}</p>
+                            </div>
+                        </slide>
+                    </carousel>
+         </div>  
+        </div>
+
+    </div>
+
+
+    <div class="col-md-6" *ngIf="is_interactive">
+        <nb-card status="primary">
+            <nb-card-header>
+                <h5 style="color: white;">Question</h5>
+            </nb-card-header>
+            <nb-card-body>
+                <br>
+                <div style="font-family: 'Times New Roman', Times, serif;  text-shadow: 0.2px 0.4px;" [innerHTML]= "curr_q.optionText"></div>
+               
+
+                <div *ngIf="curr_q.type == 'MCQRB'"> 
+                    <br>
+                    <table class="table table-hover">
+                       <thead>
+                         <tr
+                         style="
+                         border-bottom-width: 0;
+                         border-bottom-color: #3366ff;
+                         font-family: Open Sans, sans-serif;
+                         font-size: 0.9375rem;
+                         font-weight: 600;
+                         line-height: 1.5rem;">
+                            <th style="text-align: center;">Label</th>
+                            <th style="text-align: center;">Option</th>
+                            <th style="text-align: center;">Student's Response</th>     
+                            <th style="text-align: center;">Gold Solution</th>
+
+                         </tr>
+                       </thead>
+                       <tbody>
+                            <tr *ngFor="let r of optionsObject; index as i">
+                               <td style="text-align: center;" [innerHTML]="r.labelText"></td>
+                               <td style="text-align: center;" [innerHTML]="r.optionText"></td>
+                               <td style="text-align: center;" *ngIf="r.response == 'true'">
+                                <nb-checkbox status="primary" [checked]="true" ></nb-checkbox>
+                               </td>
+                               <td *ngIf="r.response != 'true'"></td>  
+                                <td style="text-align: center;" *ngIf="r.is_Correct == true" style="text-align: center;">  
+                                  <nb-checkbox status="success" [checked]="true"></nb-checkbox>
+                                </td>
+                                <td *ngIf="r.is_Correct != true"></td>
+                            </tr>
+                       </tbody>
+                    </table>  
+                    </div>
+                    
+        
+                    <div *ngIf="curr_q.type == 'MCQCB'"> 
+                        <br>
+                       <table class="table table-hover">
+                          <thead>
+                            <tr>
+                               <th style="text-align: center;">Label</th>
+                               <th style="text-align: center;">Option</th>
+                               <th style="text-align: center;">Student's Response</th>     
+                               <th style="text-align: center;">Gold Solution</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                               <tr *ngFor="let r of optionsObject; index as i">
+                                <td style="text-align: center;" [innerHTML]="r.labelText"></td>
+                                <td style="text-align: center;" [innerHTML]="r.optionText"></td>
+                                <td style="text-align: center;"  *ngIf="r.response == 'true'">
+                                    <nb-checkbox status="primary" [checked]="true"></nb-checkbox>
+                                </td>
+                                <td *ngIf="r.response != 'true'"></td>  
+                                <td style="text-align: center;" *ngIf="r.is_Correct == true">  
+                                    <nb-checkbox status="success" [checked]="true"></nb-checkbox>
+                                </td>
+                                <td *ngIf="r.is_Correct != true"></td>
+                               </tr>
+                          </tbody>
+                       </table>  
+                       </div> 
+        
+                    
+                    <div *ngIf="curr_q.type == 'TXT'" >
+
+                        <br>   
+                        <nb-card accent="primary">
+                            <br>
+                            <h6 style="text-align: center; color: #3366ff;">Student's Response</h6>
+                            <br>
+                           <nb-list>
+                             <nb-list-item [innerHTML]="curr_q.responseText"></nb-list-item>
+                           </nb-list>
+                        </nb-card>
+                        <nb-card accent="success">
+                           <br>
+                              <h6 style="text-align: center; color: #00d68f;">Gold Solution</h6><br>
+                           <nb-list>
+                             <nb-list-item [innerHTML]="curr_q.solutionText"></nb-list-item>
+                           </nb-list>
+                        </nb-card> 
+                         
+                    </div>
+                  
+
+
+
+            </nb-card-body>
+        </nb-card>
+        
+    </div>
+
+
+    <!-- <div class="col-md-1"></div> -->
+    <div class="col-md-6">
+        <nb-card size="giant" status="primary">
+            <nb-card-header>
+                <h5 style="color: white;">Marks, Rubrics and Regrade Pane</h5>
+            </nb-card-header>
+            <nb-card-body>
+            
+                <nb-tabset fullWidth>
+                    <nb-tab tabTitle="View Grades">
+                        <div class="row">
+
+
+                            <div class="col-6 col-sm-6">
+                                <h6>{{curr_q.question_title}}, Total Marks: {{curr_q.graded_marks}}/{{curr_q.question_marks}} </h6>
+                            </div>
+                            <div class="col-6 col-sm-6">
+                                Grade aggregation method: {{my_marks.aggregation_method}}
+                            </div>
+
+                        </div>
+                        <nb-accordion>
+                            <nb-accordion-item *ngFor="let gd of curr_q.grading_duties; index as i">
+
+                                <nb-accordion-item-header>
+                                    GraderID: {{gd.main_id}}
+                                    <!-- Grades: {{gd.aggregate_marks}}/{{curr_q.question_marks}} -->
+                                </nb-accordion-item-header>
+                                <nb-accordion-item-body>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Marks</th>
+                                                <th>Rubric</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let rubric of gd.question_rubrics; index as j">
+                                                <td>
+                                                    <nb-checkbox [ngModel]="rubric.is_selected" status="primary">
+                                                        {{rubric.marks}}</nb-checkbox>
+                                                </td>
+                                                <td>{{rubric.text}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                        
+                                    </table>
+                                    <nb-list>
+                                        <nb-list-item>
+                                            Marks Adjustment: {{gd.marks_adjustment}}
+                                        </nb-list-item>
+                                        <nb-list-item>
+                                            Grader's Comment: {{gd.grader_comment}} <span
+                                                *ngIf="!gd.grader_comment">--</span>
+                                        </nb-list-item>
+                                    </nb-list>
+                                </nb-accordion-item-body>
+                            </nb-accordion-item>
+
+                            <nb-accordion-item *ngIf="rgd != null">
+
+                                <nb-accordion-item-header>
+                                    ReGrader
+                                    <!-- Grades: {{gd.aggregate_marks}}/{{curr_q.question_marks}} -->
+                                </nb-accordion-item-header>
+                                <nb-accordion-item-body>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Marks</th>
+                                                <th>Rubric</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let rubric of rgd.question_rubrics; index as j">
+                                                <td>
+                                                    <nb-checkbox [ngModel]="rubric.is_selected" status="primary">
+                                                        {{rubric.marks}}</nb-checkbox>
+                                                </td>
+                                                <td>{{rubric.text}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                        
+                                    </table>
+                                    <nb-list>
+                                        <nb-list-item>
+                                            Marks Adjustment: {{rgd.marks_adjustment}}
+                                        </nb-list-item>
+                                        <nb-list-item>
+                                            Grader's Comment: {{rgd.grader_comment}} <span
+                                                *ngIf="!rgd.grader_comment">--</span>
+                                        </nb-list-item>
+                                    </nb-list>
+                                </nb-accordion-item-body>
+                            </nb-accordion-item>
+
+                        </nb-accordion>
+
+                    </nb-tab>
+                    <nb-tab tabTitle="Regrading request">
+
+                        <nb-chat title="Regrading Request Messages" size="small" status="info">
+                            <nb-chat-message *ngFor="let message of messages" [type]="message.type"
+                                [message]="message.text" [reply]="message.reply" [sender]="message.user.name"
+                                ></nb-chat-message>
+                            <!-- <nb-chat-form (send)="sendMessage($event, 'Jake', 'http://www.reactiongifs.com/r/wnd1.gif', true)" [showButton]="true" [dropFiles]="false">
+                                                                        </nb-chat-form> -->
+
+                        </nb-chat>
+                        <!-- <div class="form-group row">
+                                                                          
+                                                                                    <div class="offset-md-4 text-center">
+                                                                                            <button nbButton size="small" >Create Regrade Request</button>
+                                                                                    </div>
+                                                                            
+                                                                          </div> -->
+                        <div class="form-group row">
+                            <!-- <label for="inputcomment" class="label col-sm-3 col-form-label">Comments</label> -->
+                            <div class="col-sm-12">
+                                <textarea type="text" name="comment" nbInput fullWidth id="inputcomment" [(ngModel)]="student_comment"
+                                    placeholder="Enter Regrade request here"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-6 col-sm-12 text-center">
+                                <button nbButton status="success" outline size="small" (click)="addRegradeRequest()">Submit</button>
+                            </div>
+                        </div>
+                    </nb-tab>
+                </nb-tabset>
+
+                <!-- </div> -->
+                <!-- </div> -->
+
+            </nb-card-body>
+            <nb-card-footer>
+                <div class="row">
+                    
+                    <!-- <div class="row col-6 col-sm-6 "> -->
+                    <div class="col-6 col-sm-3 text-center">
+                        <button nbButton outline (click)="onPrev()" size="medium">Prev Q.</button>
+                    </div>
+                    <div class="col-6 col-sm-6 " style="text-align: center;">
+                            <!-- <a routerLink="/pages/myevents/gradeView/">Go To GradeView Sheet</a> -->
+                            <a href="#" onclick="return false" (click)="gotoGradeViewManager()">
+                                <u> Go To GradeSheet</u>
+                              </a>
+                        </div>
+                    <div class="col-6 col-sm-3 text-center">
+                        <button nbButton outline (click)="onNext()" size="medium">Next Q.</button>
+                    </div>
+                    <!-- </div> -->
+
+
+
+                </div>
+
+            </nb-card-footer>
+
+        </nb-card>
+
+    </div>

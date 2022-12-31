@@ -1,0 +1,50 @@
+::ng-deep .carousel-control-next-icon, ::ng-deep .carousel-control-prev-icon {
+    background-image: none;
+    font-family: 'Ionicons';
+    color: #005598;
+    // display: inline-block;
+    // font-family: "Ionicons";
+    // speak: none;
+    // font-style: normal;
+    // font-weight: normal;
+    // font-variant: normal;
+    // text-transform: none;
+    // text-rendering: auto;
+    font-size: 32px;
+    // line-height: 1;
+    }
+    
+    ::ng-deep .carousel-control-prev-icon::before {
+    content: '\f360';
+    }
+    
+    ::ng-deep .carousel-control-next-icon::before {
+    content: '\f362';
+    }
+
+    .expand {
+        background-image: none;
+        font-family: 'Ionicons';
+        color: #005598;
+        content: '\f362';
+    }
+
+::ng-deep .carousel-indicators li {
+    // display: inline-block;
+    // width: 48px;
+    // height: 48px;
+    // margin: 10px;
+    // text-indent: 0;
+    // cursor: pointer;
+    // border: none;
+    // border-radius: 50%;
+    background-color: #000000;
+    // box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+    }
+    ::ng-deep .carousel-indicators .active {
+        // width: 48px;
+        // height: 48px;
+        // margin: 10px;
+        background-color: #3f4bf5;
+    }
+    nb-checkbox .native-input:disabled + .custom-checkbox nb-icon { color: #abafb7; }

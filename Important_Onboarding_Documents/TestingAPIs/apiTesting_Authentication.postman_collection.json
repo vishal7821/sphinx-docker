@@ -1,0 +1,316 @@
+{
+	"variables": [],
+	"info": {
+		"name": "apiTesting_Authentication",
+		"_postman_id": "88fc24a2-3986-23a1-f1f5-f0a374d6c4ca",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "homepage",
+			"request": {
+				"url": "http://127.0.0.1:8000/auth/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "c63f5b41-8a3a-44d9-a785-63cd95e06006",
+					"name": "login",
+					"originalRequest": {
+						"url": "http://127.0.0.1:8000/auth/",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "8627",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 10 Apr 2019 11:51:47 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "WSGIServer/0.2 CPython/3.7.3",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						}
+					],
+					"cookie": [],
+					"responseTime": 94,
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n  <title>Page not found at /auth/</title>\n  <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n  <style type=\"text/css\">\n    html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body * * { padding:0; }\n    body { font:small sans-serif; background:#eee; color:#000; }\n    body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal; margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal; }\n    table { border:none; border-collapse: collapse; width:100%; }\n    td, th { vertical-align:top; padding:2px 3px; }\n    th { width:12em; text-align:right; color:#666; padding-right:.5em; }\n    #info { background:#f6f6f6; }\n    #info ol { margin: 0.5em 4em; }\n    #info ol li { font-family: monospace; }\n    #summary { background: #ffc; }\n    #explanation { background:#eee; border-bottom: 0px none; }\n  </style>\n</head>\n<body>\n  <div id=\"summary\">\n    <h1>Page not found <span>(404)</span></h1>\n    <table class=\"meta\">\n      <tr>\n        <th>Request Method:</th>\n        <td>GET</td>\n      </tr>\n      <tr>\n        <th>Request URL:</th>\n        <td>http://127.0.0.1:8000/auth/</td>\n      </tr>\n      \n    </table>\n  </div>\n  <div id=\"info\">\n    \n      <p>\n      Using the URLconf defined in <code>SmartGrader.urls</code>,\n      Django tried these URL patterns, in this order:\n      </p>\n      <ol>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^login/$\n                [name='login']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^logout/$\n                [name='logout']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^account/$\n                [name='account']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^password/change/$\n                [name='password_change']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^reset/password/$\n                [name='reset_password']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^confirm/reset/password/$\n                [name='confirm_reset_password']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^csrf_token/$\n                [name='csrf_token']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/$\n                [name='course']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/roles/$\n                [name='role_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/roles/(?P&lt;role_id&gt;[\\w\\-]+)/$\n                [name='role_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topics/$\n                [name='topic_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='topic_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topics/$\n                [name='topic_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='topic_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/sections/$\n                [name='section_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/section/(?P&lt;section_id&gt;[\\w\\-]+)/$\n                [name='section_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/enrollments/$\n                [name='enrollment_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/enrollment/(?P&lt;enrollment_id&gt;[\\w\\-]+)/$\n                [name='enrollment_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignments/$\n                [name='assignments-list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)$\n                [name='assignments-detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_sets/$\n                [name='question_set_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/$\n                [name='question_set_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question_file/$\n                [name='question_set_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question_file/images/$\n                [name='question_set_file_images']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/solution_file/$\n                [name='question_set_solution_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/supplementary_file/$\n                [name='question_set_supplementary_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/questions/$\n                [name='question_List']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/$\n                [name='question_Detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/rubrics/$\n                [name='rubric_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/rubric/(?P&lt;rubric_id&gt;[\\w\\-]+)/$\n                [name='rubric_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='link_question_topic']\n            \n          </li>\n        \n      </ol>\n      <p>\n        \n        The current path, <code>auth/</code>, didn't match any of these.\n      </p>\n    \n  </div>\n\n  <div id=\"explanation\">\n    <p>\n      You're seeing this error because you have <code>DEBUG = True</code> in\n      your Django settings file. Change that to <code>False</code>, and Django\n      will display a standard 404 page.\n    </p>\n  </div>\n</body>\n</html>\n"
+				},
+				{
+					"id": "3cb8b2be-0117-42bf-8ac2-f59542fdc205",
+					"name": "homepage",
+					"originalRequest": {
+						"url": "http://127.0.0.1:8000/auth/",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "8627",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 10 Apr 2019 12:20:42 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "WSGIServer/0.2 CPython/3.7.3",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						}
+					],
+					"cookie": [],
+					"responseTime": 31,
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n  <title>Page not found at /auth/</title>\n  <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n  <style type=\"text/css\">\n    html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body * * { padding:0; }\n    body { font:small sans-serif; background:#eee; color:#000; }\n    body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal; margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal; }\n    table { border:none; border-collapse: collapse; width:100%; }\n    td, th { vertical-align:top; padding:2px 3px; }\n    th { width:12em; text-align:right; color:#666; padding-right:.5em; }\n    #info { background:#f6f6f6; }\n    #info ol { margin: 0.5em 4em; }\n    #info ol li { font-family: monospace; }\n    #summary { background: #ffc; }\n    #explanation { background:#eee; border-bottom: 0px none; }\n  </style>\n</head>\n<body>\n  <div id=\"summary\">\n    <h1>Page not found <span>(404)</span></h1>\n    <table class=\"meta\">\n      <tr>\n        <th>Request Method:</th>\n        <td>GET</td>\n      </tr>\n      <tr>\n        <th>Request URL:</th>\n        <td>http://127.0.0.1:8000/auth/</td>\n      </tr>\n      \n    </table>\n  </div>\n  <div id=\"info\">\n    \n      <p>\n      Using the URLconf defined in <code>SmartGrader.urls</code>,\n      Django tried these URL patterns, in this order:\n      </p>\n      <ol>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^login/$\n                [name='login']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^logout/$\n                [name='logout']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^account/$\n                [name='account']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^password/change/$\n                [name='password_change']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^reset/password/$\n                [name='reset_password']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^confirm/reset/password/$\n                [name='confirm_reset_password']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^csrf_token/$\n                [name='csrf_token']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/$\n                [name='course']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/roles/$\n                [name='role_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/roles/(?P&lt;role_id&gt;[\\w\\-]+)/$\n                [name='role_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topics/$\n                [name='topic_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='topic_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topics/$\n                [name='topic_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='topic_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/sections/$\n                [name='section_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/section/(?P&lt;section_id&gt;[\\w\\-]+)/$\n                [name='section_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/enrollments/$\n                [name='enrollment_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/enrollment/(?P&lt;enrollment_id&gt;[\\w\\-]+)/$\n                [name='enrollment_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignments/$\n                [name='assignments-list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)$\n                [name='assignments-detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_sets/$\n                [name='question_set_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/$\n                [name='question_set_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question_file/$\n                [name='question_set_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question_file/images/$\n                [name='question_set_file_images']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/solution_file/$\n                [name='question_set_solution_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/supplementary_file/$\n                [name='question_set_supplementary_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/questions/$\n                [name='question_List']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/$\n                [name='question_Detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/rubrics/$\n                [name='rubric_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/rubric/(?P&lt;rubric_id&gt;[\\w\\-]+)/$\n                [name='rubric_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='link_question_topic']\n            \n          </li>\n        \n      </ol>\n      <p>\n        \n        The current path, <code>auth/</code>, didn't match any of these.\n      </p>\n    \n  </div>\n\n  <div id=\"explanation\">\n    <p>\n      You're seeing this error because you have <code>DEBUG = True</code> in\n      your Django settings file. Change that to <code>False</code>, and Django\n      will display a standard 404 page.\n    </p>\n  </div>\n</body>\n</html>\n"
+				}
+			]
+		},
+		{
+			"name": "homepage2",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/??",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						""
+					],
+					"query": [
+						{
+							"key": "?",
+							"value": "",
+							"equals": false,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "8fb23699-b4f9-4e86-9c3b-93ecde847cca",
+					"name": "homepage2",
+					"originalRequest": {
+						"url": {
+							"raw": "http://127.0.0.1:8000/auth/??",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								""
+							],
+							"query": [
+								{
+									"key": "?",
+									"value": "",
+									"equals": false,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "8629",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 10 Apr 2019 11:54:33 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "server",
+							"key": "server",
+							"value": "WSGIServer/0.2 CPython/3.7.3",
+							"description": "A name for the server"
+						},
+						{
+							"name": "x-frame-options",
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						}
+					],
+					"cookie": [],
+					"responseTime": 36,
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n  <title>Page not found at /auth/</title>\n  <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n  <style type=\"text/css\">\n    html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body * * { padding:0; }\n    body { font:small sans-serif; background:#eee; color:#000; }\n    body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal; margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal; }\n    table { border:none; border-collapse: collapse; width:100%; }\n    td, th { vertical-align:top; padding:2px 3px; }\n    th { width:12em; text-align:right; color:#666; padding-right:.5em; }\n    #info { background:#f6f6f6; }\n    #info ol { margin: 0.5em 4em; }\n    #info ol li { font-family: monospace; }\n    #summary { background: #ffc; }\n    #explanation { background:#eee; border-bottom: 0px none; }\n  </style>\n</head>\n<body>\n  <div id=\"summary\">\n    <h1>Page not found <span>(404)</span></h1>\n    <table class=\"meta\">\n      <tr>\n        <th>Request Method:</th>\n        <td>GET</td>\n      </tr>\n      <tr>\n        <th>Request URL:</th>\n        <td>http://127.0.0.1:8000/auth/??</td>\n      </tr>\n      \n    </table>\n  </div>\n  <div id=\"info\">\n    \n      <p>\n      Using the URLconf defined in <code>SmartGrader.urls</code>,\n      Django tried these URL patterns, in this order:\n      </p>\n      <ol>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^login/$\n                [name='login']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^logout/$\n                [name='logout']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^account/$\n                [name='account']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^password/change/$\n                [name='password_change']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^reset/password/$\n                [name='reset_password']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^confirm/reset/password/$\n                [name='confirm_reset_password']\n            \n          </li>\n        \n          <li>\n            \n                auth/\n                \n            \n                ^csrf_token/$\n                [name='csrf_token']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/$\n                [name='course']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/roles/$\n                [name='role_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/roles/(?P&lt;role_id&gt;[\\w\\-]+)/$\n                [name='role_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topics/$\n                [name='topic_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='topic_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topics/$\n                [name='topic_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='topic_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/sections/$\n                [name='section_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/section/(?P&lt;section_id&gt;[\\w\\-]+)/$\n                [name='section_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/enrollments/$\n                [name='enrollment_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/enrollment/(?P&lt;enrollment_id&gt;[\\w\\-]+)/$\n                [name='enrollment_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignments/$\n                [name='assignments-list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)$\n                [name='assignments-detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_sets/$\n                [name='question_set_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/$\n                [name='question_set_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question_file/$\n                [name='question_set_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question_file/images/$\n                [name='question_set_file_images']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/solution_file/$\n                [name='question_set_solution_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/supplementary_file/$\n                [name='question_set_supplementary_file']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/questions/$\n                [name='question_List']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/$\n                [name='question_Detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/rubrics/$\n                [name='rubric_list']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/rubric/(?P&lt;rubric_id&gt;[\\w\\-]+)/$\n                [name='rubric_detail']\n            \n          </li>\n        \n          <li>\n            \n                ^course/(?P&lt;course_id&gt;[\\w\\-]+)/assignment/(?P&lt;assignment_id&gt;[\\w\\-]+)/question_set/(?P&lt;question_set_id&gt;[\\w\\-]+)/question/(?P&lt;question_id&gt;[\\w\\-]+)/topic/(?P&lt;topic_id&gt;[\\w\\-]+)/$\n                [name='link_question_topic']\n            \n          </li>\n        \n      </ol>\n      <p>\n        \n        The current path, <code>auth/</code>, didn't match any of these.\n      </p>\n    \n  </div>\n\n  <div id=\"explanation\">\n    <p>\n      You're seeing this error because you have <code>DEBUG = True</code> in\n      your Django settings file. Change that to <code>False</code>, and Django\n      will display a standard 404 page.\n    </p>\n  </div>\n</body>\n</html>\n"
+				}
+			]
+		},
+		{
+			"name": "account",
+			"request": {
+				"url": "http://172.23.141.197:3000/auth/account/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "account copy",
+			"request": {
+				"url": "http://127.0.0.1:8000/auth/account/",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"url": "http://127.0.0.1:8000/auth/logout/",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"url": "http://127.0.0.1:8000/auth/login/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "login copy",
+			"request": {
+				"url": "http://172.27.27.134:3000/auth/csrf_token/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "password_change",
+			"request": {
+				"url": "http://127.0.0.1:8000/auth/password/change/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reset_password",
+			"request": {
+				"url": "http://127.0.0.1:8000/auth/reset/password/",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get csrftoken",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,24 @@
+npm external packages
+
+npm install --save ng2-smart-table
+
+npm install @iplab/ngx-file-upload --save
+
+
+ng add ngx-bootstrap  --component carousel
+
+npm i angular-tree-grid
+npm install --save-dev @fortawesome/fontawesome-free
+
+
+npm install ngx-color-picker --save
+
+npm install ng-pick-datetime --save
+
+
+
+added below lines to angular.json
+["node_modules/@fortawesome/fontawesome-free/js/all.js"
+"node_modules/@fortawesome/fontawesome-free/css/all.css"
+]
+

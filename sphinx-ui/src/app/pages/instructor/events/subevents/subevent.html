@@ -1,0 +1,75 @@
+<ba-sidebar></ba-sidebar>
+<page-top></page-top>
+<back-top></back-top>
+
+ <div class="al-main">
+    <div class="al-content">
+	    <content-top></content-top>
+	    <div ba-panel>
+	    <div class="add-row-editable-table">
+		   <button class="btn btn-primary"  data-toggle="modal" ng-click="createSubevent()">Create Subevent</button>
+		</div>
+		  <section id="cd-timeline" class="cd-container cssanimations">
+		    <div class="cd-timeline-block" ng-repeat = "subevent in subevents"> 
+		      <div class="cd-timeline-img">
+		        <div class="kameleon-icon with-round-bg warning"><img ng-src="{{::( 'Checklist'|kameleonImg )}}"></div>
+		      </div>
+
+		      <div class="cd-timeline-content warning">
+		      	<p><span editable-text="subevent.name" e-name="name" e-form="rowform" e-required>
+		         		<h5>{{subevent.name}}</h5>
+		        	</span>
+		        </p>
+		        <p><b>Type</b>: <span editable-text="subevent.type" e-name="type" e-form="rowform" e-required>
+		        	{{subevent.type}}
+		        </span></p>
+		        <p><b>Is Blocking</b>: <span editable-text="subevent.is_blocking" e-name="is_blocking" e-form="rowform" e-required>
+		        	{{subevent.is_blocking?'Yes':'No'}}
+		        </span></p>
+		        <p><b>Start Time</b>: <span editable-text="subevent.start_time" e-name="start_time" e-form="rowform" e-required>
+		        	{{subevent.start_time}}
+		        </span></p>
+		        <p><b>End Time</b>: 
+		        <span editable-text="subevent.end_time" e-name="end_time" e-form="rowform" e-required>
+		        	{{subevent.end_time}}
+		        </span></p>
+		        <p><b>Display End Time</b>: 
+		        <span editable-text="subevent.display_end_time" e-name="display_end_time" e-form="rowform" e-required>
+		        	{{subevent.display_end_time}}
+		        </span></p>
+		        <p><b>Allow Late Ending</b>: <span editable-text="subevent.allow_late_ending" e-name="allow_late_ending" e-form="rowform" e-required>
+		        	{{subevent.allow_late_ending?'Yes':'No'}}
+		        </span></p>
+		        <p><b>Late End Time</b>: <span editable-text="subevent.late_end_time" e-name="late_end_time" e-form="rowform" e-required>
+		        	{{subevent.late_end_time}}
+		        </span></p>
+		        <p><b>Display Late End Time</b>: 
+		        <span editable-text="subevent.display_late_end_time" e-name="display_late_end_time" e-form="rowform" e-required>
+		        	{{subevent.display_late_end_time}}
+		        </span></p>
+		        <tr>
+		      	<td>
+			      <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons 		form-inline"
+			            shown="inserted == subevent">
+			        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary editable-table-button btn-xs"
+			        ng-click="updateEvent($index)">
+			          Save
+			        </button>
+			        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default editable-table-button btn-xs">
+			          Cancel
+			        </button>
+			      </form>
+			      <div class="buttons" ng-show="!rowform.$visible">
+			        <button class="btn btn-primary editable-table-button btn-xs" ng-click="rowform.$show()">Edit</button>
+			        <button class="btn btn-danger editable-table-button btn-xs" ng-click="removeEvent($index)">Delete</button>
+			      </div>
+			    </td>
+			  </tr> 
+		      </div>
+		    </div>
+		  </section>
+		</div>
+	</div>
+</div>
+
+

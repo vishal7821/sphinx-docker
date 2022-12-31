@@ -1,0 +1,14 @@
+/course/$courseid/events
+/course/$courseid/allEvents
+/course/$courseid/event/$eventid
+/course/$courseid/event/$eventid/subevents
+/course/$courseid/event/$eventid/subevent/$subeventid
+/course/$courseid/event/$eventid/subevent/$subeventid/modifyGrader
+
+
+url(r'^course/(?P<course_id>[\w\-]+)/events/$', EventList.as_view(), name='event_list')
+url(r'^course/(?P<course_id>[\w\-]+)/allEvents/$', AllEventList.as_view(), name='all_event_list')
+url(r'^course/(?P<course_id>[\w\-]+)/event/(?P<event_id>[\w\-]+)/$', EventDetail.as_view(), name='event_details')
+url(r'^course/(?P<course_id>[\w\-]+)/event/(?P<event_id>[\w\-]+)/subevents/$', SubeventList.as_view(), name='subevent_list')
+url(r'^course/(?P<course_id>[\w\-]+)/event/(?P<event_id>[\w\-]+)/subevents/(?P<subevent_id>[\w\-]+)/$', SubeventDetail.as_view(), name='subevent_details')
+url(r'^course/(?P<course_id>[\w\-]+)/event/(?P<event_id>[\w\-]+)/subevents/(?P<subevent_id>[\w\-]+)/modifyGrader$', ModifyGrader.as_view(), name='modify_grader')

@@ -1,0 +1,79 @@
+
+<form>
+  <div class="form-row" *ngFor="let mcqcbresponseform of dataarray; let i = index">
+    
+    <ul style="display: inline-block;">
+      <li style="display: inline-block;"> 
+        <nb-checkbox status="primary" 
+          [checked]="mcqcbresponseform.is_Correct"
+          (change)="setResponse(i)"
+          name="is_Correct{{i}}" [(ngModel)]="mcqcbresponseform.is_Correct">
+        </nb-checkbox>
+       </li>
+      
+       <li style="display: inline-block;" [innerHTML]=" '(' + mcqcbresponseform.labelText + ')' + '&nbsp;&nbsp;&nbsp;&nbsp;' ">
+          {{mcqcbresponseform.labelText}}
+          <input type="text" 
+            nbInput 
+            fullWidth 
+            placeholder="A"
+            name = "labelText{{i}}"
+            [(ngModel)] = "mcqcbresponseform.labelText"
+            hidden
+          >
+       </li>
+
+       <li style="display: inline-block;" [innerHTML]="mcqcbresponseform.optionText">
+          {{mcqcbresponseform.optionText}}
+          <input type="text" 
+           nbInput 
+           fullWidth 
+           placeholder="A"
+           name = "optionText{{i}}"
+           [(ngModel)] = "mcqcbresponseform.optionText"
+           hidden
+          >
+        </li>
+    </ul>
+  </div>
+</form>
+
+    <!--<table class="table" style="border: 0px; outline: none;">
+      <td style="width: 5%;">
+          <nb-checkbox status="primary" 
+          [checked]="mcqcbresponseform.is_Correct"
+          (change)="setResponse(i)"
+          name="is_Correct{{i}}" [(ngModel)]="mcqcbresponseform.is_Correct"></nb-checkbox>
+      </td>
+      <td style="width: 5%;">
+          <div style ="margin-top: 1%;" [innerHTML]=" '(' + mcqcbresponseform.labelText + ')'">
+            {{mcqcbresponseform.labelText}}
+          </div>
+          <div>
+          <input type="text" 
+          nbInput 
+          fullWidth 
+          placeholder="A"
+          name = "labelText{{i}}"
+          [(ngModel)] = "mcqcbresponseform.labelText"
+          hidden
+          >
+        </div>
+      </td>
+      <td style="width: 45%;">   
+         <div style ="margin-top: 1%;" [innerHTML]="mcqcbresponseform.optionText">
+             {{mcqcbresponseform.optionText}}
+         </div>
+         <div>
+           <input type="text" 
+           nbInput 
+           fullWidth 
+           placeholder="A"
+           name = "optionText{{i}}"
+           [(ngModel)] = "mcqcbresponseform.optionText"
+           hidden
+           >
+         </div>
+        </td>
+    </table> --> 
+

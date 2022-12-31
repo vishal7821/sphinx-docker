@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .c1 {
+    width: 10%;
+  }
+  .c2 {
+    width: 27%;
+  }
+  .c3 {
+    width: 28%;
+  }
+  .c4 {
+    width: 15%;
+    text-align: center;
+  }
+
+  /deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #3366ff;
+}
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #3366ff;
+}
+
+
+:host ::ng-deep nb-stepper .step-content {
+  // text-align: center;
+
+  button {
+    cursor: pointer;
+    margin: 0.5rem;
+  }
+}
+

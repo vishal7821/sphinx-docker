@@ -1,0 +1,133 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <nb-accordion status="primary">
+
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          General Instructions
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <ul>
+            <li style="margin-top: 2px;">
+              You can view all the questions by clicking on the Question Paper button on the menu.
+            </li>
+            <br>
+            <li style="margin-top: 2px;">
+              The question paper consists of Multiple Choice Questions (MCQ) and Subjective Type Questions.
+            </li>
+            <br>
+            <li style="margin-top: 2px;">
+              Click to save your answer for the current question and then go to the next question.
+            </li>
+            <br>
+            <li style="margin-top: 2px;">
+              All those questions that are not attempted will carry zero marks.
+            </li>
+            <br>
+            <li>
+              <nb-icon size="small" icon="info" [options]="{animation:{type:'pulse'} }" status="info"></nb-icon>
+              <strong> Instructions</strong>
+              Click to view the instructions.
+            </li>
+          </ul>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          Navigating to a Question:
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <ul>
+            <li style="margin-top: 2px;">
+              <button nbButton size="small" outline  status="primary" readonly >PREV</button>&nbsp;&nbsp;
+              Click to go to the previous question.
+            </li>
+            <br>
+            <li style="margin-top: 2px;">
+              <button nbButton size="small" outline  status="primary" readonly >Submit & Prev</button>&nbsp;&nbsp;
+              Click to save your answer for the current question and then go to the previous question.
+            </li>
+            <br>
+            <li style="margin-top: 2px;">
+              <button nbButton size="small" outline  status="primary" readonly >Submit & Next</button>&nbsp;&nbsp;
+              Click to save your answer for the current question and then go to the next question.
+            </li>
+            <br>
+            <li style="margin-top: 2px;">
+              <button nbButton size="small" outline  status="primary" readonly >Next</button>&nbsp;&nbsp;
+              Click to go to the next question.
+            </li>
+            <br>
+            <li>
+              <nb-icon size="large" icon="book-open" [options]="{animation:{type:'pulse'} }" status="warning"></nb-icon>
+                <strong> Question Paper</strong>
+                Click to download question paper.
+            </li>
+          </ul>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          Answering to a Question:
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-accordion>
+            <nb-accordion-item>
+              <nb-accordion-item-header>
+                Procedure for answering a Multiple choice Single Answer Question:
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                  <ul>
+                    <li>To select your answer, click on the button of one of the options</li>
+                    <li>To change your chosen answer, click on the button of another option</li>
+                    <li>To clear your chosen answer, click on the <button nbButton size="small" outline  status="primary" readonly >Clear</button>&nbsp;&nbsp; button</li>
+                    <li>To save your answer, you MUST click on the Save & Next or Save & Prev button</li>
+                  </ul>
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+              <nb-accordion-item>
+                <nb-accordion-item-header>
+                  Procedure for answering a Multiple choice Multiple Answer Question:
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                    <ul>
+                      <li>To deselect one or more of your selected choice(s),click on the checkbox of the choice(s) again.</li>
+                      <li>To change a particular selected choice, deselect this choice that you want to change and click on the checkbox of another choice.</li>
+                      <li>To deselect your chosen answer, click on the <button nbButton size="small" outline  status="primary" readonly >Clear</button>&nbsp;&nbsp; button</li>
+                      <li>To save your answer, you MUST click on the Save & Next or Save & Prev button</li>
+                    </ul>
+                  </nb-accordion-item-body>
+                </nb-accordion-item>
+                <nb-accordion-item>
+                  <nb-accordion-item-header>
+                    Procedure for answering a Subjective Question:
+                  </nb-accordion-item-header>
+                  <nb-accordion-item-body>
+                      <ul>
+                        <li>Write your answer in the given textbox.</li>
+                        <li>To clear your chosen answer, click on the <button nbButton size="small" outline  status="primary" readonly >Clear</button>&nbsp;&nbsp; button</li>
+                        <li>To save your answer, you MUST click on the Save & Next or Save & Prev button</li>
+                      </ul>
+                    </nb-accordion-item-body>
+                  </nb-accordion-item>
+          </nb-accordion>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+
+  
+
+    </nb-accordion>
+  </div>
+
+  <!--<div>
+    <button nbButton size="small" outline (click)="downloadQuestions()" status="primary" readonly >View All Questions</button>&nbsp;
+  </div>-->
+
+  <!--<div [innerHTML]="htmlObj"></div>-->
+  </form>
+    

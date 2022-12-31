@@ -1,0 +1,41 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <tr class="black-muted-bg">
+        <th class="align-left"></th>
+        <th>Subevent Name</th>
+        <th class="align-left">Duration</th>
+        <th class="table-arr"></th>
+        <th class="align-left">Action</th>
+        <th class="table-arr"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="subevent in subevents" class="no-top-border">
+        <td>{{$index}}</td>
+        <td ng-class="nowrsap"><a href="" ng-click = "">{{ subevent.name || 'empty' }}  </a></td>
+        <td class="align-left"> 
+        <div class="row">
+          <div class="col-md-6 align-left"> <small>start time:</small> {{subeventsProp[$index].startT}}</div>
+          <div class="col-md-6 align-right"> <small>end time:</small> {{subeventsProp[$index].endT}}</div>
+        </div>
+          <div class="progress " style=" height: 10px">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="subeventsProp[$index].currPer" aria-valuemin="0" aria-valuemax="100" style="width: {{subeventsProp[$index].currPer}}%">
+              <span class="sr-only">20% Complete</span>
+            </div>
+          </div>
+        </td>
+        <td class="table-arr"><!-- <i ng-class="{'icon-up': item.isVisitsUp, 'icon-down': !item.isVisitsUp }"></i> --></td>
+        <td class="align-left">
+          <div class="buttons">
+            <button ng-show ="subeventsProp[$index].flags.SUPLOAD" class="btn btn-primary align-left btn-mm" ng-click="uploadSol($index)">upload Solution</button>
+          </div>
+        </td>
+        <td class="table-arr"><!-- <i ng-class="{'icon-up': item.isPurchasesUp, 'icon-down': !item.isPurchasesUp }"></i> --></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

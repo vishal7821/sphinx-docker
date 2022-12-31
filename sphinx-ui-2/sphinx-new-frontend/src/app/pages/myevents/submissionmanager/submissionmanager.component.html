@@ -1,0 +1,713 @@
+
+<!-- NAC Verification form -->
+<!-- *ngIf="mySubmissionEvent.isNACReq && !this.mySubmissionEvent.isNACVerified" -->
+<div  *ngIf="mySubmissionEvent.isNACReq && !this.mySubmissionEvent.isNACVerified">
+        <nb-card size="giant" status="primary">
+                <nb-card-header>
+                        <h5 style="color: white;">Event Submission</h5>
+                </nb-card-header>
+                <nb-card-body>
+                        <div class="row">
+                                <div class="col-md-6">
+                                        <nb-card>
+                                                <nb-card-header>PreSubmission Step</nb-card-header>
+                                                <nb-card-body>
+                                                        <form>
+                                                                <div class="form-group row">
+                                                                        <label for="inputNAC"
+                                                                                class="label col-sm-3 col-form-label">Access
+                                                                                Code</label>
+                                                                        <div class="col-sm-9">
+                                                                                <input type="text" nbInput fullWidth
+                                                                                        id="inputAccessCode"
+                                                                                        placeholder="Enter access code"
+                                                                                        [(ngModel)]="mySubmissionEvent.sgrp_form.accessCodeSubmitted"
+                                                                                        name="accessCode">
+                                                                        </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                        <div class="offset-sm-3 col-sm-9">
+                                                                                <button type="submit" nbButton
+                                                                                        status="primary"
+                                                                                        (click)="verifyNACForm()">Submit</button>
+                                                                        </div>
+                                                                </div>
+                                                        </form>
+                                                </nb-card-body>
+                                        </nb-card>
+
+                                </div>
+
+                        </div>
+
+                </nb-card-body>
+
+        </nb-card>
+</div>
+
+<!-- Submission group create form -->
+<!-- *ngIf="!mySubmissionEvent.isSGCreated" -->
+<div  *ngIf="!mySubmissionEvent.isSGCreated">
+        <nb-card size="giant" status="primary">
+                <nb-card-header>
+                        <h5 style="color: white;">Event Submission</h5>
+                </nb-card-header>
+                <nb-card-body>
+                        <div class="row">
+                                <div class="col-md-8">
+                                        <nb-card>
+                                                <nb-card-header>Fill below details to Create/Join Submission group
+                                                </nb-card-header>
+                                                <nb-card-body>
+
+                                                        <form>
+                                                                <div class="form-group row">
+
+                                                                        <label for="inputSBM"
+                                                                                class="label col-sm-3 col-form-label">Select
+                                                                                a choice</label>
+                                                                        <div class="col-sm-9">
+                                                                                <nb-radio-group name="sgchoice"
+                                                                                        [(ngModel)]="mySubmissionEvent.sgrp_form.choice">
+                                                                                        <nb-radio value="0">
+                                                                                                Create
+                                                                                        </nb-radio>
+                                                                                        <nb-radio value="1">
+                                                                                                Join
+                                                                                        </nb-radio>
+                                                                                </nb-radio-group>
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="form-group row"
+                                                                        *ngIf="mySubmissionEvent.sgrp_form.choice=='1'">
+
+                                                                        <label for="inputname"
+                                                                                class="label col-sm-3 col-form-label">Enter
+                                                                                submissionGroup ID</label>
+                                                                        <div class="col-sm-9">
+                                                                                <input type="text" name="sgId" nbInput
+                                                                                        fullWidth id="inputName"
+                                                                                        [(ngModel)]="mySubmissionEvent.sgrp_form.sGroupID"
+                                                                                        placeholder="Enter submissionGroup ID">
+                                                                        </div>
+                                                                </div>
+
+                                                                <div class="form-group row"
+                                                                        *ngIf="mySubmissionEvent.sgrp_form.choice=='0'">
+
+                                                                        <label for="inputqset"
+                                                                                class="label col-sm-3 col-form-label">Select
+                                                                                QuestionSet</label>
+                                                                        <div class="col-sm-9">
+                                                                                <nb-select name="qset"
+                                                                                        placeholder="Select QuestionSet"
+                                                                                        [(ngModel)]="mySubmissionEvent.sgrp_form.selectedQSet">
+                                                                                        <nb-option
+                                                                                                *ngFor="let qset of mySubmissionEvent.sgrp_form.questionSets"
+                                                                                                [value]="qset.main_id">
+                                                                                                {{qset.name}}
+                                                                                        </nb-option>
+                                                                                </nb-select>
+                                                                        </div>
+                                                                </div>
+
+
+
+                                                                <div class="form-group row">
+                                                                        <div class="offset-sm-3 col-sm-9">
+
+                                                                                <button nbButton
+                                                                                        (click)="submitCreateJoinForm(i)">
+                                                                                        <span
+                                                                                                *ngIf="mySubmissionEvent.sgrp_form.choice=='0'">Create</span>
+                                                                                        <span
+                                                                                                *ngIf="mySubmissionEvent.sgrp_form.choice=='1'">Join</span>
+                                                                                </button>
+                                                                        </div>
+                                                                </div>
+                                                        </form>
+
+
+                                                </nb-card-body>
+                                        </nb-card>
+                                </div>
+                        </div>
+                </nb-card-body>
+
+        </nb-card>
+</div>
+
+<!-- Main Submission -->
+<div *ngIf="mySubmissionEvent.isSGCreated && this.mySubmissionEvent.isNACVerified">
+
+        <div *ngIf='isImpersonated != true'>
+                <nb-card size="giant" status="primary">
+                        <nb-card-header>
+                                <div class="row">
+        
+                                        <div class="col-sm-3">
+                                                <h5 style="color: white;">Event Submission</h5>
+                                        </div>
+                                        <div class="col-sm-2" *ngIf="mySubmissionEvent.qss != 'FS'">
+                                                Selected QuestionSet: {{mySubmissionEvent.submissionGroup.choosenQset}}
+                                                
+        
+                                                <button nbButton [disabled]="!isSupload" ghost size="tiny" status="primary" (click)="toggleQSetForm()">
+                                                        <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                                                </button>
+                                                
+                                        </div>
+                                        <div class="col-sm-4">
+                                                <span>
+                                                        Uploaded Main file: <span *ngIf="mainFile==null"> -- </span>
+                                                        <a  *ngIf="mainFile!=null" href="#" onclick="return false" (click)="getMainSubmFile()">
+                                                                <u> {{mainFile.name}}</u>
+                                                        </a>
+                                                         
+                                                        <button [disabled]="!isSupload" nbButton ghost size="tiny" status="primary"
+                                                                (click)="toggleFileForm()">
+                                                                <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                                                        </button>
+                                                </span>
+                                        </div>
+        
+                                        <div class="col-sm-3" *ngIf="mySubmissionEvent.isSupAllowed">
+                                                <span>
+        
+                                                        Uploaded Suppl file: <span *ngIf="suppFile.name==null"> -- </span>
+                                                        <a href="#" onclick="return false" (click)="getSupplFile()">
+                                                                <u> {{suppFile.name}}</u>
+                                                        </a>
+                                                        <button [disabled]="!isSupload" nbButton ghost size="tiny" status="primary"
+                                                                (click)="toggleSuppFileForm()">
+                                                                <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                                                        </button>
+                                                </span>
+                                        </div>
+                                        <div class="col-sm-3" *ngIf="isImpersonated">
+                                        <button class="link" style="float:right;" (click)="gotToMainView()">
+                                        <nb-icon size="large" icon="arrow-back-outline" [options]="{animation:{type:'pulse'} }" status="success"></nb-icon>
+                                        <strong style="color: white;">Go to Main Window</strong>
+                                        </button>
+                                        </div>
+        
+                                </div>
+        
+                        </nb-card-header>
+        
+                        <nb-card-body [ngStyle]="{'background-color':isImpersonated == true ? 'black' : 'white'}">
+        
+                                <nb-card *ngIf="isOpenQSetForm">
+        
+                                        <nb-card-body>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                                <nb-select fullWidth placeholder="Select QuestionSet"
+                                                                        [(ngModel)]="mySubmissionEvent.sgrp_form.selectedQSet">
+                                                                        <nb-option
+                                                                                *ngFor="let qset of mySubmissionEvent.sgrp_form.questionSets"
+                                                                                [value]="qset.main_id">
+                                                                                {{qset.name}}</nb-option>
+                                                                </nb-select>
+                                                        </div>
+        
+                                                        <div class="offset-md-2 col-sm-1">
+                                                                <button [disabled]="!isSupload"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="success" (click)="submitQSetForm()">
+                                                                        <nb-icon size="large" icon="save-outline"></nb-icon>
+                                                                        Update
+                                                                </button>
+                                                        </div>
+                                                        <div class="offset-md-1 col-sm-2">
+                                                                <button nbButton size="small" outline shape="semi-round"
+                                                                        status="danger" (click)="toggleQSetForm()">
+                                                                        <nb-icon icon="close-outline" size="medium"></nb-icon>
+                                                                        Cancel
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </nb-card-body>
+                                </nb-card>
+        
+        
+                                <nb-card *ngIf="isOpenFileForm">
+                                        <nb-card-header>Please upload main submission file </nb-card-header>
+                                        <nb-card-body>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                                <file-upload [(ngModel)]="uploadedFiles" name="files">
+                                                                </file-upload>
+                                                        </div>
+        
+                                                        <div class="offset-md-2 col-sm-1">
+                                                                <button [disabled]="!isSupload"
+                                                                [nbSpinner]="mainloading" nbSpinnerStatus="primary"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="success" (click)="submitFileForm()">
+                                                                        <nb-icon size="large" icon="save-outline"></nb-icon>
+                                                                        Upload
+                                                                </button>
+                                                        </div>
+                                                        <div class="offset-md-1 col-sm-2">
+                                                                <button nbButton size="small" outline shape="semi-round"
+                                                                        status="danger" (click)="toggleFileForm()">
+                                                                        <nb-icon icon="close-outline" size="medium"></nb-icon>
+                                                                        Cancel
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </nb-card-body>
+                                </nb-card>
+        
+                                <nb-card *ngIf="isOpenSuppFileForm">
+                                        <nb-card-header>Please upload supplementary submission file </nb-card-header>
+                                        <nb-card-body>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                                <file-upload [(ngModel)]="uploadedSuppFiles" name="files">
+                                                                </file-upload>
+                                                        </div>
+        
+                                                        <div class="offset-md-2 col-sm-1">
+                                                                <button [disabled]="!isSupload"
+                                                                [nbSpinner]="supploading" nbSpinnerStatus="primary"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="success" (click)="submitSuppFileForm()">
+                                                                        <nb-icon size="large" icon="save-outline"></nb-icon>
+                                                                        Upload
+                                                                </button>
+                                                        </div>
+                                                        <div class="offset-md-1 col-sm-2">
+                                                                <button [disabled]="!isSupload"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="danger" (click)="toggleSuppFileForm()">
+                                                                        <nb-icon icon="close-outline" size="medium"></nb-icon>
+                                                                        Cancel
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </nb-card-body>
+                                </nb-card>
+        
+        
+                                <div class=" row" *ngIf="isMainSubmissionPresent">
+        
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="col-md-6">
+                                                <div>
+                
+                                                        <div  style="padding:1px;border:thin solid black;" *ngIf = "slides.length !=0">
+                                                            <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval">
+                                                                    <slide *ngFor="let slide of slides; let index=index">
+                                                                        <img src="data:image/jpg;base64,{{slide.image}}" alt="Upload Question set file" style="display: block; height: 100%; width: 100%;">
+                                                                    
+                                                                        <div class="carousel-caption">
+                                                                        <p>{{slide.text}}</p>
+                                                                        </div>
+                                                                    </slide>
+                                                                </carousel>
+                                                     </div>  
+                                                    </div>
+        
+                                                <!-- <app-image-viewer [images]="sliderImages"
+                                                        [idContainer]="'idOnHTML'"
+                                                        [loadOnInit]="true"
+                                                        [download]="false"
+                                                        [fullscreen]="false"
+                                                        [showPDFOnlyOption]="false"
+                                                        [primaryColor] ="'#3366ff'"
+                                                        ></app-image-viewer> -->
+        
+                                        </div>
+                                        <div class="col-md-1"></div>
+        
+                                        <div class="col-md-5">
+                                                <nb-card size="giant">
+                                                        <nb-card-body>
+                                                                <nb-tabset fullwidth>
+                                                                        <nb-tab tabTitle="Pagination">
+                                                                                <table class="table table-hover">
+                                                                                        <tbody>
+                                                                                                <tr>
+                                                                                                        <th>Question Title</th>
+                                                                                                        <th>Start Page Number</th>
+                                                                                                </tr>
+                                                                                        </tbody>
+                                                                                        <tbody *ngFor="let question of myQuestions; index as k">
+                                                                                                <tr>
+                                                                                                        <td>
+                                                                                                                <div
+                                                                                                                        *ngIf="question.title==null">
+                                                                                                                        --
+                                                                                                                </div>
+                                                                                                                {{question.title}}
+                                                                                                        </td>
+                                                                                                        <td>
+                        
+                                                                                                                <nb-select fullWidth
+                                                                                                                        [disabled]="!isSupload"
+                                                                                                                        (selectedChange)="pageSelectionUpdate(k)"
+                                                                                                                        placeholder="Select start page no."
+                                                                                                                        [(ngModel)]="myQuestions[k].selectedPage">
+                                                                                                                        <nb-option
+                                                                                                                                [value]="-1">
+                                                                                                                                not answered
+                                                                                                                        </nb-option>
+                                                                                                                        <nb-option
+                                                                                                                                *ngFor="let pno of myQuestions[k].pageArray"
+                                                                                                                                [value]="pno">
+                                                                                                                                {{pno}}
+                                                                                                                        </nb-option>
+                                                                                                                </nb-select>
+                        
+                                                                                                        </td>
+                        
+                                                                                                </tr>
+                                                                                        </tbody>
+                                                                                </table>                
+        
+                                                                        </nb-tab>
+                                                                        <nb-tab tabTitle="Submission Group Details">
+                                                                                <div class="row" *ngIf="mySubmissionEvent.isSGCreated">
+                                                                                        Submission Group ID: {{mySubmissionEvent.submissionGroup.main_id}}
+                                                                                </div>
+                                                                                <br>
+                                                                                <table class="table " *ngIf="mySubmissionEvent.isSGCreated">
+                                                                                        <tbody>
+                                                                                          <tr>
+                                                                                            <th scope="col" >Roll Number</th>
+                                                                                            <th scope="col" >First Name</th>
+                                                                                            <th scope="col" >Last Name</th>
+                                                                                          </tr>
+                                                                                        </tbody>
+                                                                                        <tbody *ngFor="let grpMember of mySubmissionEvent.submissionGroup.groupMembers; index as k">
+                                                                                          <tr>
+                                                                                            <td>
+                                                                                                <div *ngIf="grpMember.rollNo==null">--</div>
+                                                                                                {{grpMember.rollNo}}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div *ngIf="grpMember.firstName==null">--</div>
+                                                                                                {{grpMember.firstName}}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div *ngIf="grpMember.lastName==null">--</div>
+                                                                                                {{grpMember.lastName}}
+                                                                                            </td>
+                                                                                          </tr>
+                                                                                        </tbody>
+                                                                                      </table>
+                                                            
+                                                                        </nb-tab>
+                                                                </nb-tabset>
+        
+                                                               
+                                                        </nb-card-body>
+                                                        <nb-card-footer>
+                                                                <div class="row">
+                                                                        <div class="col-6 col-sm-6 text-center">
+                                                                                <button [disabled]="!isSupload" nbButton size="medium"
+                                                                                        (click)="onFinalSubmit()">Submit</button>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 text-center">
+                                                                                <button nbButton status="danger" size="medium"
+                                                                                        (click)="gotoMyEvents()">Cancel</button>
+                                                                        </div>
+                                                                </div>
+                                                        </nb-card-footer>
+        
+                                                </nb-card>
+                                        </div>
+                                </div>
+                        </nb-card-body>
+                </nb-card>
+        </div>
+        <div *ngIf='isImpersonated == true'>
+                <nb-card size="giant" status="danger">
+                        <nb-card-header>
+                                <div class="row">
+        
+                                        <div class="col-sm-3">
+                                                <h5 style="color: white;">Impersonated Event Submission</h5>
+                                        </div>
+                                        <div class="col-sm-2" *ngIf="mySubmissionEvent.qss != 'FS'">
+                                                Selected QuestionSet: {{mySubmissionEvent.submissionGroup.choosenQset}}
+                                                
+        
+                                                <button nbButton [disabled]="!isSupload" ghost size="tiny" status="primary" (click)="toggleQSetForm()">
+                                                        <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                                                </button>
+                                                
+                                        </div>
+                                        <div class="col-sm-4">
+                                                <span>
+                                                        Uploaded Main file: <span *ngIf="mainFile==null"> -- </span>
+                                                        <a  *ngIf="mainFile!=null" href="#" onclick="return false" (click)="getMainSubmFile()">
+                                                                <u> {{mainFile.name}}</u>
+                                                        </a>
+                                                         
+                                                        <button [disabled]="!isSupload" nbButton ghost size="tiny" status="primary"
+                                                                (click)="toggleFileForm()">
+                                                                <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                                                        </button>
+                                                </span>
+                                        </div>
+        
+                                        <div class="col-sm-3" *ngIf="mySubmissionEvent.isSupAllowed">
+                                                <span>
+        
+                                                        Uploaded Suppl file: <span *ngIf="suppFile.name==null"> -- </span>
+                                                        <a href="#" onclick="return false" (click)="getSupplFile()">
+                                                                <u> {{suppFile.name}}</u>
+                                                        </a>
+                                                        <button [disabled]="!isSupload" nbButton ghost size="tiny" status="primary"
+                                                                (click)="toggleSuppFileForm()">
+                                                                <nb-icon [icon]="'edit'" pack="ion"></nb-icon>
+                                                        </button>
+                                                </span>
+                                        </div>
+                                        <div class="col-sm-3" *ngIf="isImpersonated">
+                                        <button class="link" style="float:right;" (click)="gotToMainView()">
+                                        <nb-icon size="large" icon="arrow-back-outline" [options]="{animation:{type:'pulse'} }" status="success"></nb-icon>
+                                        <strong style="color: white;">Go to Main Window</strong>
+                                        </button>
+                                        </div>
+        
+                                </div>
+        
+                        </nb-card-header>
+        
+                        <nb-card-body [ngStyle]="{'background-color':isImpersonated == true ? 'black' : 'white'}">
+        
+                                <nb-card *ngIf="isOpenQSetForm">
+        
+                                        <nb-card-body>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                                <nb-select fullWidth placeholder="Select QuestionSet"
+                                                                        [(ngModel)]="mySubmissionEvent.sgrp_form.selectedQSet">
+                                                                        <nb-option
+                                                                                *ngFor="let qset of mySubmissionEvent.sgrp_form.questionSets"
+                                                                                [value]="qset.main_id">
+                                                                                {{qset.name}}</nb-option>
+                                                                </nb-select>
+                                                        </div>
+        
+                                                        <div class="offset-md-2 col-sm-1">
+                                                                <button [disabled]="!isSupload"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="success" (click)="submitQSetForm()">
+                                                                        <nb-icon size="large" icon="save-outline"></nb-icon>
+                                                                        Update
+                                                                </button>
+                                                        </div>
+                                                        <div class="offset-md-1 col-sm-2">
+                                                                <button nbButton size="small" outline shape="semi-round"
+                                                                        status="danger" (click)="toggleQSetForm()">
+                                                                        <nb-icon icon="close-outline" size="medium"></nb-icon>
+                                                                        Cancel
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </nb-card-body>
+                                </nb-card>
+        
+        
+                                <nb-card *ngIf="isOpenFileForm">
+                                        <nb-card-header>Please upload main submission file </nb-card-header>
+                                        <nb-card-body>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                                <file-upload [(ngModel)]="uploadedFiles" name="files">
+                                                                </file-upload>
+                                                        </div>
+        
+                                                        <div class="offset-md-2 col-sm-1">
+                                                                <button [disabled]="!isSupload"
+                                                                [nbSpinner]="mainloading" nbSpinnerStatus="primary"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="success" (click)="submitFileForm()">
+                                                                        <nb-icon size="large" icon="save-outline"></nb-icon>
+                                                                        Upload
+                                                                </button>
+                                                        </div>
+                                                        <div class="offset-md-1 col-sm-2">
+                                                                <button nbButton size="small" outline shape="semi-round"
+                                                                        status="danger" (click)="toggleFileForm()">
+                                                                        <nb-icon icon="close-outline" size="medium"></nb-icon>
+                                                                        Cancel
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </nb-card-body>
+                                </nb-card>
+        
+                                <nb-card *ngIf="isOpenSuppFileForm">
+                                        <nb-card-header>Please upload supplementary submission file </nb-card-header>
+                                        <nb-card-body>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                                <file-upload [(ngModel)]="uploadedSuppFiles" name="files">
+                                                                </file-upload>
+                                                        </div>
+        
+                                                        <div class="offset-md-2 col-sm-1">
+                                                                <button [disabled]="!isSupload"
+                                                                [nbSpinner]="supploading" nbSpinnerStatus="primary"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="success" (click)="submitSuppFileForm()">
+                                                                        <nb-icon size="large" icon="save-outline"></nb-icon>
+                                                                        Upload
+                                                                </button>
+                                                        </div>
+                                                        <div class="offset-md-1 col-sm-2">
+                                                                <button [disabled]="!isSupload"
+                                                                        nbButton size="small" outline shape="semi-round"
+                                                                        status="danger" (click)="toggleSuppFileForm()">
+                                                                        <nb-icon icon="close-outline" size="medium"></nb-icon>
+                                                                        Cancel
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </nb-card-body>
+                                </nb-card>
+        
+        
+                                <div class=" row" *ngIf="isMainSubmissionPresent">
+        
+                                        <!-- <div class="col-md-2"></div> -->
+                                        <div class="col-md-6">
+                                                <div>
+                
+                                                        <div  style="padding:1px;border:thin solid black;" *ngIf = "slides.length !=0">
+                                                            <carousel [(activeSlide)]="activeSlideIndex" [interval]="myInterval">
+                                                                    <slide *ngFor="let slide of slides; let index=index">
+                                                                        <img src="data:image/jpg;base64,{{slide.image}}" alt="Upload Question set file" style="display: block; height: 100%; width: 100%;">
+                                                                    
+                                                                        <div class="carousel-caption">
+                                                                        <p>{{slide.text}}</p>
+                                                                        </div>
+                                                                    </slide>
+                                                                </carousel>
+                                                     </div>  
+                                                    </div>
+        
+                                                <!-- <app-image-viewer [images]="sliderImages"
+                                                        [idContainer]="'idOnHTML'"
+                                                        [loadOnInit]="true"
+                                                        [download]="false"
+                                                        [fullscreen]="false"
+                                                        [showPDFOnlyOption]="false"
+                                                        [primaryColor] ="'#3366ff'"
+                                                        ></app-image-viewer> -->
+        
+                                        </div>
+                                        <div class="col-md-1"></div>
+        
+                                        <div class="col-md-5">
+                                                <nb-card size="giant">
+                                                        <nb-card-body>
+                                                                <nb-tabset fullwidth>
+                                                                        <nb-tab tabTitle="Pagination">
+                                                                                <table class="table table-hover">
+                                                                                        <tbody>
+                                                                                                <tr>
+                                                                                                        <th>Question Title</th>
+                                                                                                        <th>Start Page Number</th>
+                                                                                                </tr>
+                                                                                        </tbody>
+                                                                                        <tbody *ngFor="let question of myQuestions; index as k">
+                                                                                                <tr>
+                                                                                                        <td>
+                                                                                                                <div
+                                                                                                                        *ngIf="question.title==null">
+                                                                                                                        --
+                                                                                                                </div>
+                                                                                                                {{question.title}}
+                                                                                                        </td>
+                                                                                                        <td>
+                        
+                                                                                                                <nb-select fullWidth
+                                                                                                                        [disabled]="!isSupload"
+                                                                                                                        (selectedChange)="pageSelectionUpdate(k)"
+                                                                                                                        placeholder="Select start page no."
+                                                                                                                        [(ngModel)]="myQuestions[k].selectedPage">
+                                                                                                                        <nb-option
+                                                                                                                                [value]="-1">
+                                                                                                                                not answered
+                                                                                                                        </nb-option>
+                                                                                                                        <nb-option
+                                                                                                                                *ngFor="let pno of myQuestions[k].pageArray"
+                                                                                                                                [value]="pno">
+                                                                                                                                {{pno}}
+                                                                                                                        </nb-option>
+                                                                                                                </nb-select>
+                        
+                                                                                                        </td>
+                        
+                                                                                                </tr>
+                                                                                        </tbody>
+                                                                                </table>                
+        
+                                                                        </nb-tab>
+                                                                        <nb-tab tabTitle="Submission Group Details">
+                                                                                <div class="row" *ngIf="mySubmissionEvent.isSGCreated">
+                                                                                        Submission Group ID: {{mySubmissionEvent.submissionGroup.main_id}}
+                                                                                </div>
+                                                                                <br>
+                                                                                <table class="table " *ngIf="mySubmissionEvent.isSGCreated">
+                                                                                        <tbody>
+                                                                                          <tr>
+                                                                                            <th scope="col" >Roll Number</th>
+                                                                                            <th scope="col" >First Name</th>
+                                                                                            <th scope="col" >Last Name</th>
+                                                                                          </tr>
+                                                                                        </tbody>
+                                                                                        <tbody *ngFor="let grpMember of mySubmissionEvent.submissionGroup.groupMembers; index as k">
+                                                                                          <tr>
+                                                                                            <td>
+                                                                                                <div *ngIf="grpMember.rollNo==null">--</div>
+                                                                                                {{grpMember.rollNo}}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div *ngIf="grpMember.firstName==null">--</div>
+                                                                                                {{grpMember.firstName}}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div *ngIf="grpMember.lastName==null">--</div>
+                                                                                                {{grpMember.lastName}}
+                                                                                            </td>
+                                                                                          </tr>
+                                                                                        </tbody>
+                                                                                      </table>
+                                                            
+                                                                        </nb-tab>
+                                                                </nb-tabset>
+        
+                                                               
+                                                        </nb-card-body>
+                                                        <nb-card-footer>
+                                                                <div class="row">
+                                                                        <div class="col-6 col-sm-6 text-center">
+                                                                                <button [disabled]="!isSupload" nbButton size="medium"
+                                                                                        (click)="onFinalSubmit()">Submit</button>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 text-center">
+                                                                                <button nbButton status="danger" size="medium"
+                                                                                        (click)="gotoMyEvents()">Cancel</button>
+                                                                        </div>
+                                                                </div>
+                                                        </nb-card-footer>
+        
+                                                </nb-card>
+                                        </div>
+                                </div>
+                        </nb-card-body>
+                </nb-card>
+        </div>
+        
+
+        
+</div>

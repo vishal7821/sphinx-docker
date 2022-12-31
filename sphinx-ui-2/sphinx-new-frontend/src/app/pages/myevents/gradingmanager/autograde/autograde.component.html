@@ -1,0 +1,126 @@
+<nb-card size="giant">
+    <nb-card-header>
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <h5>AI Assisted Evaluation</h5>
+            </div>
+            <div class="col-6 col-sm-5">
+                {{message}}
+            </div>
+            <div class="col-6 col-sm-2">
+                <div class="center">
+                    <button [nbSpinner]="isLoading" size ="small" nbSpinnerStatus="info" (click)="onAutoGrade()" outline nbButton>
+                        Generate Clusters</button>
+
+                </div>
+            </div>
+            <div class="col-6 col-sm-2">
+
+                <button [nbSpinner]="isGradeLoading" size ="small" nbSpinnerStatus="info" (click)="onGradeClusters()" outline
+                    nbButton>Grade Submissions</button>
+
+            </div>
+
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <!-- <div class = "row">
+                <div class="col-6 col-sm-12" >
+                        <div style="text-align:center;">
+                                Form the clusters of similar answers from the student submissions 
+                        </div>
+                </div>
+                                  
+            </div> -->
+        <div>
+
+            <nb-tabset>
+                <nb-tab *ngFor="let cluster of clusterData; index as i" tabTitle="{{cluster.cluster_label}}">
+                    <nb-list>
+                        <nb-list-item *ngFor="let gd of cluster.auto_GDs; index as j">
+                            <div class="row">
+                                    <div class="col-6 col-sm-2">
+
+                                            <input type="text" nbInput fullWidth status="primary"
+                                                [(ngModel)]="gd.predicted_char">
+                
+                
+                                        </div>
+                                        <div class="col-6 col-sm-1">
+                                            <img src="{{gd.image}}" alt="Not available"
+                                                style="max-height: 100%; max-width: 100%;">
+                                        </div>
+                                        
+                            </div>
+                        </nb-list-item>
+                    </nb-list>
+                    
+                    <!-- <div class="row" *ngFor="let row_gds of cluster.auto_GDs; index as j">
+
+
+                        <div class="col-6 col-sm-2">
+
+                            <input type="text" nbInput fullWidth status="primary"
+                                [(ngModel)]="row_gds.gd_0.predicted_char">
+
+
+                        </div>
+                        <div class="col-6 col-sm-1">
+                            <img src="{{row_gds.gd_0.image}}" alt="Not available"
+                                style="max-height: 100%; max-width: 100%;">
+                        </div>
+                        
+                        <div class="col-6 col-sm-2">
+                            <div *ngIf="row_gds.gd_1">
+                                <input type="text" nbInput fullWidth status="primary"
+                                    [(ngModel)]="row_gds.gd_1.predicted_char">
+                            </div>
+
+
+                        </div>
+                        <div class="col-6 col-sm-1">
+                            <div *ngIf="row_gds.gd_1">
+                                <img src="{{row_gds.gd_1.image}}" alt="Not available"
+                                    style="max-height: 100%; max-width: 100%;">
+                            </div>
+
+                        </div>
+                        <div class="col-6 col-sm-2">
+                            <div *ngIf="row_gds.gd_2">
+                                <input type="text" nbInput fullWidth status="primary"
+                                    [(ngModel)]="row_gds.gd_2.predicted_char">
+                            </div>
+
+
+                        </div>
+                        <div class="col-6 col-sm-1">
+                            <div *ngIf="row_gds.gd_2">
+                                <img src="{{row_gds.gd_2.image}}" alt="Not available"
+                                    style="max-height: 100%; max-width: 100%;">
+                            </div>
+
+                        </div>
+                        <div class="col-6 col-sm-2">
+                            <div *ngIf="row_gds.gd_3">
+                                <input type="text" nbInput fullWidth status="primary" placeholder="Enter Char"
+                                    [(ngModel)]="row_gds.gd_3.predicted_char">
+                            </div>
+
+
+                        </div>
+                        <div class="col-6 col-sm-1">
+                            <div *ngIf="row_gds.gd_3">
+                                <img src="{{row_gds.gd_3.image}}" alt="Not available"
+                                    style="max-height: 100%; max-width: 100%;">
+                            </div>
+
+                        </div>
+
+                    </div> -->
+
+                </nb-tab>
+
+            </nb-tabset>
+        </div>
+    </nb-card-body>
+</nb-card>
